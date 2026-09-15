@@ -1,1 +1,252 @@
-cek-data
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cek Datamu - LAKMUD IV PAC DANDER</title>
+  <meta name="description" content="Pantau status verifikasi pendaftaran LAKMUD IV PAC IPNU IPPNU Dander." />
+  
+  <!-- Font Modern: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ================= ROOT DESIGN TOKENS ================= */
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --primary-glow: rgba(16, 185, 129, 0.28);
+      --primary-soft: rgba(16, 185, 129, 0.1);
+      --accent-gold: #f59e0b;
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 26, 44, 0.85);
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(16, 185, 129, 0.35);
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-full: 9999px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 14px 40px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(120px);
+      z-index: 0;
+      opacity: 0.35;
+    }
+    .glow-1 {
+      width: 380px; height: 380px; top: -100px; left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, #059669, #0284c7);
+    }
+
+    .app-container { width: 100%; max-width: 540px; position: relative; z-index: 1; }
+
+    /* ================= HEADER & NAV BACK ================= */
+    .header-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-back-home:hover {
+      background: var(--primary-soft);
+      border-color: var(--border-highlight);
+      color: var(--primary);
+      transform: translateX(-2px);
+    }
+
+    .page-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+    }
+
+    .page-title-box {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 45%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .page-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    /* ================= CONTENT CONTAINER ================= */
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      text-align: center;
+      padding: 30px 10px 10px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    .footer-brand { font-size: 1rem; font-weight: 800; color: #fff; }
+    .footer-org { font-size: 0.78rem; font-weight: 700; color: var(--primary); margin-top: 1px; }
+    .footer-quote { font-size: 0.74rem; color: var(--text-muted); font-style: italic; margin: 6px 0 14px; }
+    .footer-socials { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 14px; }
+    .social-link {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition-smooth);
+    }
+    .social-link i { width: 14px; height: 14px; }
+    .social-link:hover { color: var(--primary); }
+    .dot-sep { color: var(--text-muted); font-size: 0.6rem; }
+    .footer-copy { font-size: 0.68rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow glow-1"></div>
+
+  <main class="app-container">
+    
+    <!-- HEADER NAV BACK -->
+    <div class="header-nav">
+      <button type="button" class="btn-back-home" onclick="goBackHome()">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+        <span>Kembali</span>
+      </button>
+      <span class="page-tag">Monitoring</span>
+    </div>
+
+    <div class="page-title-box">
+      <h1 class="page-title">Cek Datamu</h1>
+      <p class="page-subtitle">LAKMUD IV PAC IPNU IPPNU DANDER</p>
+    </div>
+
+    <!-- AREA KONTEN PENCARIAN & STATUS -->
+    <section class="content-card">
+      <!-- KONTEN PENCARIAN & STATUS DATA PESERTA AKAN DITEMPATKAN DI SINI -->
+      <p style="color: var(--text-muted); font-size: 0.85rem;">[ Area Pencarian &amp; Status Data Peserta ]</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">LAKMUD IV</div>
+      <div class="footer-org">PAC IPNU IPPNU DANDER</div>
+      <p class="footer-quote">"Ruang Berproses, Bertumbuh, dan Berkhidmat"</p>
+      
+      <div class="footer-socials">
+        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="social-link">
+          <i data-lucide="instagram"></i> Instagram
+        </a>
+        <span class="dot-sep">•</span>
+        <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="social-link">
+          <i data-lucide="facebook"></i> Facebook
+        </a>
+        <span class="dot-sep">•</span>
+        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="social-link">
+          <i data-lucide="globe"></i> Website
+        </a>
+      </div>
+      
+      <div class="footer-copy">
+        &copy; Panitia Pelaksana LAKMUD IV PAC IPNU IPPNU Dander. All rights reserved.
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      setupHardwareBackButton();
+    });
+
+    function goBackHome() {
+      if (document.referrer && document.referrer.includes(window.location.host)) {
+        window.history.back();
+      } else {
+        window.location.href = "index.html";
+      }
+    }
+
+    function setupHardwareBackButton() {
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ page: 'cek-data' }, null, '');
+        window.addEventListener('popstate', function(e) {
+          window.location.href = "index.html";
+        });
+      }
+    }
+  </script>
+</body>
+</html>
