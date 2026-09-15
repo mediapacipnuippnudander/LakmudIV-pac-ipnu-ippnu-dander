@@ -1,1 +1,1505 @@
-# LakmudIV-pac-ipnu-ippnu-dander
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Lakmud IV — PAC IPNU IPPNU Dander</title>
+  <meta name="description" content="Portal Resmi Pendaftaran LAKMUD IV PAC IPNU IPPNU Dander. Mencetak Kader yang Reflektif, Strategis, dan Transformatif" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Google Fonts: Luxury Display Serif & Modern Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ========================================================
+       1. VIBRANT MODERN LUXE DESIGN SYSTEM
+       ======================================================== */
+    :root {
+      /* Dynamic Brand Palette from Logo */
+      --primary-navy: #0d2a4a;
+      --primary-navy-deep: #08182b;
+      --primary-blue: #0284c7;
+      
+      --accent-terracotta: #ea580c;
+      --accent-terracotta-vibrant: #f97316;
+      --accent-terracotta-soft: rgba(234, 88, 12, 0.08);
+      --accent-gold: #f59e0b;
+
+      /* Fresh Canvas & Surfaces */
+      --canvas-bg: #f8fafc;
+      --surface-white: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.88);
+      --surface-subtle: #f1f5f9;
+      
+      /* Crisp Typography Colors */
+      --text-head: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      
+      /* Modern Shadows & Hairline Borders */
+      --border-light: rgba(15, 23, 42, 0.08);
+      --border-accent: rgba(234, 88, 12, 0.3);
+      --shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 12px 28px -6px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 20px 36px -10px rgba(234, 88, 12, 0.22), 0 6px 16px -2px rgba(15, 23, 42, 0.05);
+      --shadow-hero: 0 16px 36px -8px rgba(13, 42, 74, 0.28);
+      
+      /* Radii & Timing */
+      --radius-2xl: 24px;
+      --radius-xl: 18px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-full: 9999px;
+      --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+      
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-numeral: 'Cinzel Decorative', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--canvas-bg);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 20px 14px 28px; /* Padding pas, tidak ada ruang kosong berlebih di bawah */
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ambient Spatial Lighting */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+    }
+    .glow-1 {
+      width: 420px;
+      height: 420px;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, rgba(2, 132, 199, 0.12) 60%, transparent 80%);
+    }
+    .glow-2 {
+      width: 350px;
+      height: 350px;
+      bottom: 15%;
+      right: -80px;
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, transparent 70%);
+    }
+
+    .portal-container {
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+    }
+
+    .w-100 { width: 100%; }
+    .hidden { display: none !important; }
+
+    /* ========================================================
+       2. HERO HEADER & LOGO BRANDING
+       ======================================================== */
+    .header-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px 6px 20px;
+    }
+
+    /* Live Badge Status */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #ffffff;
+      border: 1px solid rgba(234, 88, 12, 0.25);
+      box-shadow: var(--shadow-sm);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-terracotta);
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-terracotta);
+      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.2);
+      animation: livePulse 2s infinite ease-in-out;
+    }
+    @keyframes livePulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    /* Floating Emblem */
+    .emblem-showcase {
+      position: relative;
+      width: 94px;
+      height: 94px;
+      margin-bottom: 14px;
+    }
+    .emblem-halo-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, var(--accent-terracotta), var(--primary-blue), var(--accent-terracotta));
+      filter: blur(8px);
+      opacity: 0.45;
+      animation: spinHalo 10s linear infinite;
+    }
+    @keyframes spinHalo { 100% { transform: rotate(360deg); } }
+
+    .emblem-disc {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid rgba(234, 88, 12, 0.2);
+      box-shadow: var(--shadow-md), inset 0 2px 6px rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .emblem-disc img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* "Lakmud IV" Typography matching the logo */
+    .brand-title-group {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 8px;
+    }
+    .title-word {
+      font-family: var(--font-display);
+      font-size: 3.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      background: linear-gradient(180deg, var(--primary-navy) 20%, #173d66 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .title-roman {
+      font-family: var(--font-numeral);
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(180deg, var(--accent-terracotta) 10%, #bd4205 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-org {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--primary-navy);
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    /* Diamond Accent */
+    .divider-diamond {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 220px;
+      margin: 12px 0 8px;
+    }
+    .divider-diamond::before,
+    .divider-diamond::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(234, 88, 12, 0.4), transparent);
+    }
+    .diamond-gem {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-terracotta);
+      transform: rotate(45deg);
+    }
+
+    .brand-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.86rem;
+      color: var(--text-body);
+      line-height: 1.45;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    /* ========================================================
+       3. CAROUSEL SLIDESHOW (5 FOTO OTOMATIS)
+       ======================================================== */
+    .slider-box {
+      position: relative;
+      width: 100%;
+      height: 195px;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1.5px solid #ffffff;
+      background: #ffffff;
+      box-shadow: var(--shadow-md);
+    }
+
+    .slider-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slider-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1.2s var(--ease-snappy), transform 5.5s ease-out;
+      will-change: opacity, transform;
+    }
+    .slider-img.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slider-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      background: rgba(255, 255, 255, 0.92);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
+    }
+    .slider-tag i { width: 14px; height: 14px; color: var(--accent-terracotta); }
+
+    /* ========================================================
+       4. DYNAMIC BENTO GRID LAYOUT (ANTI-MONOTON)
+       ======================================================== */
+    .bento-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Card Shared Styles */
+    .bento-card {
+      background: var(--surface-glass);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: all 0.28s var(--ease-snappy);
+    }
+    .bento-card:hover {
+      background: #ffffff;
+      border-color: rgba(234, 88, 12, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* HERO CARD: Pendaftaran Peserta (Standout Vibrant) */
+    .hero-reg-card {
+      background: linear-gradient(135deg, #ea580c 0%, #c2410c 60%, #0d2a4a 100%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      color: #ffffff;
+      box-shadow: var(--shadow-hover);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.28s var(--ease-snappy);
+    }
+    .hero-reg-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.2), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-reg-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -8px rgba(234, 88, 12, 0.45);
+    }
+
+    .hero-reg-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-reg-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+    .hero-reg-icon i { width: 24px; height: 24px; }
+    .hero-reg-text h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-reg-text p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.88);
+      margin-top: 2px;
+    }
+    .hero-reg-badge {
+      font-size: 0.62rem;
+      font-weight: 800;
+      background: #ffffff;
+      color: var(--accent-terracotta);
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+    }
+    .hero-reg-arrow {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      transition: transform 0.28s var(--ease-snappy);
+    }
+    .hero-reg-card:hover .hero-reg-arrow {
+      transform: translateX(4px) scale(1.05);
+      background: #ffffff;
+      color: var(--accent-terracotta);
+    }
+
+    /* 2-COLUMN DUAL ACTION BENTO (Kirim Berkas & Cek Data) */
+    .bento-split-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .split-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 16px 14px;
+      text-decoration: none;
+      color: var(--text-head);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+      transition: all 0.28s var(--ease-snappy);
+    }
+    .split-card:hover {
+      border-color: rgba(234, 88, 12, 0.3);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .split-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .split-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-upload { background: rgba(234, 88, 12, 0.1); color: var(--accent-terracotta); }
+    .icon-check { background: rgba(2, 132, 199, 0.1); color: var(--primary-blue); }
+    .split-icon i { width: 20px; height: 20px; }
+
+    .split-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-head);
+      margin-top: 10px;
+    }
+    .split-card p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    /* ACCORDION CARDS */
+    .acc-trigger-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .acc-icon-box {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-terracotta);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.28s var(--ease-snappy);
+    }
+    .bento-card:hover .acc-icon-box {
+      background: var(--accent-terracotta);
+      color: #ffffff;
+      border-color: var(--accent-terracotta);
+      transform: scale(1.05);
+    }
+    .acc-icon-box i { width: 20px; height: 20px; }
+
+    .acc-info { flex: 1; min-width: 0; }
+    .acc-title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--text-head);
+    }
+    .acc-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .acc-arrow {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s var(--ease-snappy), color 0.3s ease;
+    }
+    .acc-arrow i { width: 18px; height: 18px; }
+
+    /* Accordion Open State */
+    .bento-acc.open .acc-arrow {
+      transform: rotate(90deg);
+      color: var(--accent-terracotta);
+    }
+    .acc-drawer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-snappy);
+      background: #f8fafc;
+      border-top: 1px solid transparent;
+    }
+    .bento-acc.open .acc-drawer {
+      border-top-color: var(--border-light);
+    }
+    .drawer-content {
+      padding: 16px;
+    }
+
+    /* 5 Downloads */
+    .downloads-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .dl-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      color: var(--text-head);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .dl-item:hover {
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
+      transform: translateX(3px);
+      box-shadow: var(--shadow-sm);
+    }
+    .dl-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dl-item-left i { width: 16px; height: 16px; color: var(--accent-terracotta); }
+
+    /* Social Follow List */
+    .social-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .social-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-head);
+      transition: all 0.2s ease;
+    }
+    .social-card:hover {
+      border-color: rgba(15, 23, 42, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .social-card-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .social-badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-badge-icon i { width: 18px; height: 18px; }
+    .s-fb { background: rgba(24, 119, 242, 0.12); color: #1877f2; }
+    .s-ig { background: rgba(225, 48, 108, 0.12); color: #e1306c; }
+    .s-web { background: var(--accent-terracotta-soft); color: var(--accent-terracotta); }
+
+    .social-meta h5 { font-size: 0.84rem; font-weight: 700; }
+    .social-meta p { font-size: 0.72rem; color: var(--text-muted); }
+    .btn-follow-chip {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: var(--surface-subtle);
+      color: var(--text-head);
+    }
+    .social-card:hover .btn-follow-chip {
+      background: var(--accent-terracotta);
+      color: #ffffff;
+    }
+
+    .alert-box {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #fff7ed;
+      border-left: 3px solid var(--accent-terracotta);
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: #7c2d12;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .alert-box i { width: 16px; height: 16px; color: var(--accent-terracotta); flex-shrink: 0; margin-top: 1px; }
+
+    /* Administrasi */
+    .invest-pill {
+      background: linear-gradient(135deg, #ffffff, #fff7ed);
+      border: 1px solid rgba(234, 88, 12, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .invest-pill span {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-terracotta);
+      font-weight: 800;
+    }
+    .invest-pill h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      margin-top: 2px;
+    }
+    .bank-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .bank-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-copy-tag {
+      background: var(--accent-terracotta-soft);
+      border: 1px solid rgba(234, 88, 12, 0.2);
+      color: var(--accent-terracotta);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-tag:hover {
+      background: var(--accent-terracotta);
+      color: #ffffff;
+    }
+    .bank-num {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--primary-navy);
+      margin: 4px 0 2px;
+      font-family: monospace;
+    }
+
+    /* Map Viewport */
+    .map-box {
+      width: 100%;
+      height: 155px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      margin-bottom: 12px;
+    }
+    .map-box iframe { width: 100%; height: 100%; border: none; }
+
+    .btn-action-primary {
+      background: linear-gradient(135deg, var(--accent-terracotta), #c2410c);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 12px 18px;
+      border-radius: var(--radius-lg);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.25);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-action-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(234, 88, 12, 0.35);
+    }
+
+    /* ========================================================
+       5. VIDEO TUTORIAL THEATER
+       ======================================================== */
+    .theater-card {
+      margin-top: 14px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .theater-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .theater-head i { color: var(--accent-terracotta); width: 22px; height: 22px; }
+    .theater-head h3 { font-size: 0.98rem; font-weight: 700; color: var(--text-head); }
+
+    .tab-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+      background: var(--surface-subtle);
+      padding: 4px;
+      border-radius: var(--radius-md);
+    }
+    .tab-pill-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 4px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .tab-pill-btn.active {
+      background: #ffffff;
+      color: var(--primary-navy);
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .theater-video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #0f172a;
+    }
+    .theater-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-label-caption {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ========================================================
+       6. FLOATING WHATSAPP & TOAST
+       ======================================================== */
+    .fab-anchor {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 990;
+    }
+    .fab-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--primary-navy), #173d66);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 24px rgba(13, 42, 74, 0.25);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-snappy);
+    }
+    .fab-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(13, 42, 74, 0.35);
+    }
+    .fab-button i { width: 18px; height: 18px; color: #38bdf8; }
+
+    .popover-chat {
+      position: absolute;
+      bottom: 54px;
+      right: 0;
+      width: 280px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+      animation: popFade 0.2s var(--ease-snappy);
+    }
+    @keyframes popFade {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .popover-chat-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .popover-chat-head h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-head); }
+    .popover-chat-close { background: none; border: none; color: var(--text-muted); cursor: pointer; }
+
+    .btn-wa-link {
+      background: #22c55e;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+      margin-top: 10px;
+    }
+
+    /* Toast */
+    .toast-anchor {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2000;
+      pointer-events: none;
+      width: 90%;
+      max-width: 340px;
+    }
+    .toast-msg {
+      background: var(--primary-navy);
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(13, 42, 74, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: toastSlide 0.3s var(--ease-snappy);
+    }
+    @keyframes toastSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .toast-msg i { width: 18px; height: 18px; color: #34d399; }
+
+    /* ========================================================
+       7. COMPACT & BALANCED FOOTER (PAS ATAS & BAWAH)
+       ======================================================== */
+    .site-footer {
+      text-align: center;
+      padding: 24px 8px 4px; /* Pas atas dan bawah */
+      border-top: 1px solid var(--border-light);
+      margin-top: 26px;
+    }
+    .footer-brand-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+    }
+    .footer-org-name {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--accent-terracotta);
+      margin-top: 1px;
+    }
+    .footer-theme-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin: 6px 0 14px;
+    }
+    .footer-links-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .footer-url {
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s ease;
+    }
+    .footer-url:hover { color: var(--accent-terracotta); }
+    .footer-url i { width: 14px; height: 14px; }
+    .dot-char { color: var(--text-muted); font-size: 0.6rem; }
+
+    .footer-copy-text {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Spatial Lighting -->
+  <div class="ambient-glow">
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+  </div>
+
+  <!-- Toast Anchor -->
+  <div id="toast-anchor" class="toast-anchor" aria-live="polite"></div>
+
+  <!-- Main Shell -->
+  <main class="portal-container">
+
+    <!-- HERO HEADER -->
+    <header class="header-hero">
+      <!-- Live Registration Badge -->
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>PENDAFTARAN RESMI DIBUKA</span>
+      </div>
+
+      <!-- Floating Emblem Logo -->
+      <div class="emblem-showcase">
+        <div class="emblem-halo-ring"></div>
+        <div class="emblem-disc">
+          <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'none\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%23ffffff\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23ea580c\'/><path d=\'M48 34C48 34 58 47 58 61C58 69 50 73 50 73C50 73 72 69 72 50C72 38 60 34 48 34Z\' fill=\'%230d2a4a\'/></svg>';" />
+        </div>
+      </div>
+
+      <!-- Lakmud IV Typography Identik Logo -->
+      <div class="brand-title-group">
+        <span class="title-word">Lakmud</span>
+        <span class="title-roman">IV</span>
+      </div>
+      <h2 class="brand-org">PAC IPNU IPPNU DANDER</h2>
+
+      <!-- Diamond Divider -->
+      <div class="divider-diamond">
+        <div class="diamond-gem"></div>
+      </div>
+
+      <!-- Tema Lakmud IV -->
+      <p class="brand-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
+    </header>
+
+    <!-- 5 PHOTOS AUTOMATIC SLIDESHOW -->
+    <section class="slider-box" aria-label="Dokumentasi LAKMUD">
+      <div class="slider-track" id="slider-track">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="slider-tag">
+        <i data-lucide="camera"></i> Dokumentasi Lakmud
+      </div>
+    </section>
+
+    <!-- DYNAMIC BENTO GRID (VARIASI ANTI-MONOTON) -->
+    <section class="bento-container" aria-label="Menu Utama">
+
+      <!-- 1. HERO ACTION: PENDAFTARAN PESERTA (Vibrant & Standout) -->
+      <a href="registrasi.html" class="hero-reg-card">
+        <div class="hero-reg-left">
+          <div class="hero-reg-icon">
+            <i data-lucide="user-plus"></i>
+          </div>
+          <div class="hero-reg-text">
+            <h3>Pendaftaran Peserta <span class="hero-reg-badge">WAJIB</span></h3>
+            <p>Isi formulir biodata diri &amp; delegasi organisasi.</p>
+          </div>
+        </div>
+        <div class="hero-reg-arrow">
+          <i data-lucide="arrow-right"></i>
+        </div>
+      </a>
+
+      <!-- 2. DUAL BENTO SPLIT: PENGIRIMAN BERKAS & CEK DATAMU -->
+      <div class="bento-split-row">
+        <!-- Pengiriman Berkas -->
+        <a href="upload.html" class="split-card">
+          <div class="split-card-top">
+            <div class="split-icon icon-upload">
+              <i data-lucide="upload-cloud"></i>
+            </div>
+            <i data-lucide="arrow-up-right" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+          </div>
+          <div>
+            <h4>Kirim Berkas</h4>
+            <p>Unggah 5 dokumen wajib.</p>
+          </div>
+        </a>
+
+        <!-- Cek Datamu -->
+        <a href="cek-data.html" class="split-card">
+          <div class="split-card-top">
+            <div class="split-icon icon-check">
+              <i data-lucide="search"></i>
+            </div>
+            <i data-lucide="arrow-up-right" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+          </div>
+          <div>
+            <h4>Cek Datamu</h4>
+            <p>Pantau status verifikasi.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- 3. PERSYARATAN BERKAS (ACCORDION - 5 UNDUHAN) -->
+      <article class="bento-card bento-acc" id="acc-requirements">
+        <button class="acc-trigger-btn">
+          <div class="acc-icon-box"><i data-lucide="folder-down"></i></div>
+          <div class="acc-info">
+            <h3 class="acc-title">Persyaratan Berkas Peserta</h3>
+            <p class="acc-desc">Format resmi &amp; 5 template unduhan dokumen.</p>
+          </div>
+          <span class="acc-arrow"><i data-lucide="chevron-right"></i></span>
+        </button>
+        <div class="acc-drawer">
+          <div class="drawer-content">
+            <div class="downloads-stack" id="downloads-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. WAJIB FOLLOW MEDIA (ACCORDION) -->
+      <article class="bento-card bento-acc" id="acc-media">
+        <button class="acc-trigger-btn">
+          <div class="acc-icon-box"><i data-lucide="share-2"></i></div>
+          <div class="acc-info">
+            <h3 class="acc-title">Wajib Follow Media Resmi</h3>
+            <p class="acc-desc">Facebook, Instagram, dan Website organisasi.</p>
+          </div>
+          <span class="acc-arrow"><i data-lucide="chevron-right"></i></span>
+        </button>
+        <div class="acc-drawer">
+          <div class="drawer-content">
+            <div class="alert-box">
+              <i data-lucide="info"></i>
+              <p>Screenshot bukti follow/kunjungan untuk diunggah pada slot berkas nomor 5.</p>
+            </div>
+            <div class="social-stack">
+              <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                  <div class="social-badge-icon s-fb"><i data-lucide="facebook"></i></div>
+                  <div class="social-meta">
+                    <h5>Facebook Resmi</h5>
+                    <p>PAC IPNU IPPNU Dander</p>
+                  </div>
+                </div>
+                <span class="btn-follow-chip">Ikuti <i data-lucide="external-link" style="width: 11px; height: 11px; display: inline;"></i></span>
+              </a>
+
+              <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                  <div class="social-badge-icon s-ig"><i data-lucide="instagram"></i></div>
+                  <div class="social-meta">
+                    <h5>Instagram Resmi</h5>
+                    <p>@pac_ipnu_ippnu_dander</p>
+                  </div>
+                </div>
+                <span class="btn-follow-chip">Follow <i data-lucide="external-link" style="width: 11px; height: 11px; display: inline;"></i></span>
+              </a>
+
+              <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="social-card">
+                <div class="social-card-left">
+                  <div class="social-badge-icon s-web"><i data-lucide="globe"></i></div>
+                  <div class="social-meta">
+                    <h5>Website Resmi</h5>
+                    <p>pacdander.or.id</p>
+                  </div>
+                </div>
+                <span class="btn-follow-chip">Kunjungi <i data-lucide="external-link" style="width: 11px; height: 11px; display: inline;"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. TOR LAKMUD (DIRECT DOWNLOAD) -->
+      <article class="bento-card">
+        <a href="assets/documents/TOR-LAKMUD-IV-PAC-IPNU-IPPNU-DANDER.pdf" download class="acc-trigger-btn">
+          <div class="acc-icon-box"><i data-lucide="file-text"></i></div>
+          <div class="acc-info">
+            <h3 class="acc-title">TOR LAKMUD IV</h3>
+            <p class="acc-desc">Petunjuk Pelaksanaan &amp; Teknis (Term of Reference).</p>
+          </div>
+          <span class="acc-arrow"><i data-lucide="download"></i></span>
+        </a>
+      </article>
+
+      <!-- 6. ADMINISTRASI & INFAQ (ACCORDION) -->
+      <article class="bento-card bento-acc" id="acc-admin">
+        <button class="acc-trigger-btn">
+          <div class="acc-icon-box"><i data-lucide="credit-card"></i></div>
+          <div class="acc-info">
+            <h3 class="acc-title">Administrasi &amp; Infaq</h3>
+            <p class="acc-desc">Investasi peserta &amp; nomor rekening resmi.</p>
+          </div>
+          <span class="acc-arrow"><i data-lucide="chevron-right"></i></span>
+        </button>
+        <div class="acc-drawer">
+          <div class="drawer-content">
+            <div class="invest-pill">
+              <span>Biaya Investasi Peserta</span>
+              <h3>Rp 35.000</h3>
+            </div>
+
+            <div class="bank-box">
+              <div class="bank-top-row">
+                <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy);">BANK BRI</span>
+                <button class="btn-copy-tag" id="btn-copy-rekening"><i data-lucide="copy"></i> Salin</button>
+              </div>
+              <div class="bank-num" id="bank-number-val">6123-01-012345-53-1</div>
+              <div style="font-size: 0.74rem; color: var(--text-muted);">a.n. <strong>PAC IPNU IPPNU DANDER</strong></div>
+            </div>
+
+            <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">
+              * Simpan bukti transfer untuk keperluan verifikasi pada menu Cek Datamu.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. LOKASI LAKMUD (ACCORDION) -->
+      <article class="bento-card bento-acc" id="acc-location">
+        <button class="acc-trigger-btn">
+          <div class="acc-icon-box"><i data-lucide="map-pin"></i></div>
+          <div class="acc-info">
+            <h3 class="acc-title">Lokasi Kegiatan</h3>
+            <p class="acc-desc">Titik temu dan lokasi penyelenggaraan LAKMUD.</p>
+          </div>
+          <span class="acc-arrow"><i data-lucide="chevron-right"></i></span>
+        </button>
+        <div class="acc-drawer">
+          <div class="drawer-content">
+            <div style="margin-bottom: 12px;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary-navy);">Gedung MWC NU Dander</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Jl. Raya Dander No. 45, Kec. Dander, Kab. Bojonegoro</p>
+            </div>
+
+            <div class="map-box">
+              <iframe 
+                title="Peta Lokasi Lakmud"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=111.83%2C-7.30%2C111.90%2C-7.22&amp;layer=mapnik" 
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <a href="https://maps.google.com/?q=Dander+Bojonegoro" target="_blank" rel="noopener noreferrer" class="btn-action-primary w-100">
+              <i data-lucide="navigation"></i> Petunjuk Arah di Google Maps
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 5. VIDEO PANDUAN THEATER -->
+    <section class="theater-card" aria-label="Video Tutorial">
+      <div class="theater-head">
+        <i data-lucide="play-circle"></i>
+        <h3>Video Tutorial Panduan</h3>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="tab-pills">
+        <button class="tab-pill-btn active" data-tab="pendaftaran">1. Daftar</button>
+        <button class="tab-pill-btn" data-tab="berkas">2. Berkas</button>
+        <button class="tab-pill-btn" data-tab="cekdata">3. Cek Data</button>
+      </div>
+
+      <!-- 16:9 Video Box -->
+      <div class="theater-video-frame">
+        <iframe 
+          id="theater-iframe"
+          src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+          title="Video Tutorial Lakmud" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-label-caption" id="theater-caption">Panduan Langkah 1: Pengisian Formulir Pendaftaran Online</p>
+    </section>
+
+    <!-- FOOTER (PAS ATAS & BAWAH TANPA RUANG KOSONG BERLEBIH) -->
+    <footer class="site-footer">
+      <div class="footer-brand-title">Lakmud IV</div>
+      <div class="footer-org-name">PAC IPNU IPPNU DANDER</div>
+      <p class="footer-theme-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
+
+      <div class="footer-links-row">
+        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="footer-url">
+          <i data-lucide="instagram"></i> Instagram
+        </a>
+        <span class="dot-char">•</span>
+        <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="footer-url">
+          <i data-lucide="facebook"></i> Facebook
+        </a>
+        <span class="dot-char">•</span>
+        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="footer-url">
+          <i data-lucide="globe"></i> Website
+        </a>
+      </div>
+
+      <div class="footer-copy-text">
+        &copy; Panitia Pelaksana LAKMUD IV PAC IPNU IPPNU Dander. All rights reserved.
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- FLOATING WHATSAPP CHAT -->
+  <div class="fab-anchor">
+    <div class="popover-chat hidden" id="popover-chat">
+      <div class="popover-chat-head">
+        <h4>Pusat Bantuan</h4>
+        <button class="popover-chat-close" id="btn-close-chat"><i data-lucide="x" style="width: 16px; height: 16px;"></i></button>
+      </div>
+      <p style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.4;">
+        Ada pertanyaan atau kendala seputar kegiatan LAKMUD IV?
+      </p>
+      <a href="https://wa.me/6285700000000?text=Halo%20Panitia%20LAKMUD%20IV%2C%20saya%20ingin%20bertanya" target="_blank" rel="noopener noreferrer" class="btn-wa-link">
+        <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i> Chat WhatsApp Panitia
+      </a>
+    </div>
+
+    <button class="fab-button" id="btn-toggle-chat" aria-label="Bantuan">
+      <i data-lucide="message-circle"></i>
+      <span>Bantuan</span>
+    </button>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC (FAST & LIGHTWEIGHT) -->
+  <script>
+    const PORTAL_CONFIG = {
+      // 5 Template Berkas
+      downloads: [
+        { label: "1. Format Surat Rekomendasi PR / PK", url: "assets/documents/1-Format-Surat-Rekomendasi.pdf" },
+        { label: "2. Form Biodata & Riwayat Kader", url: "assets/documents/2-Form-Biodata-Kader.pdf" },
+        { label: "3. Surat Pernyataan Kesediaan Kader", url: "assets/documents/3-Surat-Pernyataan-Kesediaan.pdf" },
+        { label: "4. Surat Izin Orang Tua / Wali", url: "assets/documents/4-Surat-Izin-Orang-Tua.pdf" },
+        { label: "5. Ketentuan & Format Esai Makalah", url: "assets/documents/5-Format-Esai-Makalah-Lakmud.pdf" }
+      ],
+      // 5 Foto Dokumentasi Slideshow
+      photos: [
+        "assets/images/foto-1.jpg",
+        "assets/images/foto-2.jpg",
+        "assets/images/foto-3.jpg",
+        "assets/images/foto-4.jpg",
+        "assets/images/foto-5.jpg"
+      ],
+      // Fallback estetik jika diuji coba di CodePen
+      fallbackPhotos: [
+        "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80"
+      ],
+      // Video Tutorials
+      videos: {
+        pendaftaran: {
+          url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+          caption: "Panduan Langkah 1: Pengisian Formulir Pendaftaran Online"
+        },
+        berkas: {
+          url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+          caption: "Panduan Langkah 2: Format & Pengiriman 5 Berkas Persyaratan"
+        },
+        cekdata: {
+          url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+          caption: "Panduan Langkah 3: Melacak Status Verifikasi & Berkas Anda"
+        }
+      }
+    };
+
+    // Toast Toast
+    function showToast(text) {
+      const anchor = document.getElementById("toast-anchor");
+      const msg = document.createElement("div");
+      msg.className = "toast-msg";
+      msg.innerHTML = `<i data-lucide="check-circle-2"></i><span>${text}</span>`;
+      anchor.appendChild(msg);
+      lucide.createIcons();
+
+      setTimeout(() => {
+        msg.style.opacity = "0";
+        msg.style.transform = "translateY(-10px)";
+        msg.style.transition = "all 0.3s ease";
+        setTimeout(() => msg.remove(), 300);
+      }, 2500);
+    }
+
+    // Salin Rekening
+    async function copyRekening() {
+      const code = document.getElementById("bank-number-val").textContent.trim();
+      try {
+        await navigator.clipboard.writeText(code);
+        showToast("Nomor rekening berhasil disalin!");
+      } catch {
+        const input = document.createElement("input");
+        input.value = code;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+        showToast("Nomor rekening berhasil disalin!");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Render 5 Downloads
+      const dContainer = document.getElementById("downloads-container");
+      dContainer.innerHTML = PORTAL_CONFIG.downloads.map(item => `
+        <a href="${item.url}" download class="dl-item">
+          <div class="dl-item-left">
+            <i data-lucide="file-text"></i>
+            <span>${item.label}</span>
+          </div>
+          <i data-lucide="arrow-down-to-line" style="width:14px; height:14px;"></i>
+        </a>
+      `).join("");
+
+      // 2. Salin Rekening Trigger
+      document.getElementById("btn-copy-rekening").addEventListener("click", copyRekening);
+
+      // 3. Smooth Accordion Handling
+      document.querySelectorAll(".bento-acc .acc-trigger-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".bento-acc");
+          const drawer = card.querySelector(".acc-drawer");
+          const isOpen = card.classList.contains("open");
+
+          document.querySelectorAll(".bento-acc.open").forEach(other => {
+            if (other !== card) {
+              other.classList.remove("open");
+              other.querySelector(".acc-drawer").style.maxHeight = null;
+            }
+          });
+
+          if (isOpen) {
+            card.classList.remove("open");
+            drawer.style.maxHeight = null;
+          } else {
+            card.classList.add("open");
+            drawer.style.maxHeight = drawer.scrollHeight + 300 + "px";
+          }
+        });
+      });
+
+      // 4. Smooth 5 Photos Automatic Slideshow
+      const sliderTrack = document.getElementById("slider-track");
+      const slides = [];
+      PORTAL_CONFIG.photos.forEach((src, idx) => {
+        const img = document.createElement("img");
+        img.className = `slider-img ${idx === 0 ? 'active' : ''}`;
+        img.alt = `Dokumentasi Lakmud ${idx + 1}`;
+        img.src = src;
+        img.onerror = () => { img.src = PORTAL_CONFIG.fallbackPhotos[idx]; };
+        sliderTrack.appendChild(img);
+        slides.push(img);
+      });
+
+      let current = 0;
+      setInterval(() => {
+        if (slides.length <= 1) return;
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 4000);
+
+      // 5. Video Tutorial Tabs
+      const tabs = document.querySelectorAll(".tab-pill-btn");
+      const iframe = document.getElementById("theater-iframe");
+      const caption = document.getElementById("theater-caption");
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          tabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          const target = tab.getAttribute("data-tab");
+          const vData = PORTAL_CONFIG.videos[target];
+          if (vData) {
+            iframe.src = vData.url;
+            caption.textContent = vData.caption;
+          }
+        });
+      });
+
+      // 6. Floating Popover Chat
+      const fabBtn = document.getElementById("btn-toggle-chat");
+      const popover = document.getElementById("popover-chat");
+      const popClose = document.getElementById("btn-close-chat");
+
+      fabBtn.addEventListener("click", () => popover.classList.toggle("hidden"));
+      popClose.addEventListener("click", () => popover.classList.add("hidden"));
+
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
