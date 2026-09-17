@@ -3,635 +3,1036 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Pendaftaran Peserta — LAKMUD IV PAC IPNU IPPNU Dander</title>
+  <title>Pendaftaran Peserta</title>
   <meta name="theme-color" content="#0B192C" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  
+  <!-- Icons & Confetti -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <style>
     :root {
       --bg: #f8fafc;
-      --card: #ffffff;
+      --card-bg: #ffffff;
       --navy-dark: #0b192c;
-      --navy: #1e3e62;
-      --orange: #e35a27;
-      --orange-soft: rgba(227, 90, 39, 0.08);
+      --navy-main: #1e3e62;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --accent-soft: rgba(249, 115, 22, 0.08);
+      --accent-glow: rgba(249, 115, 22, 0.25);
+      --emerald: #10b981;
       --text-main: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --border-focus: #1e3e62;
-      --shadow: 0 4px 14px -2px rgba(11, 25, 44, 0.06);
-      --radius: 14px;
-      --radius-sm: 8px;
+      --border-focus: #f97316;
+      --radius-xl: 22px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
       --radius-pill: 9999px;
+      --shadow-premium: 0 16px 40px -6px rgba(11, 25, 44, 0.08), 0 4px 12px -2px rgba(11, 25, 44, 0.03);
+      --shadow-glow: 0 8px 25px rgba(249, 115, 22, 0.35);
     }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
     }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg);
+      background: radial-gradient(circle at 50% 0%, #ffffff 0%, #edf2f7 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 16px 12px 24px;
+      padding: 20px 14px 40px;
+      line-height: 1.5;
     }
+
     .container {
       width: 100%;
-      max-width: 480px;
+      max-width: 490px;
       margin: 0 auto;
     }
-    .header-nav {
-      position: relative;
+
+    /* Top Navigation */
+    .top-nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 8px;
-      min-height: 40px;
+      justify-content: space-between;
+      margin-bottom: 16px;
     }
+
     .btn-back {
-      position: absolute;
-      left: 0;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--card);
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
       border: 1px solid var(--border);
       color: var(--navy-dark);
-      padding: 7px 12px;
+      padding: 8px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: var(--shadow);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
     }
-    .header-profile {
-      text-align: center;
-      padding: 6px 0 16px;
-    }
-    .emblem {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 10px;
+
+    .btn-back:hover {
       background: #ffffff;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      padding: 6px;
-      box-shadow: var(--shadow);
-      display: flex;
+      transform: translateX(-2px);
+    }
+
+    /* Header Pendaftaran */
+    .header-pendaftaran {
+      text-align: center;
+      padding: 6px 10px 22px;
+      transition: all 0.3s ease;
+    }
+
+    .badge-event {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-    }
-    .emblem img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .title-group {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
       gap: 6px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      color: var(--accent-hover);
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
-    .title-text {
-      font-size: 2rem;
+
+    .main-title {
+      font-size: 1.85rem;
       font-weight: 800;
       color: var(--navy-dark);
-      line-height: 1;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
-    .title-roman {
-      font-family: 'Cinzel', serif;
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: var(--orange);
-      line-height: 1;
-    }
-    .org-subtitle {
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-top: 4px;
-    }
-    .divider {
-      width: 50px;
-      height: 2px;
-      background: var(--orange);
-      margin: 10px auto 8px;
-      border-radius: var(--radius-pill);
-      opacity: 0.7;
-    }
-    .theme {
-      font-size: 0.76rem;
+
+    .main-subtitle {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      font-style: italic;
-      line-height: 1.35;
-      padding: 0 10px;
+      margin-top: 6px;
+      max-width: 390px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
+    /* Form Card Container */
     .form-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 16px;
-      box-shadow: var(--shadow);
-      margin-top: 10px;
+      background: var(--card-bg);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: var(--radius-xl);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-premium);
     }
+
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 18px;
       position: relative;
     }
+
     .label-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
+
     label {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
+      letter-spacing: 0.02em;
       color: var(--navy-dark);
+      text-transform: uppercase;
     }
+
     .field-status {
       display: inline-flex;
       align-items: center;
-      font-size: 0.7rem;
-      color: #0284c7;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #94a3b8;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transform: scale(0.6);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .field-status.valid {
       opacity: 1;
+      transform: scale(1);
+      background: #ecfdf5;
+      color: #10b981;
     }
-    .input-control, select, textarea {
+
+    .input-control, textarea {
       width: 100%;
-      background: #fafbfc;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.84rem;
       color: var(--text-main);
       outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: all 0.2s ease;
     }
-    .input-control:focus, select:focus, textarea:focus {
-      border-color: var(--border-focus);
+
+    .input-control:focus, textarea:focus {
+      border-color: var(--navy-main);
       background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(30, 62, 98, 0.08);
     }
-    .split-2 {
+
+    /* Modern Date Selector Group */
+    .date-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      grid-template-columns: 80px 1fr 90px;
+      gap: 6px;
+      margin-top: 6px;
     }
-    .size-guide {
+
+    .select-modern {
+      appearance: none;
+      -webkit-appearance: none;
+      background: #f8fafc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2364748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>') no-repeat right 10px center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 24px 10px 10px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .select-modern:focus {
+      border-color: var(--navy-main);
+      background-color: #ffffff;
+    }
+
+    /* WhatsApp Field */
+    .input-phone-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .phone-prefix {
+      position: absolute;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy-main);
+      background: #e2e8f0;
+      padding: 4px 8px;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+
+    .input-phone {
+      padding-left: 75px !important;
+      font-family: 'Plus Jakarta Sans', monospace;
+      font-weight: 600;
+    }
+
+    .phone-helper {
       font-size: 0.68rem;
       color: var(--text-muted);
       margin-top: 4px;
-      line-height: 1.3;
     }
-    .btn-submit-wrap {
-      margin-top: 18px;
-      display: none;
+
+    /* Shirt Size Cards */
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 6px;
     }
-    .btn-submit-wrap.show {
-      display: block;
-      animation: fadeIn 0.3s ease;
+
+    .size-card {
+      position: relative;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .size-card:hover {
+      border-color: #cbd5e1;
+      background: #f1f5f9;
     }
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--orange) 0%, #c44314 100%);
-      color: #ffffff;
-      border: none;
-      padding: 13px 16px;
-      border-radius: var(--radius-sm);
-      font-family: inherit;
+
+    .size-card.active {
+      background: #fff8f5;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-glow);
+    }
+
+    .size-card-title {
       font-size: 0.88rem;
       font-weight: 800;
-      letter-spacing: 0.05em;
+      color: var(--navy-dark);
+    }
+
+    .size-card.active .size-card-title {
+      color: var(--accent);
+    }
+
+    .size-card-desc {
+      font-size: 0.63rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Submit Button */
+    .btn-submit-wrap {
+      margin-top: 22px;
+      display: none;
+    }
+
+    .btn-submit-wrap.show {
+      display: block;
+      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #ffffff;
+      border: none;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 14px rgba(227, 90, 39, 0.3);
+      gap: 10px;
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
     }
+
     .btn-submit:active {
-      transform: scale(0.98);
+      transform: scale(0.985);
     }
+
+    /* Progress Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(11, 25, 44, 0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(11, 25, 44, 0.65);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 16px;
     }
+
     .modal-backdrop.active {
       display: flex;
     }
+
     .modal-box {
       width: 100%;
-      max-width: 380px;
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 22px 18px;
+      max-width: 360px;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 30px 24px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
     }
-    .progress-ring {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 12px;
-      border-radius: 50%;
+
+    .circular-progress-wrap {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--navy-dark);
-      background: #f1f5f9;
-      border: 3px solid var(--border);
-      position: relative;
     }
-    .progress-ring.error {
-      background: #fef2f2;
-      border-color: #ef4444;
-      color: #ef4444;
-    }
-    .modal-title {
-      font-size: 0.96rem;
-      font-weight: 800;
-      color: var(--navy-dark);
-      margin-bottom: 4px;
-    }
-    .modal-desc {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 14px;
-    }
-    .progress-bar-wrap {
+
+    .circular-svg {
       width: 100%;
-      height: 8px;
-      background: #f1f5f9;
-      border-radius: var(--radius-pill);
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-    .progress-bar-fill {
       height: 100%;
-      width: 0%;
-      background: var(--orange);
-      transition: width 0.15s ease;
+      transform: rotate(-90deg);
     }
+
+    .circular-bg {
+      fill: none;
+      stroke: #f1f5f9;
+      stroke-width: 7;
+    }
+
+    .circular-bar {
+      fill: none;
+      stroke: url(#accent-gradient);
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-dasharray: 238.76;
+      stroke-dashoffset: 238.76;
+      transition: stroke-dashoffset 0.15s ease;
+    }
+
+    .progress-center-text {
+      position: absolute;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+    }
+
+    .error-icon-box {
+      display: none;
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #fef2f2;
+      color: #ef4444;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      min-height: 38px;
+    }
+
     .btn-admin-contact {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
       background: var(--navy-dark);
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
       width: 100%;
-      margin-top: 8px;
+      margin-top: 10px;
     }
+
+    /* =========================================
+       ULTRA-PREMIUM SUCCESS VIEW
+       ========================================= */
     .success-view {
       display: none;
       text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 18px;
-      box-shadow: var(--shadow);
-      margin-top: 10px;
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: var(--radius-xl);
+      padding: 34px 22px 28px;
+      box-shadow: var(--shadow-premium);
+      position: relative;
+      overflow: hidden;
     }
+
     .success-view.active {
       display: block;
-      animation: fadeIn 0.4s ease;
+      animation: bounceCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .success-icon-disc {
+
+    @keyframes bounceCard {
+      0% { opacity: 0; transform: scale(0.92) translateY(24px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Top glowing ambient */
+    .success-view::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #10b981, transparent);
+      border-radius: var(--radius-pill);
+    }
+
+    /* Animated Glowing Icon Badge */
+    .success-hero-badge {
+      position: relative;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-glow-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      animation: pulseGlow 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.22); opacity: 0.3; }
+    }
+
+    .badge-icon-core {
+      position: relative;
       width: 64px;
       height: 64px;
-      background: var(--orange-soft);
-      border: 2px solid var(--orange);
-      color: var(--orange);
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 12px;
+      box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.45);
+      border: 3px solid #ffffff;
     }
-    .code-badge-box {
-      background: #f1f5f9;
-      border: 1px dashed var(--navy);
-      border-radius: var(--radius-sm);
-      padding: 10px;
-      margin: 12px 0;
-    }
-    .code-badge-val {
-      font-family: monospace;
-      font-size: 1.15rem;
+
+    .success-title {
+      font-size: 1.45rem;
       font-weight: 800;
       color: var(--navy-dark);
-      letter-spacing: 1px;
+      letter-spacing: -0.02em;
     }
+
+    .status-pill-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #047857;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .success-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.45;
+      padding: 0 8px;
+    }
+
+    .success-desc strong {
+      color: var(--navy-dark);
+      font-weight: 700;
+    }
+
+    /* Digital Confirmation Ticket Card */
+    .digital-pass-card {
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1.5px dashed #cbd5e1;
+      border-radius: var(--radius-lg);
+      padding: 16px 14px;
+      margin: 20px 0 16px;
+      position: relative;
+    }
+
+    .pass-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .pass-code-val {
+      font-family: 'Plus Jakarta Sans', monospace;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      letter-spacing: 1.5px;
+      margin: 4px 0 10px;
+    }
+
+    .btn-copy-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--navy-dark);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy-code:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    /* Action Buttons */
     .action-group-success {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 16px;
     }
-    .btn-wa-group {
-      background: #25d366;
+
+    .btn-wa-group-lux {
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 13px 18px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      box-shadow: 0 8px 20px -3px rgba(37, 211, 102, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-wa-group-lux:active {
+      transform: scale(0.98);
+    }
+
+    .btn-wa-admin-lux {
+      background: #ffffff;
+      border: 1.5px solid var(--navy-dark);
+      color: var(--navy-dark);
+      text-decoration: none;
+      font-size: 0.82rem;
       font-weight: 700;
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      transition: all 0.2s ease;
     }
-    .btn-wa-admin {
+
+    .btn-wa-admin-lux:hover {
       background: var(--navy-dark);
       color: #ffffff;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
+
+    /* Footer */
     .footer {
       text-align: center;
       padding: 24px 0 10px;
-      margin-top: 14px;
-      border-top: 1px solid var(--border);
+      margin-top: 18px;
     }
-    .footer-org {
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-    }
-    .footer-quote {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-style: italic;
-      margin: 3px 0 10px;
-    }
-    .footer-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .footer-links a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
+
     .footer-copy {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
     }
   </style>
 </head>
 <body>
   <main class="container">
-    <div class="header-nav">
+    
+    <div class="top-nav" id="top-nav">
       <button type="button" class="btn-back" id="btn-universal-back">
-        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i>
+        <i data-lucide="arrow-left" style="width: 15px; height: 15px;"></i>
         <span>Kembali</span>
       </button>
+      <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted);">
+        Kaderisasi Formal
+      </div>
     </div>
-    <header class="header-profile">
-      <div class="emblem">
-        <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%231E3E62\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23E35A27\'/></svg>';" />
+
+    <!-- Header Formulir -->
+    <header class="header-pendaftaran" id="header-pendaftaran">
+      <div class="badge-event">
+        <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+        <span>LAKMUD IV • PAC DANDER</span>
       </div>
-      <div class="title-group">
-        <span class="title-text">Lakmud</span>
-        <span class="title-roman">IV</span>
-      </div>
-      <h1 class="org-subtitle">PAC IPNU IPPNU DANDER</h1>
-      <div class="divider"></div>
-      <p class="theme">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
+      <h1 class="main-title">Pendaftaran Peserta</h1>
+      <p class="main-subtitle">Lengkapi data diri calon peserta secara cermat dan benar untuk proses verifikasi kader.</p>
     </header>
+
+    <!-- Formulir Input -->
     <section class="form-card" id="form-container">
       <form id="reg-form" novalidate>
+        
         <div class="form-group">
           <div class="label-row">
-            <label for="nama">NAMA LENGKAP</label>
-            <span class="field-status" id="status-nama"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label for="nama">Nama Lengkap</label>
+            <span class="field-status" id="status-nama"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <input type="text" id="nama" class="input-control" placeholder="Nama lengkap sesuai KTP/Akta" required />
+          <input type="text" id="nama" class="input-control" placeholder="Nama lengkap sesuai identitas resmi" required />
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label>TEMPAT &amp; TANGGAL LAHIR</label>
-            <span class="field-status" id="status-ttl"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label>Tempat &amp; Tanggal Lahir</label>
+            <span class="field-status" id="status-ttl"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <div class="split-2">
-            <input type="text" id="tempat_lahir" class="input-control" placeholder="Kota Lahir" required />
-            <input type="date" id="tanggal_lahir" class="input-control" required />
+          <input type="text" id="tempat_lahir" class="input-control" placeholder="Kota / Kabupaten Kelahiran" required />
+          
+          <div class="date-grid">
+            <select id="dob_day" class="select-modern" required>
+              <option value="">Tgl</option>
+            </select>
+            <select id="dob_month" class="select-modern" required>
+              <option value="">Bulan</option>
+              <option value="01">Januari</option>
+              <option value="02">Februari</option>
+              <option value="03">Maret</option>
+              <option value="04">April</option>
+              <option value="05">Mei</option>
+              <option value="06">Juni</option>
+              <option value="07">Juli</option>
+              <option value="08">Agustus</option>
+              <option value="09">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">Desember</option>
+            </select>
+            <select id="dob_year" class="select-modern" required>
+              <option value="">Tahun</option>
+            </select>
           </div>
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label for="alamat">ALAMAT LENGKAP</label>
-            <span class="field-status" id="status-alamat"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label for="alamat">Alamat Lengkap</label>
+            <span class="field-status" id="status-alamat"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <textarea id="alamat" rows="2" class="input-control" placeholder="Alamat domisili lengkap (Desa, RT/RW, Kec)" required></textarea>
+          <textarea id="alamat" rows="2" class="input-control" placeholder="Nama Desa, RT/RW, dan Kecamatan domisili" required></textarea>
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label for="delegasi">ASAL DELEGASI</label>
-            <span class="field-status" id="status-delegasi"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label for="delegasi">Asal Pimpinan / Delegasi</label>
+            <span class="field-status" id="status-delegasi"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
           <input type="text" id="delegasi" class="input-control" placeholder="Contoh: PR IPNU IPPNU Sumberagung" required />
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label for="whatsapp">NO WHATSAPP AKTIF</label>
-            <span class="field-status" id="status-whatsapp"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label for="whatsapp_input">Nomor WhatsApp</label>
+            <span class="field-status" id="status-whatsapp"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <input type="tel" id="whatsapp" class="input-control" placeholder="08xxxxxxxxxx" required />
+          <div class="input-phone-group">
+            <div class="phone-prefix">
+              <span>🇮🇩</span>
+              <span>+62</span>
+            </div>
+            <input type="tel" id="whatsapp_input" class="input-control input-phone" placeholder="8xxxxxxxxxxx" maxlength="14" required />
+          </div>
+          <div class="phone-helper" id="phone-hint">Awalan 0 otomatis diubah ke +62 (Wajib 11 - 13 digit angka).</div>
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label for="email">EMAIL AKTIF</label>
-            <span class="field-status" id="status-email"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label for="email">Email Aktif</label>
+            <span class="field-status" id="status-email"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <input type="email" id="email" class="input-control" placeholder="nama@email.com" required />
+          <input type="email" id="email" class="input-control" placeholder="nama@gmail.com" required />
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label for="ukuran_kaos">UKURAN KAOS</label>
-            <span class="field-status" id="status-kaos"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label>Ukuran Kaos Peserta</label>
+            <span class="field-status" id="status-kaos"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <select id="ukuran_kaos" class="input-control" required>
-            <option value="">-- Pilih Ukuran Kaos --</option>
-            <option value="S">S (Lebar 47 cm, Panjang 67 cm)</option>
-            <option value="M">M (Lebar 50 cm, Panjang 70 cm)</option>
-            <option value="L">L (Lebar 53 cm, Panjang 73 cm)</option>
-            <option value="XL">XL (Lebar 56 cm, Panjang 75 cm)</option>
-            <option value="XXL">XXL (Lebar 59 cm, Panjang 77 cm)</option>
-            <option value="custom">Lainnya (Ketik Manual)</option>
-          </select>
-          <div class="size-guide">Pastikan ukuran sesuai postur tubuh kader.</div>
-          <input type="text" id="ukuran_custom" class="input-control" placeholder="Tuliskan ukuran kustom Anda" style="display:none; margin-top:6px;" />
+          <div class="size-grid" id="size-cards-wrap">
+            <div class="size-card" data-size="S">
+              <div class="size-card-title">S</div>
+              <div class="size-card-desc">47 × 67 cm</div>
+            </div>
+            <div class="size-card" data-size="M">
+              <div class="size-card-title">M</div>
+              <div class="size-card-desc">50 × 70 cm</div>
+            </div>
+            <div class="size-card" data-size="L">
+              <div class="size-card-title">L</div>
+              <div class="size-card-desc">53 × 73 cm</div>
+            </div>
+            <div class="size-card" data-size="XL">
+              <div class="size-card-title">XL</div>
+              <div class="size-card-desc">56 × 75 cm</div>
+            </div>
+            <div class="size-card" data-size="XXL">
+              <div class="size-card-title">XXL</div>
+              <div class="size-card-desc">59 × 77 cm</div>
+            </div>
+            <div class="size-card" data-size="custom">
+              <div class="size-card-title">Custom</div>
+              <div class="size-card-desc">Ketik Manual</div>
+            </div>
+          </div>
+          <input type="text" id="ukuran_custom" class="input-control" placeholder="Tuliskan ukuran kustom Anda (Contoh: 3XL / 4XL)" style="display:none; margin-top:8px;" />
         </div>
+
         <div class="form-group">
           <div class="label-row">
-            <label for="motivasi">MOTIVASI MENGIKUTI LAKMUD</label>
-            <span class="field-status" id="status-motivasi"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+            <label for="motivasi">Motivasi Mengikuti Kaderisasi</label>
+            <span class="field-status" id="status-motivasi"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <textarea id="motivasi" rows="3" class="input-control" placeholder="Tuliskan motivasi dan komitmen Anda" required></textarea>
+          <textarea id="motivasi" rows="3" class="input-control" placeholder="Tuliskan komitmen &amp; motivasi Anda mengikuti Lakmud" required></textarea>
         </div>
+
         <div class="btn-submit-wrap" id="btn-submit-container">
           <button type="submit" class="btn-submit" id="btn-submit-form">
             <span>KIRIM PENDAFTARAN</span>
-            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i>
           </button>
         </div>
+
       </form>
     </section>
+
+    <!-- ULTRA-PREMIUM SUCCESS VIEW (Tanpa Logo & Teks Kaku) -->
     <section class="success-view" id="success-container">
-      <div class="success-icon-disc">
-        <i data-lucide="sparkles" style="width: 32px; height: 32px;"></i>
+      
+      <div class="success-hero-badge">
+        <div class="badge-glow-ring"></div>
+        <div class="badge-icon-core">
+          <i data-lucide="check" style="width: 32px; height: 32px; stroke-width: 2.8;"></i>
+        </div>
       </div>
-      <h2 style="font-size:1.15rem; font-weight:800; color:var(--navy-dark);">PENDAFTARAN SUKSES!</h2>
-      <p style="font-size:0.76rem; color:var(--text-muted); margin-top:4px;">
-        Selamat Rekan/Rekanita <strong id="res-nama" style="color:var(--orange);"></strong> telah terdaftar di LAKMUD IV PAC IPNU IPPNU DANDER.
+
+      <h2 class="success-title">Pendaftaran Berhasil!</h2>
+      <div>
+        <span class="status-pill-verified">
+          <i data-lucide="shield-check" style="width: 12px; height: 12px;"></i>
+          Terverifikasi Sistem
+        </span>
+      </div>
+
+      <p class="success-desc">
+        Selamat, formulir atas nama <strong id="res-nama"></strong> telah berhasil diterima dan diamankan pada basis data panitia.
       </p>
-      <div class="code-badge-box">
-        <div style="font-size:0.68rem; font-weight:700; color:var(--text-muted);">KODE REGISTRASI RESMI ANDA</div>
-        <div class="code-badge-val" id="res-code">LMD-IV-0000000</div>
-        <div style="font-size:0.65rem; color:var(--text-muted); margin-top:2px;">Simpan kode ini untuk cek data &amp; cetak ID Card.</div>
+
+      <!-- Digital Confirmation Pass -->
+      <div class="digital-pass-card">
+        <div class="pass-tag">KODE REGISTRASI RESMI</div>
+        <div class="pass-code-val" id="res-code">LMD-IV-0000000</div>
+        <button type="button" class="btn-copy-code" id="btn-copy-code">
+          <i data-lucide="copy" style="width: 13px; height: 13px;" id="copy-icon"></i>
+          <span id="copy-text">Salin Kode</span>
+        </button>
       </div>
+
+      <!-- Action Buttons -->
       <div class="action-group-success">
-        <a id="link-wa-group" href="https://chat.whatsapp.com/GANTIKAN_DENGAN_LINK_GRUP_ANDA" target="_blank" rel="noopener noreferrer" class="btn-wa-group">
-          <i data-lucide="users" style="width: 16px; height: 16px;"></i>
-          <span>1. Gabung Grup WhatsApp Peserta</span>
+        <a id="link-wa-group" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-group-lux">
+          <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+          <span>1. Masuk Grup WhatsApp Peserta</span>
+          <i data-lucide="arrow-up-right" style="width: 16px; height: 16px; margin-left: auto;"></i>
         </a>
-        <a id="link-wa-admin" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-admin">
+        
+        <a id="link-wa-admin" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-admin-lux">
           <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
           <span>2. Konfirmasi Pendaftaran ke Admin</span>
         </a>
       </div>
+
     </section>
+
+    <!-- Footer -->
     <footer class="footer">
-      <div class="footer-org">PAC IPNU IPPNU DANDER</div>
-      <div class="footer-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</div>
-      <div class="footer-links">
-        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="instagram" style="width: 12px; height: 12px;"></i> Instagram
-        </a>
-        <span>•</span>
-        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="globe" style="width: 12px; height: 12px;"></i> Website
-        </a>
-      </div>
-      <div class="footer-copy">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander.</div>
+      <div class="footer-copy">&copy; Panitia Pelaksana Kaderisasi LAKMUD. Seluruh hak cipta dilindungi.</div>
     </footer>
+
   </main>
+
+  <!-- Modal Progress Circle Gauge -->
   <div class="modal-backdrop" id="modal-backdrop">
     <div class="modal-box">
-      <div class="progress-ring" id="modal-ring">
-        <span id="modal-percent">0%</span>
+      
+      <div class="circular-progress-wrap" id="progress-wrapper">
+        <svg class="circular-svg" viewBox="0 0 90 90">
+          <defs>
+            <linearGradient id="accent-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f97316" />
+              <stop offset="100%" stop-color="#ea580c" />
+            </linearGradient>
+          </defs>
+          <circle class="circular-bg" cx="45" cy="45" r="38" />
+          <circle class="circular-bar" id="circular-progress-bar" cx="45" cy="45" r="38" />
+        </svg>
+        <span class="progress-center-text" id="modal-percent">0%</span>
+        
+        <div class="error-icon-box" id="error-icon-disc">
+          <i data-lucide="alert-triangle" style="width: 36px; height: 36px;"></i>
+        </div>
       </div>
-      <div class="modal-title" id="modal-title">Pengecekan Data...</div>
-      <div class="modal-desc" id="modal-desc">Memverifikasi kesamaan data pada server Google Sheet</div>
-      <div class="progress-bar-wrap" id="bar-wrap">
-        <div class="progress-bar-fill" id="bar-fill"></div>
-      </div>
-      <div id="error-action-box" style="display:none;">
-        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20LAKMUD%20IV%2C%20data%20saya%20terdeteksi%20sudah%20terdaftar" target="_blank" rel="noopener noreferrer" class="btn-admin-contact">
-          <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
-          <span>Hubungi WA Admin Panitia</span>
+
+      <div class="modal-title" id="modal-title">Memverifikasi Data...</div>
+      <div class="modal-desc" id="modal-desc">Memeriksa kelengkapan form dan sinkronisasi server...</div>
+
+      <div id="error-action-box" style="display:none; margin-top:12px;">
+        <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20data%20saya%20terdeteksi%20sudah%20terdaftar" target="_blank" rel="noopener noreferrer" class="btn-admin-contact">
+          <i data-lucide="message-circle" style="width: 15px; height: 15px;"></i>
+          <span>Hubungi Panitia Pelaksana</span>
         </a>
-        <button type="button" id="btn-close-modal" style="background:none; border:none; color:var(--text-muted); font-size:0.72rem; margin-top:10px; cursor:pointer;">
-          Tutup &amp; Periksa Kembali Form
+        <button type="button" id="btn-close-modal" style="background:none; border:none; color:var(--text-muted); font-size:0.75rem; margin-top:10px; cursor:pointer; font-weight:600;">
+          Tutup dan Periksa Form
         </button>
       </div>
+
     </div>
   </div>
+
   <script>
     const CONFIG = {
-      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxz_qnhGE0x8ruP1Czv49eaO2cGUQP_ygWmYEWBtJci7rXgpK6YRs9mE1Mdc5L7C1ep2A/exec",
+      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzXUDoDUlQHVr3LbgnM9bNt3nR2dwcVZo-y8pOXighv_l7joEc8Xnazx6NET6cTHt6pEw/exec",
       WA_ADMIN: "6281234567890",
       WA_GROUP: "https://chat.whatsapp.com/GANTIKAN_DENGAN_LINK_GRUP_ANDA"
     };
-    const form = document.getElementById("reg-form");
-    const fields = {
-      nama: document.getElementById("nama"),
-      tempat: document.getElementById("tempat_lahir"),
-      tanggal: document.getElementById("tanggal_lahir"),
-      alamat: document.getElementById("alamat"),
-      delegasi: document.getElementById("delegasi"),
-      whatsapp: document.getElementById("whatsapp"),
-      email: document.getElementById("email"),
-      kaos: document.getElementById("ukuran_kaos"),
-      kaosCustom: document.getElementById("ukuran_custom"),
-      motivasi: document.getElementById("motivasi")
-    };
-    document.getElementById("btn-universal-back").addEventListener("click", () => {
-      if (window.history.length > 1 && document.referrer.includes(window.location.hostname)) {
-        window.history.back();
-      } else {
-        window.location.href = "index.html";
-      }
+
+    let selectedShirtSize = "";
+
+    // Generate Tanggal & Tahun Dinamis
+    const daySelect = document.getElementById("dob_day");
+    const yearSelect = document.getElementById("dob_year");
+
+    for (let i = 1; i <= 31; i++) {
+      const val = i < 10 ? `0${i}` : `${i}`;
+      daySelect.innerHTML += `<option value="${val}">${val}</option>`;
+    }
+
+    const currentYear = new Date().getFullYear();
+    for (let y = currentYear - 13; y >= currentYear - 35; y--) {
+      yearSelect.innerHTML += `<option value="${y}">${y}</option>`;
+    }
+
+    // Size Cards Selector
+    const sizeCards = document.querySelectorAll(".size-card");
+    const customShirtInput = document.getElementById("ukuran_custom");
+
+    sizeCards.forEach(card => {
+      card.addEventListener("click", () => {
+        sizeCards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+        selectedShirtSize = card.getAttribute("data-size");
+
+        if (selectedShirtSize === "custom") {
+          customShirtInput.style.display = "block";
+          customShirtInput.required = true;
+          customShirtInput.focus();
+        } else {
+          customShirtInput.style.display = "none";
+          customShirtInput.required = false;
+          customShirtInput.value = "";
+        }
+        validateForm();
+      });
     });
-    fields.kaos.addEventListener("change", () => {
-      if (fields.kaos.value === "custom") {
-        fields.kaosCustom.style.display = "block";
-        fields.kaosCustom.required = true;
-      } else {
-        fields.kaosCustom.style.display = "none";
-        fields.kaosCustom.required = false;
-        fields.kaosCustom.value = "";
+
+    customShirtInput.addEventListener("input", validateForm);
+
+    // Auto-Format WhatsApp (+62 & 11-13 Digit)
+    const waInput = document.getElementById("whatsapp_input");
+    const phoneHint = document.getElementById("phone-hint");
+
+    waInput.addEventListener("input", () => {
+      let val = waInput.value.replace(/\D/g, "");
+
+      if (val.startsWith("62")) {
+        val = val.substring(2);
+      } else if (val.startsWith("0")) {
+        val = val.substring(1);
       }
+
+      waInput.value = val;
+      const fullLength = val.length + 2; 
+
+      if (val.length > 0 && (fullLength < 11 || fullLength > 13)) {
+        phoneHint.style.color = "#ef4444";
+        phoneHint.textContent = `Nomor harus 11 - 13 digit (saat ini: ${fullLength} digit)`;
+      } else if (fullLength >= 11 && fullLength <= 13) {
+        phoneHint.style.color = "#10b981";
+        phoneHint.textContent = `✓ Format nomor valid (${fullLength} digit: +62${val})`;
+      } else {
+        phoneHint.style.color = "var(--text-muted)";
+        phoneHint.textContent = "Awalan 0 otomatis diubah ke +62 (Wajib 11 - 13 digit angka).";
+      }
+
       validateForm();
     });
+
+    // Validasi Form Real-time
     function validateForm() {
-      const vNama = fields.nama.value.trim().length >= 3;
-      const vTtl = fields.tempat.value.trim().length >= 2 && fields.tanggal.value !== "";
-      const vAlamat = fields.alamat.value.trim().length >= 5;
-      const vDelegasi = fields.delegasi.value.trim().length >= 3;
-      const vWa = fields.whatsapp.value.replace(/[^0-9]/g, "").length >= 10;
-      const vEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.value.trim());
-      const vKaos = fields.kaos.value !== "" && (fields.kaos.value !== "custom" || fields.kaosCustom.value.trim().length > 0);
-      const vMotivasi = fields.motivasi.value.trim().length >= 5;
+      const vNama = document.getElementById("nama").value.trim().length >= 3;
+      const vTempat = document.getElementById("tempat_lahir").value.trim().length >= 2;
+      const vDay = document.getElementById("dob_day").value !== "";
+      const vMonth = document.getElementById("dob_month").value !== "";
+      const vYear = document.getElementById("dob_year").value !== "";
+      const vTtl = vTempat && vDay && vMonth && vYear;
+
+      const vAlamat = document.getElementById("alamat").value.trim().length >= 5;
+      const vDelegasi = document.getElementById("delegasi").value.trim().length >= 3;
+      
+      const rawDigits = waInput.value.replace(/\D/g, "");
+      const fullDigitsLength = rawDigits.length + 2; 
+      const vWa = rawDigits.length >= 9 && fullDigitsLength >= 11 && fullDigitsLength <= 13;
+
+      const vEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById("email").value.trim());
+      const vKaos = selectedShirtSize !== "" && (selectedShirtSize !== "custom" || customShirtInput.value.trim().length > 0);
+      const vMotivasi = document.getElementById("motivasi").value.trim().length >= 5;
+
       document.getElementById("status-nama").classList.toggle("valid", vNama);
       document.getElementById("status-ttl").classList.toggle("valid", vTtl);
       document.getElementById("status-alamat").classList.toggle("valid", vAlamat);
@@ -640,134 +1041,236 @@
       document.getElementById("status-email").classList.toggle("valid", vEmail);
       document.getElementById("status-kaos").classList.toggle("valid", vKaos);
       document.getElementById("status-motivasi").classList.toggle("valid", vMotivasi);
+
       const allValid = vNama && vTtl && vAlamat && vDelegasi && vWa && vEmail && vKaos && vMotivasi;
       document.getElementById("btn-submit-container").classList.toggle("show", allValid);
       return allValid;
     }
-    Object.values(fields).forEach(input => {
-      input.addEventListener("input", validateForm);
-      input.addEventListener("change", validateForm);
+
+    ["nama", "tempat_lahir", "dob_day", "dob_month", "dob_year", "alamat", "delegasi", "email", "motivasi"].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener("input", validateForm);
+      el.addEventListener("change", validateForm);
     });
+
+    document.getElementById("btn-universal-back").addEventListener("click", () => {
+      if (window.history.length > 1 && document.referrer.includes(window.location.hostname)) {
+        window.history.back();
+      } else {
+        window.location.href = "index.html";
+      }
+    });
+
+    // Circular Progress Controller
     const modal = document.getElementById("modal-backdrop");
-    const ring = document.getElementById("modal-ring");
     const percentTxt = document.getElementById("modal-percent");
+    const circularBar = document.getElementById("circular-progress-bar");
     const titleTxt = document.getElementById("modal-title");
     const descTxt = document.getElementById("modal-desc");
-    const barFill = document.getElementById("bar-fill");
     const errorAction = document.getElementById("error-action-box");
-    function updateProgress(percent, title, desc) {
-      percentTxt.textContent = percent + "%";
-      barFill.style.width = percent + "%";
-      if (title) titleTxt.textContent = title;
-      if (desc) descTxt.textContent = desc;
+    const errorIconDisc = document.getElementById("error-icon-disc");
+    const totalCircumference = 2 * Math.PI * 38;
+
+    function setCircularProgress(percent) {
+      percentTxt.textContent = `${Math.floor(percent)}%`;
+      const offset = totalCircumference - (percent / 100) * totalCircumference;
+      circularBar.style.strokeDashoffset = offset;
     }
-    function animateProgress(start, end, duration, title, desc, callback) {
+
+    function animateProgressTo(targetPercent, duration, onComplete) {
+      const startPercent = parseFloat(percentTxt.textContent) || 0;
       const startTime = performance.now();
-      function step(currentTime) {
-        const elapsed = currentTime - startTime;
+
+      function step(now) {
+        const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const currentVal = Math.floor(start + (end - start) * progress);
-        updateProgress(currentVal, title, desc);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = startPercent + (targetPercent - startPercent) * easeOut;
+        
+        setCircularProgress(current);
+
         if (progress < 1) {
           requestAnimationFrame(step);
-        } else if (callback) {
-          callback();
+        } else if (onComplete) {
+          onComplete();
         }
       }
       requestAnimationFrame(step);
     }
-    form.addEventListener("submit", async (e) => {
+
+    // Submit Handler
+    document.getElementById("reg-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!validateForm()) return;
+
+      const fullWaNumber = `+62${waInput.value.replace(/\D/g, "")}`;
+      const fullDob = `${document.getElementById("dob_year").value}-${document.getElementById("dob_month").value}-${document.getElementById("dob_day").value}`;
+      const finalKaos = selectedShirtSize === "custom" ? customShirtInput.value.trim() : selectedShirtSize;
+
       const payload = {
-        nama: fields.nama.value.trim(),
-        tempatLahir: fields.tempat.value.trim(),
-        tanggalLahir: fields.tanggal.value,
-        alamat: fields.alamat.value.trim(),
-        delegasi: fields.delegasi.value.trim(),
-        whatsapp: fields.whatsapp.value.trim(),
-        email: fields.email.value.trim(),
-        ukuranKaos: fields.kaos.value === "custom" ? fields.kaosCustom.value.trim() : fields.kaos.value,
-        motivasi: fields.motivasi.value.trim()
+        nama: document.getElementById("nama").value.trim(),
+        tempatLahir: document.getElementById("tempat_lahir").value.trim(),
+        tanggalLahir: fullDob,
+        alamat: document.getElementById("alamat").value.trim(),
+        delegasi: document.getElementById("delegasi").value.trim(),
+        whatsapp: fullWaNumber,
+        email: document.getElementById("email").value.trim(),
+        ukuranKaos: finalKaos,
+        motivasi: document.getElementById("motivasi").value.trim()
       };
-      modal.classList.add("active");
-      ring.className = "progress-ring";
+
+      setCircularProgress(0);
       errorAction.style.display = "none";
-      document.getElementById("bar-wrap").style.display = "block";
-      animateProgress(0, 100, 1200, "Pengecekan Data...", "Memeriksa kesamaan identitas pada server...", async () => {
+      errorIconDisc.style.display = "none";
+      percentTxt.style.display = "block";
+      circularBar.style.display = "block";
+      modal.classList.add("active");
+
+      titleTxt.textContent = "Validasi Formulir...";
+      descTxt.textContent = "Memeriksa kelengkapan format berkas...";
+
+      animateProgressTo(40, 1200, async () => {
+        titleTxt.textContent = "Sinkronisasi Server...";
+        descTxt.textContent = "Memeriksa kesamaan identitas pada database...";
+
+        animateProgressTo(75, 1400);
+
         try {
-          titleTxt.textContent = "Mengirimkan Data...";
-          descTxt.textContent = "Menyimpan berkas pendaftaran ke Google Sheet...";
-          let sendPercent = 0;
-          const sendTimer = setInterval(() => {
-            if (sendPercent < 90) {
-              sendPercent += 10;
-              updateProgress(sendPercent);
-            }
-          }, 150);
           const response = await fetch(CONFIG.SCRIPT_URL, {
             method: "POST",
             body: JSON.stringify(payload)
           });
-          clearInterval(sendTimer);
           const result = await response.json();
+
           if (result.status === "duplicate") {
-            ring.className = "progress-ring error";
-            ring.innerHTML = `<i data-lucide="x" style="width:28px;height:28px;"></i>`;
+            errorIconDisc.style.display = "flex";
+            percentTxt.style.display = "none";
+            circularBar.style.display = "none";
             lucide.createIcons();
-            titleTxt.textContent = "Data Sudah Terdaftar!";
-            descTxt.textContent = result.message || "Nama, No WhatsApp, atau Email Anda sudah terdaftar di sistem.";
-            document.getElementById("bar-wrap").style.display = "none";
+            titleTxt.textContent = "Data Sudah Terdaftar";
+            descTxt.textContent = result.message || "Nama, WhatsApp (+62), atau Email sudah tercatat di sistem.";
             errorAction.style.display = "block";
             return;
           }
+
           if (result.status === "success") {
-            updateProgress(100, "Pendaftaran Berhasil!", "Data tersimpan sempurna.");
-            setTimeout(() => {
-              modal.classList.remove("active");
-              showSuccessView(result.code, result.nama);
-            }, 500);
+            titleTxt.textContent = "Pendaftaran Berhasil!";
+            descTxt.textContent = "Data Anda sukses disimpan ke sistem.";
+            
+            animateProgressTo(100, 700, () => {
+              setTimeout(() => {
+                modal.classList.remove("active");
+                showSuccessView(result.code, result.nama);
+              }, 400);
+            });
           } else {
-            throw new Error(result.message || "Gagal menyimpan data.");
+            throw new Error(result.message || "Gagal menyimpan berkas.");
           }
         } catch (err) {
-          ring.className = "progress-ring error";
-          ring.innerHTML = `<i data-lucide="alert-circle" style="width:28px;height:28px;"></i>`;
+          errorIconDisc.style.display = "flex";
+          percentTxt.style.display = "none";
+          circularBar.style.display = "none";
           lucide.createIcons();
-          titleTxt.textContent = "Terjadi Kendala Jaringan";
-          descTxt.textContent = "Gagal terhubung ke Google Sheet. Silakan periksa koneksi atau hubungi panitia.";
-          document.getElementById("bar-wrap").style.display = "none";
+          titleTxt.textContent = "Kendala Jaringan Server";
+          descTxt.textContent = "Gagal terhubung ke database. Silakan coba kembali atau hubungi panitia.";
           errorAction.style.display = "block";
         }
       });
     });
+
     document.getElementById("btn-close-modal").addEventListener("click", () => {
       modal.classList.remove("active");
     });
+
+    // Fungsi Copy Kode Registrasi
+    document.getElementById("btn-copy-code").addEventListener("click", () => {
+      const codeText = document.getElementById("res-code").textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        const copyTextEl = document.getElementById("copy-text");
+        copyTextEl.textContent = "Tersalin!";
+        copyTextEl.style.color = "#10b981";
+        setTimeout(() => {
+          copyTextEl.textContent = "Salin Kode";
+          copyTextEl.style.color = "inherit";
+        }, 2000);
+      });
+    });
+
+    // Menampilkan Tampilan Sukses Ultra-Meriah
     function showSuccessView(code, nama) {
+      // Sembunyikan Formulir & Header
       document.getElementById("form-container").style.display = "none";
+      document.getElementById("header-pendaftaran").style.display = "none";
+
+      // Munculkan Kartu Sukses
       const successView = document.getElementById("success-container");
       successView.classList.add("active");
+
       document.getElementById("res-nama").textContent = nama;
       document.getElementById("res-code").textContent = code;
       document.getElementById("link-wa-group").href = CONFIG.WA_GROUP;
+
       const textWA = encodeURIComponent(
-        `Assalamu'alaikum Panitia LAKMUD IV PAC IPNU IPPNU Dander,\n\nSaya telah berhasil melakukan pendaftaran online:\n` +
+        `Assalamu'alaikum Panitia,\n\nSaya telah berhasil melakukan pendaftaran online:\n` +
         `• *Nama:* ${nama}\n` +
         `• *Kode Registrasi:* ${code}\n\n` +
-        `Mohon untuk mengecek dan memverifikasi data diri saya. Terima kasih!`
+        `Mohon konfirmasi verifikasi data saya. Terima kasih!`
       );
       document.getElementById("link-wa-admin").href = `https://wa.me/${CONFIG.WA_ADMIN}?text=${textWA}`;
+
       window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Animasi Kembang Api & Confetti Bertingkat (Meriah)
       if (typeof confetti === "function") {
-        confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
-        setTimeout(() => confetti({ particleCount: 50, angle: 60, spread: 55, origin: { x: 0 } }), 200);
-        setTimeout(() => confetti({ particleCount: 50, angle: 120, spread: 55, origin: { x: 1 } }), 400);
+        // Tembakan Pusat
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.55 },
+          colors: ['#f97316', '#10b981', '#1e3e62', '#fbbf24']
+        });
+
+        // Tembakan Meriam Kiri
+        setTimeout(() => {
+          confetti({
+            particleCount: 60,
+            angle: 60,
+            spread: 65,
+            origin: { x: 0, y: 0.65 },
+            colors: ['#f97316', '#10b981', '#ffffff']
+          });
+        }, 250);
+
+        // Tembakan Meriam Kanan
+        setTimeout(() => {
+          confetti({
+            particleCount: 60,
+            angle: 120,
+            spread: 65,
+            origin: { x: 1, y: 0.65 },
+            colors: ['#f97316', '#10b981', '#ffffff']
+          });
+        }, 450);
+
+        // Hujan Bintang Akhir
+        setTimeout(() => {
+          confetti({
+            particleCount: 40,
+            spread: 100,
+            origin: { y: 0.4 },
+            shapes: ['star'],
+            colors: ['#f59e0b', '#10b981', '#3b82f6']
+          });
+        }, 800);
       }
+
       lucide.createIcons();
     }
+
     document.addEventListener("DOMContentLoaded", () => {
       lucide.createIcons();
+      circularBar.style.strokeDasharray = totalCircumference;
+      circularBar.style.strokeDashoffset = totalCircumference;
     });
   </script>
 </body>
