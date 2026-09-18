@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Pendaftaran Peserta</title>
+  <title>Pendaftaran Peserta LAKMUD IV</title>
   <meta name="theme-color" content="#0B192C" />
-  
-  <!-- Fonts -->
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
-  
-  <!-- Icons & Confetti -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons & Confetti Library -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     :root {
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --navy-dark: #0b192c;
-      --navy-main: #1e3e62;
+      --bg: #0b1329;
+      --surface-1: #ffffff;
+      --surface-2: #f8fafc;
+      --navy-900: #0b192c;
+      --navy-800: #1e3e62;
+      --navy-700: #2c5282;
       --accent: #f97316;
-      --accent-hover: #ea580c;
-      --accent-soft: rgba(249, 115, 22, 0.08);
-      --accent-glow: rgba(249, 115, 22, 0.25);
+      --accent-glow: rgba(249, 115, 22, 0.3);
       --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
       --text-main: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --border-focus: #f97316;
-      --radius-xl: 22px;
-      --radius-lg: 14px;
-      --radius-md: 10px;
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
       --radius-pill: 9999px;
-      --shadow-premium: 0 16px 40px -6px rgba(11, 25, 44, 0.08), 0 4px 12px -2px rgba(11, 25, 44, 0.03);
-      --shadow-glow: 0 8px 25px rgba(249, 115, 22, 0.35);
+      --shadow-premium: 0 20px 45px -8px rgba(11, 25, 44, 0.1), 0 6px 16px -4px rgba(11, 25, 44, 0.04);
+      --shadow-glow: 0 10px 30px rgba(249, 115, 22, 0.4);
     }
 
     *, *::before, *::after {
@@ -47,18 +47,18 @@
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 50% 0%, #ffffff 0%, #edf2f7 100%);
+      background: radial-gradient(circle at 50% 0%, #ffffff 0%, #edf4fa 60%, #e2eaf2 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 20px 14px 40px;
+      padding: 24px 14px 50px;
       line-height: 1.5;
     }
 
     .container {
       width: 100%;
-      max-width: 490px;
+      max-width: 500px;
       margin: 0 auto;
     }
 
@@ -67,83 +67,93 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .btn-back {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
-      color: var(--navy-dark);
-      padding: 8px 14px;
+      color: var(--navy-900);
+      padding: 8px 16px;
       border-radius: var(--radius-pill);
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-back:hover {
-      background: #ffffff;
-      transform: translateX(-2px);
+      transform: translateX(-3px);
+      border-color: #cbd5e1;
     }
 
-    /* Header Pendaftaran */
+    .nav-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--navy-800);
+      background: rgba(30, 62, 98, 0.08);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+    }
+
+    /* Header Form */
     .header-pendaftaran {
       text-align: center;
-      padding: 6px 10px 22px;
-      transition: all 0.3s ease;
+      padding: 8px 12px 26px;
     }
 
     .badge-event {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(249, 115, 22, 0.2);
-      color: var(--accent-hover);
-      padding: 5px 12px;
+      gap: 7px;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0.04) 100%);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      color: #ea580c;
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .main-title {
-      font-size: 1.85rem;
+      font-size: 2rem;
       font-weight: 800;
-      color: var(--navy-dark);
-      letter-spacing: -0.02em;
+      color: var(--navy-900);
+      letter-spacing: -0.03em;
       line-height: 1.2;
     }
 
     .main-subtitle {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      margin-top: 6px;
-      max-width: 390px;
+      margin-top: 8px;
+      max-width: 410px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* Form Card Container */
+    /* Form Container */
     .form-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: var(--surface-1);
+      border: 1px solid rgba(226, 232, 240, 0.95);
       border-radius: var(--radius-xl);
-      padding: 24px 20px;
+      padding: 28px 22px;
       box-shadow: var(--shadow-premium);
+      position: relative;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       position: relative;
     }
 
@@ -151,14 +161,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     label {
       font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--navy-dark);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--navy-900);
       text-transform: uppercase;
     }
 
@@ -166,8 +176,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: #f1f5f9;
       color: #94a3b8;
@@ -185,40 +195,40 @@
 
     .input-control, textarea {
       width: 100%;
-      background: #f8fafc;
+      background: var(--surface-2);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 11px 14px;
+      padding: 12px 16px;
       font-family: inherit;
-      font-size: 0.84rem;
+      font-size: 0.86rem;
+      font-weight: 500;
       color: var(--text-main);
       outline: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .input-control:focus, textarea:focus {
-      border-color: var(--navy-main);
+      border-color: var(--navy-800);
       background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(30, 62, 98, 0.08);
+      box-shadow: 0 0 0 4px rgba(30, 62, 98, 0.09);
     }
 
     /* Modern Date Selector Group */
     .date-grid {
       display: grid;
       grid-template-columns: 80px 1fr 90px;
-      gap: 6px;
-      margin-top: 6px;
+      gap: 7px;
+      margin-top: 7px;
     }
 
     .select-modern {
       appearance: none;
-      -webkit-appearance: none;
-      background: #f8fafc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2364748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>') no-repeat right 10px center;
+      background: #f8fafc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2364748B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>') no-repeat right 12px center;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 10px 24px 10px 10px;
+      padding: 11px 26px 11px 12px;
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-main);
       outline: none;
@@ -227,7 +237,7 @@
     }
 
     .select-modern:focus {
-      border-color: var(--navy-main);
+      border-color: var(--navy-800);
       background-color: #ffffff;
     }
 
@@ -243,29 +253,30 @@
       left: 10px;
       display: flex;
       align-items: center;
-      gap: 4px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--navy-main);
+      gap: 5px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--navy-900);
       background: #e2e8f0;
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 6px 9px;
+      border-radius: 8px;
       pointer-events: none;
     }
 
     .input-phone {
-      padding-left: 75px !important;
-      font-family: 'Plus Jakarta Sans', monospace;
-      font-weight: 600;
+      padding-left: 80px !important;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
     }
 
     .phone-helper {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 6px;
+      font-weight: 500;
     }
 
-    /* Shirt Size Cards */
+    /* Kaos Grid Selector */
     .size-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -275,31 +286,32 @@
 
     .size-card {
       position: relative;
-      background: #f8fafc;
+      background: var(--surface-2);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 10px 6px;
+      padding: 11px 8px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       user-select: none;
     }
 
     .size-card:hover {
       border-color: #cbd5e1;
       background: #f1f5f9;
+      transform: translateY(-2px);
     }
 
     .size-card.active {
       background: #fff8f5;
       border-color: var(--accent);
-      box-shadow: 0 0 0 2px var(--accent-glow);
+      box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
     .size-card-title {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       font-weight: 800;
-      color: var(--navy-dark);
+      color: var(--navy-900);
     }
 
     .size-card.active .size-card-title {
@@ -307,14 +319,15 @@
     }
 
     .size-card-desc {
-      font-size: 0.63rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       margin-top: 2px;
+      font-weight: 600;
     }
 
-    /* Submit Button */
+    /* Submit Button Wrapper */
     .btn-submit-wrap {
-      margin-top: 22px;
+      margin-top: 26px;
       display: none;
     }
 
@@ -324,7 +337,7 @@
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -333,12 +346,12 @@
       background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
       color: #ffffff;
       border: none;
-      padding: 14px 18px;
+      padding: 16px 20px;
       border-radius: var(--radius-md);
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 800;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -350,21 +363,35 @@
       transition: all 0.25s ease;
     }
 
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(249, 115, 22, 0.45);
+    }
+
     .btn-submit:active {
       transform: scale(0.985);
     }
 
-    /* Progress Modal */
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* =======================================================
+       HOLOGRAPHIC HIGH-TECH LOADING MODAL (INTERNATIONAL-GRADE)
+       ======================================================= */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(11, 25, 44, 0.65);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 25, 44, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 18px;
     }
 
     .modal-backdrop.active {
@@ -373,19 +400,23 @@
 
     .modal-box {
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
       background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: var(--radius-xl);
-      padding: 30px 24px;
+      padding: 34px 26px 28px;
       text-align: center;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
     }
 
+    /* Modern Circular Gauge */
     .circular-progress-wrap {
       position: relative;
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 16px;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -400,31 +431,49 @@
     .circular-bg {
       fill: none;
       stroke: #f1f5f9;
-      stroke-width: 7;
+      stroke-width: 8;
     }
 
     .circular-bar {
       fill: none;
       stroke: url(#accent-gradient);
-      stroke-width: 7;
+      stroke-width: 8;
       stroke-linecap: round;
-      stroke-dasharray: 238.76;
-      stroke-dashoffset: 238.76;
-      transition: stroke-dashoffset 0.15s ease;
+      stroke-dasharray: 289.02;
+      stroke-dashoffset: 289.02;
+      transition: stroke-dashoffset 0.25s ease-out;
+    }
+
+    .progress-center-box {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .progress-center-text {
-      position: absolute;
-      font-size: 1.15rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.45rem;
       font-weight: 800;
-      color: var(--navy-dark);
+      color: var(--navy-900);
+      letter-spacing: -0.03em;
+    }
+
+    .progress-center-sub {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: -2px;
     }
 
     .error-icon-box {
       display: none;
       position: absolute;
-      width: 90px;
-      height: 90px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: #fef2f2;
       color: #ef4444;
@@ -432,46 +481,112 @@
       justify-content: center;
     }
 
+    /* Terminal Process Log Box */
+    .audit-terminal-box {
+      background: #0f172a;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin: 18px 0 14px;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      border: 1px solid #1e293b;
+    }
+
+    .audit-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .audit-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blinkIndicator 1s infinite alternate;
+    }
+
+    @keyframes blinkIndicator {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
     .modal-title {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--navy-dark);
+      color: var(--navy-900);
       margin-bottom: 6px;
     }
 
     .modal-desc {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.45;
       min-height: 38px;
+    }
+
+    /* Action Buttons in Modal (Duplicate / Error) */
+    .action-group-modal {
+      display: none;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .btn-update-existing {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.3);
     }
 
     .btn-admin-contact {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      background: var(--navy-dark);
+      gap: 8px;
+      background: var(--navy-900);
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       padding: 12px 16px;
       border-radius: var(--radius-md);
       width: 100%;
-      margin-top: 10px;
     }
 
-    /* =========================================
-       ULTRA-PREMIUM SUCCESS VIEW
-       ========================================= */
+    .btn-close-modal-text {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      margin-top: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* =======================================================
+       ULTRA-PREMIUM SUCCESS VIEW (INTERNATIONAL-CLASS TICKET)
+       ======================================================= */
     .success-view {
       display: none;
       text-align: center;
       background: #ffffff;
-      border: 1px solid rgba(226, 232, 240, 0.9);
+      border: 1px solid rgba(226, 232, 240, 0.95);
       border-radius: var(--radius-xl);
-      padding: 34px 22px 28px;
+      padding: 36px 24px 30px;
       box-shadow: var(--shadow-premium);
       position: relative;
       overflow: hidden;
@@ -487,25 +602,23 @@
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Top glowing ambient */
     .success-view::before {
       content: "";
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 180px;
+      width: 200px;
       height: 4px;
       background: linear-gradient(90deg, transparent, #10b981, transparent);
       border-radius: var(--radius-pill);
     }
 
-    /* Animated Glowing Icon Badge */
     .success-hero-badge {
       position: relative;
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 16px;
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -515,19 +628,19 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.18);
       animation: pulseGlow 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
 
     @keyframes pulseGlow {
       0%, 100% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.22); opacity: 0.3; }
+      50% { transform: scale(1.25); opacity: 0.25; }
     }
 
     .badge-icon-core {
       position: relative;
-      width: 64px;
-      height: 64px;
+      width: 68px;
+      height: 68px;
       background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: #ffffff;
       border-radius: 50%;
@@ -539,66 +652,66 @@
     }
 
     .success-title {
-      font-size: 1.45rem;
+      font-size: 1.55rem;
       font-weight: 800;
-      color: var(--navy-dark);
-      letter-spacing: -0.02em;
+      color: var(--navy-900);
+      letter-spacing: -0.03em;
     }
 
     .status-pill-verified {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       background: #ecfdf5;
       border: 1px solid #a7f3d0;
       color: #047857;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.04em;
-      margin-top: 6px;
+      letter-spacing: 0.05em;
+      margin-top: 8px;
       text-transform: uppercase;
     }
 
     .success-desc {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      margin-top: 10px;
-      line-height: 1.45;
-      padding: 0 8px;
+      margin-top: 12px;
+      line-height: 1.5;
+      padding: 0 6px;
     }
 
     .success-desc strong {
-      color: var(--navy-dark);
+      color: var(--navy-900);
       font-weight: 700;
     }
 
-    /* Digital Confirmation Ticket Card */
+    /* Hologram Digital Ticket Pass */
     .digital-pass-card {
       background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
       border: 1.5px dashed #cbd5e1;
       border-radius: var(--radius-lg);
-      padding: 16px 14px;
-      margin: 20px 0 16px;
+      padding: 18px 16px;
+      margin: 22px 0 18px;
       position: relative;
     }
 
     .pass-tag {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
     .pass-code-val {
-      font-family: 'Plus Jakarta Sans', monospace;
-      font-size: 1.35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
       font-weight: 800;
-      color: var(--navy-dark);
+      color: var(--navy-900);
       letter-spacing: 1.5px;
-      margin: 4px 0 10px;
+      margin: 6px 0 12px;
     }
 
     .btn-copy-code {
@@ -607,13 +720,13 @@
       gap: 6px;
       background: #ffffff;
       border: 1px solid var(--border);
-      color: var(--navy-dark);
-      padding: 6px 12px;
+      color: var(--navy-900);
+      padding: 7px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       transition: all 0.2s ease;
     }
 
@@ -622,42 +735,38 @@
       border-color: #cbd5e1;
     }
 
-    /* Action Buttons */
+    /* Action Buttons in Success View */
     .action-group-success {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 16px;
+      gap: 11px;
+      margin-top: 18px;
     }
 
     .btn-wa-group-lux {
       background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 800;
-      padding: 13px 18px;
+      padding: 14px 20px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      box-shadow: 0 8px 20px -3px rgba(37, 211, 102, 0.4);
+      gap: 10px;
+      box-shadow: 0 8px 22px -4px rgba(37, 211, 102, 0.4);
       transition: all 0.2s ease;
-    }
-
-    .btn-wa-group-lux:active {
-      transform: scale(0.98);
     }
 
     .btn-wa-admin-lux {
       background: #ffffff;
-      border: 1.5px solid var(--navy-dark);
-      color: var(--navy-dark);
+      border: 1.5px solid var(--navy-900);
+      color: var(--navy-900);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
-      padding: 12px 18px;
+      padding: 13px 20px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -667,32 +776,34 @@
     }
 
     .btn-wa-admin-lux:hover {
-      background: var(--navy-dark);
+      background: var(--navy-900);
       color: #ffffff;
     }
 
     /* Footer */
     .footer {
       text-align: center;
-      padding: 24px 0 10px;
-      margin-top: 18px;
+      padding: 26px 0 10px;
+      margin-top: 20px;
     }
 
     .footer-copy {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
   <main class="container">
-    
+
+    <!-- Top Navigation -->
     <div class="top-nav" id="top-nav">
       <button type="button" class="btn-back" id="btn-universal-back">
         <i data-lucide="arrow-left" style="width: 15px; height: 15px;"></i>
         <span>Kembali</span>
       </button>
-      <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted);">
+      <div class="nav-badge">
         Kaderisasi Formal
       </div>
     </div>
@@ -700,14 +811,14 @@
     <!-- Header Formulir -->
     <header class="header-pendaftaran" id="header-pendaftaran">
       <div class="badge-event">
-        <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+        <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
         <span>LAKMUD IV • PAC DANDER</span>
       </div>
       <h1 class="main-title">Pendaftaran Peserta</h1>
-      <p class="main-subtitle">Lengkapi data diri calon peserta secara cermat dan benar untuk proses verifikasi kader.</p>
+      <p class="main-subtitle">Lengkapi instrumen data calon peserta untuk proses verifikasi kader tingkat lanjutan.</p>
     </header>
 
-    <!-- Formulir Input -->
+    <!-- Formulir Pendaftaran -->
     <section class="form-card" id="form-container">
       <form id="reg-form" novalidate>
         
@@ -753,7 +864,7 @@
 
         <div class="form-group">
           <div class="label-row">
-            <label for="alamat">Alamat Lengkap</label>
+            <label for="alamat">Alamat Lengkap Domisili</label>
             <span class="field-status" id="status-alamat"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
           <textarea id="alamat" rows="2" class="input-control" placeholder="Nama Desa, RT/RW, dan Kecamatan domisili" required></textarea>
@@ -769,7 +880,7 @@
 
         <div class="form-group">
           <div class="label-row">
-            <label for="whatsapp_input">Nomor WhatsApp</label>
+            <label for="whatsapp_input">Nomor WhatsApp Aktif</label>
             <span class="field-status" id="status-whatsapp"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
           <div class="input-phone-group">
@@ -826,42 +937,42 @@
 
         <div class="form-group">
           <div class="label-row">
-            <label for="motivasi">Motivasi Mengikuti Kaderisasi</label>
+            <label for="motivasi">Komitmen &amp; Motivasi Kader</label>
             <span class="field-status" id="status-motivasi"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
           </div>
-          <textarea id="motivasi" rows="3" class="input-control" placeholder="Tuliskan komitmen &amp; motivasi Anda mengikuti Lakmud" required></textarea>
+          <textarea id="motivasi" rows="3" class="input-control" placeholder="Tuliskan komitmen Anda mengikuti kaderisasi formal Lakmud" required></textarea>
         </div>
 
         <div class="btn-submit-wrap" id="btn-submit-container">
           <button type="submit" class="btn-submit" id="btn-submit-form">
-            <span>KIRIM PENDAFTARAN</span>
-            <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i>
+            <span>KIRIM PENDAFTARAN RESMI</span>
+            <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
           </button>
         </div>
 
       </form>
     </section>
 
-    <!-- ULTRA-PREMIUM SUCCESS VIEW (Tanpa Logo & Teks Kaku) -->
+    <!-- Tampilan Sukses Tiket Digital -->
     <section class="success-view" id="success-container">
       
       <div class="success-hero-badge">
         <div class="badge-glow-ring"></div>
         <div class="badge-icon-core">
-          <i data-lucide="check" style="width: 32px; height: 32px; stroke-width: 2.8;"></i>
+          <i data-lucide="check" style="width: 34px; height: 34px; stroke-width: 2.8;"></i>
         </div>
       </div>
 
       <h2 class="success-title">Pendaftaran Berhasil!</h2>
       <div>
         <span class="status-pill-verified">
-          <i data-lucide="shield-check" style="width: 12px; height: 12px;"></i>
-          Terverifikasi Sistem
+          <i data-lucide="shield-check" style="width: 13px; height: 13px;"></i>
+          Terverifikasi Cloud Database
         </span>
       </div>
 
       <p class="success-desc">
-        Selamat, formulir atas nama <strong id="res-nama"></strong> telah berhasil diterima dan diamankan pada basis data panitia.
+        Selamat, berkas calon peserta atas nama <strong id="res-nama"></strong> telah sukses tercatat pada pangkalan data panitia pelaksana.
       </p>
 
       <!-- Digital Confirmation Pass -->
@@ -869,8 +980,8 @@
         <div class="pass-tag">KODE REGISTRASI RESMI</div>
         <div class="pass-code-val" id="res-code">LMD-IV-0000000</div>
         <button type="button" class="btn-copy-code" id="btn-copy-code">
-          <i data-lucide="copy" style="width: 13px; height: 13px;" id="copy-icon"></i>
-          <span id="copy-text">Salin Kode</span>
+          <i data-lucide="copy" style="width: 14px; height: 14px;" id="copy-icon"></i>
+          <span id="copy-text">Salin Kode Registrasi</span>
         </button>
       </div>
 
@@ -892,43 +1003,63 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-copy">&copy; Panitia Pelaksana Kaderisasi LAKMUD. Seluruh hak cipta dilindungi.</div>
+      <div class="footer-copy">&copy; Panitia Pelaksana LAKMUD IV PAC DANDER. Seluruh hak cipta dilindungi.</div>
     </footer>
 
   </main>
 
-  <!-- Modal Progress Circle Gauge -->
+  <!-- HOLOGRAPHIC LOADING & AUDIT TERMINAL MODAL -->
   <div class="modal-backdrop" id="modal-backdrop">
     <div class="modal-box">
       
+      <!-- Circular Meter -->
       <div class="circular-progress-wrap" id="progress-wrapper">
-        <svg class="circular-svg" viewBox="0 0 90 90">
+        <svg class="circular-svg" viewBox="0 0 110 110">
           <defs>
             <linearGradient id="accent-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#f97316" />
               <stop offset="100%" stop-color="#ea580c" />
             </linearGradient>
           </defs>
-          <circle class="circular-bg" cx="45" cy="45" r="38" />
-          <circle class="circular-bar" id="circular-progress-bar" cx="45" cy="45" r="38" />
+          <circle class="circular-bg" cx="55" cy="55" r="46" />
+          <circle class="circular-bar" id="circular-progress-bar" cx="55" cy="55" r="46" />
         </svg>
-        <span class="progress-center-text" id="modal-percent">0%</span>
         
+        <div class="progress-center-box" id="progress-center-box">
+          <span class="progress-center-text" id="modal-percent">0%</span>
+          <span class="progress-center-sub">SINKRONISASI</span>
+        </div>
+
         <div class="error-icon-box" id="error-icon-disc">
-          <i data-lucide="alert-triangle" style="width: 36px; height: 36px;"></i>
+          <i data-lucide="alert-triangle" style="width: 44px; height: 44px;"></i>
         </div>
       </div>
 
-      <div class="modal-title" id="modal-title">Memverifikasi Data...</div>
-      <div class="modal-desc" id="modal-desc">Memeriksa kelengkapan form dan sinkronisasi server...</div>
+      <div class="modal-title" id="modal-title">Enkripsi Berkas...</div>
+      <div class="modal-desc" id="modal-desc">Memeriksa kelengkapan format berkas calon kader...</div>
 
-      <div id="error-action-box" style="display:none; margin-top:12px;">
-        <a href="https://wa.me/6281234567890?text=Halo%20Admin%2C%20data%20saya%20terdeteksi%20sudah%20terdaftar" target="_blank" rel="noopener noreferrer" class="btn-admin-contact">
+      <!-- High-Tech Audit Log Terminal -->
+      <div class="audit-terminal-box" id="audit-terminal">
+        <div class="audit-row">
+          <div class="audit-indicator"></div>
+          <span id="terminal-log-text">SECURE PROTOCOL INITIALIZED...</span>
+        </div>
+      </div>
+
+      <!-- Action Group on Error / Duplicate -->
+      <div class="action-group-modal" id="modal-action-box">
+        <button type="button" class="btn-update-existing" id="btn-confirm-update" style="display: none;">
+          <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i>
+          <span>Perbarui Data Saya di Database</span>
+        </button>
+
+        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20LAKMUD%2C%20saya%20membutuhkan%20bantuan%20pendaftaran" target="_blank" rel="noopener noreferrer" class="btn-admin-contact" id="btn-admin-action">
           <i data-lucide="message-circle" style="width: 15px; height: 15px;"></i>
           <span>Hubungi Panitia Pelaksana</span>
         </a>
-        <button type="button" id="btn-close-modal" style="background:none; border:none; color:var(--text-muted); font-size:0.75rem; margin-top:10px; cursor:pointer; font-weight:600;">
-          Tutup dan Periksa Form
+        
+        <button type="button" class="btn-close-modal-text" id="btn-close-modal">
+          Tutup dan Periksa Formulir
         </button>
       </div>
 
@@ -937,14 +1068,15 @@
 
   <script>
     const CONFIG = {
-      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbyJJYtWtafSspyKMcm2BNPr_zzzMGRfCQOnsOpiNbCriKHPXSpLCm0QR-jyZBdn3gfptQ/exec",
+      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzqBxUJFGXmyQ8ffa4Gyca3tXG41Vd0_7wqomdmftGhHjN_7QAE9nLRLsEwzqaxHh0HBw/exec",
       WA_ADMIN: "6281234567890",
       WA_GROUP: "https://chat.whatsapp.com/GANTIKAN_DENGAN_LINK_GRUP_ANDA"
     };
 
     let selectedShirtSize = "";
+    let cachedPayload = null; // Menyimpan payload untuk fitur 'Update Data'
 
-    // Generate Tanggal & Tahun Dinamis
+    // Tanggal & Tahun Dinamis
     const daySelect = document.getElementById("dob_day");
     const yearSelect = document.getElementById("dob_year");
 
@@ -1067,9 +1199,12 @@
     const circularBar = document.getElementById("circular-progress-bar");
     const titleTxt = document.getElementById("modal-title");
     const descTxt = document.getElementById("modal-desc");
-    const errorAction = document.getElementById("error-action-box");
+    const terminalLog = document.getElementById("terminal-log-text");
+    const modalActions = document.getElementById("modal-action-box");
     const errorIconDisc = document.getElementById("error-icon-disc");
-    const totalCircumference = 2 * Math.PI * 38;
+    const progressCenterBox = document.getElementById("progress-center-box");
+    const btnConfirmUpdate = document.getElementById("btn-confirm-update");
+    const totalCircumference = 2 * Math.PI * 46;
 
     function setCircularProgress(percent) {
       percentTxt.textContent = `${Math.floor(percent)}%`;
@@ -1098,8 +1233,147 @@
       requestAnimationFrame(step);
     }
 
-    // Submit Handler
-    document.getElementById("reg-form").addEventListener("submit", async (e) => {
+    // Engine Eksekusi Request dengan Auto-Retry & Timeout Handling
+    async function sendRegistrationPayload(payload, isRetry = false) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 detik batas waktu
+
+      try {
+        const response = await fetch(CONFIG.SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        const textResponse = await response.text();
+        return JSON.parse(textResponse);
+      } catch (err) {
+        clearTimeout(timeoutId);
+        if (!isRetry) {
+          terminalLog.textContent = "SYNCHRONIZING CONCURRENT QUEUE...";
+          await new Promise(r => setTimeout(r, 1500));
+          return await sendRegistrationPayload(payload, true);
+        }
+        throw err;
+      }
+    }
+
+    // Eksekutor Registrasi (Dapat dipanggil ulang saat update data)
+    async function executeRegistration(payload) {
+      const submitBtn = document.getElementById("btn-submit-form");
+      submitBtn.disabled = true;
+
+      // Inisialisasi Tampilan Modal
+      setCircularProgress(0);
+      modalActions.style.display = "none";
+      btnConfirmUpdate.style.display = "none";
+      errorIconDisc.style.display = "none";
+      progressCenterBox.style.display = "flex";
+      circularBar.style.display = "block";
+      modal.classList.add("active");
+
+      // TAHAP 1 (0% - 25%): Validasi & Enkripsi
+      titleTxt.textContent = "Validasi Instrumen...";
+      descTxt.textContent = "Memverifikasi struktur dan integritas berkas calon kader...";
+      terminalLog.textContent = "LOCAL_DATA_VERIFIED: OK";
+      animateProgressTo(25, 600);
+
+      // TAHAP 2 (25% - 55%): Membuka Kanal Cloud
+      setTimeout(() => {
+        titleTxt.textContent = "Kanal Database Cloud...";
+        descTxt.textContent = "Menghubungkan ke server basis data terpusat...";
+        terminalLog.textContent = "OPENING SECURE PIPELINE TO GOOGLE CLOUD...";
+        animateProgressTo(55, 800);
+      }, 700);
+
+      // TAHAP 3 (55% - 85%): Concurrency Lock & Audit Duplikasi
+      setTimeout(() => {
+        titleTxt.textContent = "Penyaringan Duplikasi...";
+        descTxt.textContent = "Mengunci antrean server dan mencocokkan identitas unik...";
+        terminalLog.textContent = "AUDITING IDENTITY & CONCURRENCY QUEUE...";
+        animateProgressTo(85, 900);
+      }, 1600);
+
+      try {
+        const result = await sendRegistrationPayload(payload);
+
+        // 1. DUPLIKASI DATA
+        if (result.status === "duplicate") {
+          submitBtn.disabled = false;
+          errorIconDisc.style.display = "flex";
+          progressCenterBox.style.display = "none";
+          circularBar.style.display = "none";
+          lucide.createIcons();
+
+          titleTxt.textContent = "Identitas Terdaftar";
+          descTxt.textContent = result.message;
+          terminalLog.textContent = "DUPLICATE_IDENTIFIER_MATCHED";
+          
+          btnConfirmUpdate.style.display = "flex";
+          modalActions.style.display = "flex";
+          return;
+        }
+
+        // 2. SERVER SIBUK
+        if (result.status === "busy") {
+          submitBtn.disabled = false;
+          errorIconDisc.style.display = "flex";
+          progressCenterBox.style.display = "none";
+          circularBar.style.display = "none";
+          lucide.createIcons();
+
+          titleTxt.textContent = "Antrean Penuh";
+          descTxt.textContent = result.message;
+          terminalLog.textContent = "SERVER_LOCK_TIMEOUT: BUSY";
+          modalActions.style.display = "flex";
+          return;
+        }
+
+        // 3. ERROR SERVER
+        if (result.status === "error") {
+          throw new Error(result.message || "Gagal memproses data pada basis data server.");
+        }
+
+        // 4. SUKSES PENDAFTARAN BARU ATAU UPDATE
+        if ((result.status === "success" || result.status === "updated") && result.code) {
+          titleTxt.textContent = result.status === "updated" ? "Data Sukses Diperbarui!" : "Pendaftaran Berhasil!";
+          descTxt.textContent = "Tiket digital resmi berhasil diterbitkan oleh sistem.";
+          terminalLog.textContent = "TRANSACTION_COMMITTED: " + result.code;
+
+          animateProgressTo(100, 600, () => {
+            setTimeout(() => {
+              modal.classList.remove("active");
+              showSuccessView(result.code, result.nama);
+              submitBtn.disabled = false;
+            }, 400);
+          });
+        } else {
+          throw new Error("Respon tiket resmi dari server tidak terverifikasi.");
+        }
+
+      } catch (err) {
+        console.error("Transmission Error:", err);
+        submitBtn.disabled = false;
+        errorIconDisc.style.display = "flex";
+        progressCenterBox.style.display = "none";
+        circularBar.style.display = "none";
+        lucide.createIcons();
+
+        titleTxt.textContent = "Kendala Jaringan Server";
+        descTxt.textContent = err.name === "AbortError" 
+          ? "Koneksi terputus karena server sibuk. Silakan coba kembali." 
+          : "Gagal terhubung ke database. " + (err.message || "");
+        terminalLog.textContent = "NETWORK_EXCEPTION_OCCURRED";
+        modalActions.style.display = "flex";
+      }
+    }
+
+    // Submit Handler Formulir
+    document.getElementById("reg-form").addEventListener("submit", (e) => {
       e.preventDefault();
       if (!validateForm()) return;
 
@@ -1107,7 +1381,7 @@
       const fullDob = `${document.getElementById("dob_year").value}-${document.getElementById("dob_month").value}-${document.getElementById("dob_day").value}`;
       const finalKaos = selectedShirtSize === "custom" ? customShirtInput.value.trim() : selectedShirtSize;
 
-      const payload = {
+      cachedPayload = {
         nama: document.getElementById("nama").value.trim(),
         tempatLahir: document.getElementById("tempat_lahir").value.trim(),
         tanggalLahir: fullDob,
@@ -1116,73 +1390,26 @@
         whatsapp: fullWaNumber,
         email: document.getElementById("email").value.trim(),
         ukuranKaos: finalKaos,
-        motivasi: document.getElementById("motivasi").value.trim()
+        motivasi: document.getElementById("motivasi").value.trim(),
+        isUpdate: false
       };
 
-      setCircularProgress(0);
-      errorAction.style.display = "none";
-      errorIconDisc.style.display = "none";
-      percentTxt.style.display = "block";
-      circularBar.style.display = "block";
-      modal.classList.add("active");
+      executeRegistration(cachedPayload);
+    });
 
-      titleTxt.textContent = "Validasi Formulir...";
-      descTxt.textContent = "Memeriksa kelengkapan format berkas...";
-
-      animateProgressTo(40, 1200, async () => {
-        titleTxt.textContent = "Sinkronisasi Server...";
-        descTxt.textContent = "Memeriksa kesamaan identitas pada database...";
-
-        animateProgressTo(75, 1400);
-
-        try {
-          const response = await fetch(CONFIG.SCRIPT_URL, {
-            method: "POST",
-            body: JSON.stringify(payload)
-          });
-          const result = await response.json();
-
-          if (result.status === "duplicate") {
-            errorIconDisc.style.display = "flex";
-            percentTxt.style.display = "none";
-            circularBar.style.display = "none";
-            lucide.createIcons();
-            titleTxt.textContent = "Data Sudah Terdaftar";
-            descTxt.textContent = result.message || "Nama, WhatsApp (+62), atau Email sudah tercatat di sistem.";
-            errorAction.style.display = "block";
-            return;
-          }
-
-          if (result.status === "success") {
-            titleTxt.textContent = "Pendaftaran Berhasil!";
-            descTxt.textContent = "Data Anda sukses disimpan ke sistem.";
-            
-            animateProgressTo(100, 700, () => {
-              setTimeout(() => {
-                modal.classList.remove("active");
-                showSuccessView(result.code, result.nama);
-              }, 400);
-            });
-          } else {
-            throw new Error(result.message || "Gagal menyimpan berkas.");
-          }
-        } catch (err) {
-          errorIconDisc.style.display = "flex";
-          percentTxt.style.display = "none";
-          circularBar.style.display = "none";
-          lucide.createIcons();
-          titleTxt.textContent = "Kendala Jaringan Server";
-          descTxt.textContent = "Gagal terhubung ke database. Silakan coba kembali atau hubungi panitia.";
-          errorAction.style.display = "block";
-        }
-      });
+    // Tombol Konfirmasi Update Data (Jika peserta/admin ingin memperbarui data yang sudah ada)
+    btnConfirmUpdate.addEventListener("click", () => {
+      if (cachedPayload) {
+        cachedPayload.isUpdate = true;
+        executeRegistration(cachedPayload);
+      }
     });
 
     document.getElementById("btn-close-modal").addEventListener("click", () => {
       modal.classList.remove("active");
     });
 
-    // Fungsi Copy Kode Registrasi
+    // Salin Kode Registrasi
     document.getElementById("btn-copy-code").addEventListener("click", () => {
       const codeText = document.getElementById("res-code").textContent;
       navigator.clipboard.writeText(codeText).then(() => {
@@ -1190,19 +1417,17 @@
         copyTextEl.textContent = "Tersalin!";
         copyTextEl.style.color = "#10b981";
         setTimeout(() => {
-          copyTextEl.textContent = "Salin Kode";
+          copyTextEl.textContent = "Salin Kode Registrasi";
           copyTextEl.style.color = "inherit";
         }, 2000);
       });
     });
 
-    // Menampilkan Tampilan Sukses Ultra-Meriah
+    // Tampilan Sukses Tiket Digital
     function showSuccessView(code, nama) {
-      // Sembunyikan Formulir & Header
       document.getElementById("form-container").style.display = "none";
       document.getElementById("header-pendaftaran").style.display = "none";
 
-      // Munculkan Kartu Sukses
       const successView = document.getElementById("success-container");
       successView.classList.add("active");
 
@@ -1211,7 +1436,7 @@
       document.getElementById("link-wa-group").href = CONFIG.WA_GROUP;
 
       const textWA = encodeURIComponent(
-        `Assalamu'alaikum Panitia,\n\nSaya telah berhasil melakukan pendaftaran online:\n` +
+        `Assalamu'alaikum Panitia LAKMUD IV,\n\nSaya telah mendaftar sebagai calon peserta:\n` +
         `• *Nama:* ${nama}\n` +
         `• *Kode Registrasi:* ${code}\n\n` +
         `Mohon konfirmasi verifikasi data saya. Terima kasih!`
@@ -1220,48 +1445,33 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // Animasi Kembang Api & Confetti Bertingkat (Meriah)
       if (typeof confetti === "function") {
-        // Tembakan Pusat
         confetti({
-          particleCount: 100,
-          spread: 80,
+          particleCount: 110,
+          spread: 85,
           origin: { y: 0.55 },
           colors: ['#f97316', '#10b981', '#1e3e62', '#fbbf24']
         });
 
-        // Tembakan Meriam Kiri
         setTimeout(() => {
           confetti({
-            particleCount: 60,
+            particleCount: 70,
             angle: 60,
-            spread: 65,
+            spread: 70,
             origin: { x: 0, y: 0.65 },
             colors: ['#f97316', '#10b981', '#ffffff']
           });
-        }, 250);
+        }, 300);
 
-        // Tembakan Meriam Kanan
         setTimeout(() => {
           confetti({
-            particleCount: 60,
+            particleCount: 70,
             angle: 120,
-            spread: 65,
+            spread: 70,
             origin: { x: 1, y: 0.65 },
             colors: ['#f97316', '#10b981', '#ffffff']
           });
-        }, 450);
-
-        // Hujan Bintang Akhir
-        setTimeout(() => {
-          confetti({
-            particleCount: 40,
-            spread: 100,
-            origin: { y: 0.4 },
-            shapes: ['star'],
-            colors: ['#f59e0b', '#10b981', '#3b82f6']
-          });
-        }, 800);
+        }, 550);
       }
 
       lucide.createIcons();
