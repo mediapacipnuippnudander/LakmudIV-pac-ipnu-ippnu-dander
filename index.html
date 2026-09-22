@@ -2,34 +2,62 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>LAKMUD IV — PAC IPNU IPPNU Dander</title>
-  <meta name="description" content="Portal Resmi Pendaftaran LAKMUD IV PAC IPNU IPPNU Dander." />
-  <meta name="theme-color" content="#0B192C" />
+  <meta name="description" content="Portal Resmi Kaderisasi LAKMUD IV PAC IPNU IPPNU Dander." />
+  <meta name="theme-color" content="#050B14" />
 
+  <!-- Fonts Preconnect & Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 
+  <!-- Feather / Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --navy-dark: #0b192c;
-      --navy: #1e3e62;
-      --orange: #e35a27;
-      --orange-soft: rgba(227, 90, 39, 0.08);
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --shadow: 0 4px 12px -2px rgba(11, 25, 44, 0.06);
-      --radius: 14px;
-      --radius-sm: 8px;
+      /* Spiritual & Struggle Palette */
+      --bg-deep: #050b14;
+      --bg-surface: #0a1424;
+      --bg-card: rgba(13, 25, 44, 0.72);
+      --bg-card-hover: rgba(18, 35, 62, 0.85);
+      --bg-card-solid: #0c182a;
+      
+      /* Vibrant Spirit & Khidmat Accents */
+      --blaze-orange: #ff5722;
+      --crimson-red: #e63946;
+      --gradient-spirit: linear-gradient(135deg, #ff6b3d 0%, #ff3b2f 50%, #d82c20 100%);
+      --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+      --glow-orange: rgba(255, 87, 34, 0.35);
+      --glow-cyan: rgba(56, 189, 248, 0.25);
+      
+      /* Text Colors */
+      --text-pure: #ffffff;
+      --text-sub: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* Glass & Borders */
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(255, 94, 54, 0.3);
+      --glass-blur: blur(20px);
+      
+      /* Shadows & Radii */
+      --shadow-premium: 0 16px 36px -8px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.06);
+      --shadow-glow: 0 0 25px rgba(255, 87, 34, 0.22);
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
       --radius-pill: 9999px;
     }
 
+    /* ==========================================================================
+       GLOBAL RESET & PERFORMANCE ENHANCEMENTS
+       ========================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -37,145 +65,262 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Menghilangkan scrollbar default di SEMUA browser (PC / Desktop / Mobile) */
     html {
       scroll-behavior: smooth;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+      width: 0;
+      height: 0;
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-pure);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 20px 14px;
+      padding: 24px 16px 80px;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
+    /* Ambient Spiritual Light Orbs (GPU Accelerated & 0 Lag) */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+    .orb-1 {
+      width: 320px;
+      height: 320px;
+      background: var(--blaze-orange);
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .orb-2 {
+      width: 280px;
+      height: 280px;
+      background: #0284c7;
+      bottom: 10%;
+      right: -50px;
+    }
+
+    /* ==========================================================================
+       MODERN ULTRA SCROLL PROGRESS BAR (Ganti scrollbar PC)
+       ========================================================================== */
+    .scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3.5px;
+      background: rgba(255, 255, 255, 0.03);
+      z-index: 9999;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff3b2f, #ff6b3d, #38bdf8, #ff6b3d);
+      background-size: 200% 100%;
+      box-shadow: 0 0 12px rgba(255, 94, 54, 0.8), 0 0 4px rgba(56, 189, 248, 0.6);
+      animation: gradientFlow 3s linear infinite;
+      transition: width 0.08s ease-out;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* ==========================================================================
+       MAIN CONTAINER
+       ========================================================================== */
     .container {
       width: 100%;
-      max-width: 480px;
+      max-width: 470px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
+    /* ==========================================================================
+       HEADER & HERO BRANDING
+       ========================================================================== */
     .header {
       text-align: center;
-      padding: 10px 0 20px;
+      padding: 10px 0 24px;
+      position: relative;
     }
 
     .badge-status {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--card);
-      border: 1px solid rgba(227, 90, 39, 0.3);
-      padding: 4px 12px;
+      gap: 7px;
+      background: rgba(255, 87, 34, 0.1);
+      border: 1px solid rgba(255, 94, 54, 0.3);
+      padding: 5px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      color: var(--orange);
-      margin-bottom: 14px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      letter-spacing: 0.06em;
+      color: #ff7a50;
+      margin-bottom: 18px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 4px 12px rgba(255, 87, 34, 0.12);
     }
 
-    .dot {
-      width: 7px;
-      height: 7px;
+    .dot-pulse {
+      width: 6.5px;
+      height: 6.5px;
       border-radius: 50%;
-      background: var(--orange);
-      animation: pulse 2s infinite ease-in-out;
+      background: #ff5722;
+      box-shadow: 0 0 8px #ff5722;
+      animation: pulseAnim 1.8s infinite ease-in-out;
+    }
+    @keyframes pulseAnim {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.4; }
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
+    .emblem-wrapper {
+      position: relative;
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 16px;
     }
-
+    .emblem-glow {
+      position: absolute;
+      inset: -2px;
+      background: var(--gradient-spirit);
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: 0.5;
+    }
     .emblem {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 12px;
-      background: #ffffff;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #0f223d, #081220);
       border-radius: 50%;
-      border: 2px solid var(--border);
-      padding: 8px;
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: var(--shadow-premium);
     }
-
     .emblem img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
     }
 
     .title-group {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
     }
-
     .title-text {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 800;
-      color: var(--navy-dark);
+      color: var(--text-pure);
+      letter-spacing: -0.03em;
       line-height: 1;
-      letter-spacing: -0.02em;
     }
-
     .title-roman {
       font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--orange);
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: var(--gradient-spirit);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       line-height: 1;
+      filter: drop-shadow(0 2px 10px rgba(255, 87, 34, 0.3));
     }
 
     .org-subtitle {
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--navy);
-      margin-top: 6px;
+      color: #93c5fd;
+      margin-top: 8px;
+      opacity: 0.9;
     }
 
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: var(--orange);
-      margin: 12px auto 10px;
-      border-radius: var(--radius-pill);
-      opacity: 0.7;
+    .divider-spirit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 14px auto 12px;
+    }
+    .divider-line {
+      width: 32px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, rgba(255, 87, 34, 0.6));
+    }
+    .divider-line.right {
+      background: linear-gradient(90deg, rgba(255, 87, 34, 0.6), transparent);
+    }
+    .divider-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--blaze-orange);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--blaze-orange);
     }
 
     .theme {
       font-size: 0.8rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
       font-style: italic;
-      padding: 0 10px;
+      padding: 0 16px;
+      font-weight: 400;
     }
 
+    /* ==========================================================================
+       SLIDER SHOWCASE (High Detail & Crisp Display)
+       ========================================================================== */
     .slider {
       position: relative;
       width: 100%;
-      height: 180px;
-      border-radius: var(--radius);
+      height: 195px;
+      border-radius: var(--radius-xl);
       overflow: hidden;
-      margin-bottom: 16px;
-      background: var(--navy-dark);
-      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      background: #030811;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-premium);
     }
-
     .slider-track {
       width: 100%;
       height: 100%;
       position: relative;
     }
-
     .slide-img {
       position: absolute;
       inset: 0;
@@ -183,112 +328,146 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 0.8s ease-in-out;
+      transform: scale(1.04);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity, transform;
     }
-
     .slide-img.active {
       opacity: 1;
+      transform: scale(1);
     }
-
+    .slider-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 11, 20, 0.1) 0%, rgba(5, 11, 20, 0.75) 100%);
+      pointer-events: none;
+    }
     .slider-tag {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
+      bottom: 12px;
+      left: 14px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(11, 25, 44, 0.8);
-      color: #ffffff;
-      padding: 4px 10px;
+      background: rgba(10, 20, 36, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-pure);
+      padding: 5px 12px;
       border-radius: var(--radius-pill);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      backdrop-filter: blur(4px);
+      letter-spacing: 0.02em;
     }
 
-    .slider-tag i {
-      width: 12px;
-      height: 12px;
-      color: var(--orange);
-    }
-
+    /* ==========================================================================
+       MENU & ULTRA LUXURY CARDS
+       ========================================================================== */
     .vertical-menu {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 11px;
     }
 
+    /* CTA Primary Button (Shimmer & Energy Pulse) */
     .cta-card {
-      background: linear-gradient(135deg, var(--orange) 0%, #c44314 100%);
+      position: relative;
+      background: var(--gradient-spirit);
       color: #ffffff;
-      border-radius: var(--radius);
-      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      padding: 15px 18px;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 6px 16px rgba(227, 90, 39, 0.25);
-      transition: transform 0.2s ease;
+      box-shadow: var(--shadow-glow), var(--shadow-premium);
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 4s infinite;
+    }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      25% { left: 200%; }
+      100% { left: 200%; }
+    }
+    .cta-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(255, 87, 34, 0.45);
+    }
     .cta-card:active {
       transform: scale(0.98);
     }
-
     .cta-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      z-index: 1;
     }
-
     .cta-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.2);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
       flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-
-    .cta-icon i {
-      width: 20px;
-      height: 20px;
-    }
-
     .cta-text h3 {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       font-weight: 800;
       color: #ffffff;
       line-height: 1.2;
+      letter-spacing: -0.01em;
     }
-
     .cta-text p {
       font-size: 0.72rem;
       color: rgba(255, 255, 255, 0.9);
-      margin-top: 2px;
+      margin-top: 3px;
     }
-
     .cta-arrow {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.16);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
       flex-shrink: 0;
+      z-index: 1;
     }
 
+    /* Modern Glass Card */
     .menu-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--shadow-premium);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
-      box-shadow: var(--shadow);
+    }
+    .menu-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.16);
+      transform: translateY(-1.5px);
     }
 
     .menu-btn {
@@ -298,7 +477,7 @@
       padding: 13px 15px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 13px;
       cursor: pointer;
       text-align: left;
       font-family: inherit;
@@ -307,274 +486,293 @@
     }
 
     .menu-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius-sm);
-      background: #f1f5f9;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--navy);
+      color: #38bdf8;
       flex-shrink: 0;
+      transition: transform 0.25s ease, background 0.25s ease;
     }
-
+    .menu-card:hover .menu-icon {
+      transform: scale(1.05);
+      color: #ff7a50;
+      border-color: rgba(255, 87, 34, 0.25);
+    }
     .menu-icon i {
-      width: 18px;
-      height: 18px;
+      width: 19px;
+      height: 19px;
     }
 
     .menu-info {
       flex: 1;
       min-width: 0;
     }
-
     .menu-title {
       font-size: 0.88rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--text-pure);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .menu-desc {
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       color: var(--text-muted);
-      margin-top: 1px;
+      margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .menu-arrow {
-      color: var(--text-muted);
+      color: var(--text-dim);
       display: flex;
       align-items: center;
-      transition: transform 0.25s ease;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
       flex-shrink: 0;
     }
-
     .menu-arrow i {
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
     }
-
     .menu-card.open .menu-arrow {
       transform: rotate(90deg);
-      color: var(--orange);
+      color: var(--blaze-orange);
     }
 
-    .drawer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      background: #fafafa;
+    /* 60 FPS ACCORDION DRAWER (Using CSS Grid Trick) */
+    .drawer-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(5, 12, 22, 0.6);
       border-top: 1px solid transparent;
     }
-
-    .menu-card.open .drawer {
-      max-height: 600px;
-      border-top-color: var(--border);
+    .menu-card.open .drawer-wrapper {
+      grid-template-rows: 1fr;
+      border-top-color: var(--border-subtle);
     }
-
+    .drawer-inner {
+      overflow: hidden;
+    }
     .drawer-body {
-      padding: 14px;
+      padding: 14px 15px;
     }
 
     .list-group {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
-
     .list-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 9px 12px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
+      padding: 10px 13px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
       text-decoration: none;
-      color: var(--text-main);
+      color: var(--text-sub);
       font-size: 0.76rem;
       font-weight: 600;
+      transition: all 0.2s ease;
     }
-
+    .list-link:hover {
+      background: rgba(255, 87, 34, 0.1);
+      border-color: rgba(255, 87, 34, 0.25);
+      color: var(--text-pure);
+      transform: translateX(3px);
+    }
     .list-link-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       min-width: 0;
     }
-
     .list-link-left span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .list-link-left i {
-      width: 14px;
-      height: 14px;
-      color: var(--orange);
+      width: 15px;
+      height: 15px;
+      color: var(--blaze-orange);
       flex-shrink: 0;
     }
 
+    /* Fee & Rekening Boxes */
     .fee-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 12px;
+      background: linear-gradient(145deg, rgba(255, 87, 34, 0.12), rgba(11, 23, 40, 0.5));
+      border: 1px solid rgba(255, 87, 34, 0.25);
+      border-radius: var(--radius-md);
+      padding: 14px;
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
     }
-
     .fee-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--orange);
-    }
-
-    .fee-amount {
-      font-size: 1.4rem;
+      font-size: 0.67rem;
       font-weight: 800;
-      color: var(--navy-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ff7a50;
+    }
+    .fee-amount {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-pure);
       margin-top: 2px;
+      letter-spacing: -0.02em;
     }
 
     .rek-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-md);
+      padding: 11px 13px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 8px;
     }
-
     .rek-num {
-      font-family: monospace;
+      font-family: 'SF Mono', Consolas, Monaco, monospace;
       font-size: 0.95rem;
       font-weight: 700;
-      color: var(--navy-dark);
+      color: #38bdf8;
+      letter-spacing: 0.04em;
     }
-
     .rek-copy {
-      background: var(--orange-soft);
-      color: var(--orange);
-      border: 1px solid rgba(227, 90, 39, 0.2);
-      padding: 4px 10px;
+      background: rgba(255, 87, 34, 0.15);
+      color: #ff7a50;
+      border: 1px solid rgba(255, 87, 34, 0.3);
+      padding: 5px 11px;
       border-radius: var(--radius-pill);
       font-size: 0.68rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .rek-copy:hover {
+      background: var(--blaze-orange);
+      color: #ffffff;
     }
 
     .note-text {
       font-size: 0.68rem;
       color: var(--text-muted);
-      line-height: 1.3;
+      line-height: 1.4;
     }
 
+    /* Map Box */
     .map-container {
       width: 100%;
-      height: 140px;
-      border-radius: var(--radius-sm);
+      height: 145px;
+      border-radius: var(--radius-md);
       overflow: hidden;
-      border: 1px solid var(--border);
-      margin: 8px 0;
+      border: 1px solid var(--border-subtle);
+      margin: 9px 0;
+      background: #000;
     }
-
     .map-container iframe {
       width: 100%;
       height: 100%;
       border: none;
+      filter: contrast(1.05) saturate(1.1);
     }
-
     .btn-action {
-      background: var(--navy);
+      background: linear-gradient(135deg, #0284c7, #0369a1);
       color: #ffffff;
       text-decoration: none;
       font-size: 0.76rem;
       font-weight: 700;
-      padding: 9px 12px;
-      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
       width: 100%;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+      transition: opacity 0.2s ease;
+    }
+    .btn-action:hover {
+      opacity: 0.92;
     }
 
+    /* ==========================================================================
+       VIDEO TUTORIAL SECTION
+       ========================================================================== */
     .video-card {
       margin-top: 14px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: var(--shadow);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--shadow-premium);
     }
-
     .video-header {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
+      gap: 7px;
+      font-size: 0.86rem;
       font-weight: 700;
-      color: var(--navy-dark);
-      margin-bottom: 10px;
+      color: var(--text-pure);
+      margin-bottom: 12px;
     }
-
     .video-header i {
-      color: var(--orange);
-      width: 16px;
-      height: 16px;
+      color: var(--blaze-orange);
+      width: 18px;
+      height: 18px;
     }
-
     .video-tabs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-      background: #f1f5f9;
-      padding: 3px;
-      border-radius: var(--radius-sm);
-      margin-bottom: 10px;
+      gap: 5px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      border: 1px solid var(--border-subtle);
     }
-
     .video-tab {
       background: transparent;
       border: none;
-      padding: 6px 2px;
+      padding: 7px 4px;
       font-size: 0.7rem;
       font-weight: 600;
       color: var(--text-muted);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       cursor: pointer;
       text-align: center;
+      transition: all 0.2s ease;
     }
-
     .video-tab.active {
-      background: #ffffff;
-      color: var(--navy-dark);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       font-weight: 700;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-
     .video-box {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       overflow: hidden;
       background: #000000;
+      border: 1px solid var(--border-subtle);
     }
-
     .video-box iframe {
       position: absolute;
       inset: 0;
@@ -582,188 +780,225 @@
       height: 100%;
       border: none;
     }
-
     .video-caption {
-      font-size: 0.7rem;
+      font-size: 0.71rem;
       color: var(--text-muted);
       text-align: center;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
     .footer {
       text-align: center;
-      padding: 24px 0 10px;
-      margin-top: 14px;
-      border-top: 1px solid var(--border);
+      padding: 28px 0 10px;
+      margin-top: 18px;
+      border-top: 1px solid var(--border-subtle);
     }
-
     .footer-org {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--navy);
+      color: #93c5fd;
     }
-
     .footer-quote {
       font-size: 0.72rem;
       color: var(--text-muted);
       font-style: italic;
-      margin: 3px 0 10px;
+      margin: 4px 0 14px;
     }
-
     .footer-links {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 8px;
+      gap: 16px;
+      margin-bottom: 10px;
     }
-
     .footer-links a {
-      color: var(--text-main);
+      color: var(--text-sub);
       text-decoration: none;
       font-size: 0.72rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      transition: color 0.2s ease;
     }
-
+    .footer-links a:hover {
+      color: #ff7a50;
+    }
     .footer-copy {
       font-size: 0.65rem;
-      color: var(--text-muted);
+      color: var(--text-dim);
     }
 
+    /* ==========================================================================
+       SUPPORT DOCK (FLOATING ACTION)
+       ========================================================================== */
     .support-anchor {
       position: fixed;
-      bottom: 16px;
-      right: 16px;
+      bottom: 20px;
+      right: 20px;
       z-index: 100;
     }
-
     .btn-support {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: var(--navy-dark);
+      gap: 7px;
+      background: linear-gradient(135deg, #0e1e36, #091322);
       color: #ffffff;
-      border: none;
-      padding: 9px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 10px 18px;
       border-radius: var(--radius-pill);
       font-family: inherit;
       font-size: 0.76rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.15);
+      transition: all 0.25s ease;
     }
-
+    .btn-support:hover {
+      transform: scale(1.04);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
     .btn-support i {
       color: #38bdf8;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
     }
 
     .popover {
       position: absolute;
-      bottom: 48px;
+      bottom: 54px;
       right: 0;
-      width: 260px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      width: 270px;
+      background: #0a1526;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.6);
       display: none;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
     }
-
     .popover.active {
       display: block;
+      animation: popoverFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
+    @keyframes popoverFade {
+      from { opacity: 0; transform: translateY(8px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
     .popover-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 6px;
     }
-
     .popover-head span {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--navy-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
     }
-
     .popover-head button {
       background: none;
       border: none;
       color: var(--text-muted);
       cursor: pointer;
     }
-
     .admin-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-top: 8px;
+      gap: 7px;
+      margin-top: 10px;
     }
-
     .admin-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 10px;
-      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      border-radius: var(--radius-md);
       text-decoration: none;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      background: #f1f5f9;
-      color: var(--navy-dark);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .admin-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(2px);
     }
 
+    /* ==========================================================================
+       TOAST NOTIFICATION
+       ========================================================================== */
     .toast-box {
       position: fixed;
-      top: 16px;
+      top: 24px;
       left: 50%;
-      transform: translateX(-50%);
-      background: var(--navy-dark);
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(10, 21, 38, 0.92);
+      border: 1px solid rgba(255, 87, 34, 0.3);
       color: #ffffff;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: var(--radius-pill);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      z-index: 200;
+      z-index: 10000;
       display: flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(255, 87, 34, 0.2);
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     .toast-box.show {
       opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
   </style>
 </head>
 <body>
 
+  <!-- Scroll Progress Indicator (Pengganti Scrollbar PC) -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+  </div>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-bg">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Toast Notification -->
   <div id="toast" class="toast-box">
-    <i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+    <i data-lucide="check-circle-2" style="width: 15px; height: 15px; color: #ff7a50;"></i>
     <span id="toast-text"></span>
   </div>
 
+  <!-- Main Portal Layout -->
   <main class="container">
 
+    <!-- Header Section -->
     <header class="header">
       <div class="badge-status">
-        <span class="dot"></span>
+        <span class="dot-pulse"></span>
         <span>PENDAFTARAN RESMI DIBUKA</span>
       </div>
 
-      <div class="emblem">
-        <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%231E3E62\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23E35A27\'/></svg>';" />
+      <div class="emblem-wrapper">
+        <div class="emblem-glow"></div>
+        <div class="emblem">
+          <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%230B1728\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23FF5722\'/></svg>';" />
+        </div>
       </div>
 
       <div class="title-group">
@@ -772,19 +1007,29 @@
       </div>
       <h1 class="org-subtitle">PAC IPNU IPPNU DANDER</h1>
 
-      <div class="divider"></div>
+      <div class="divider-spirit">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line right"></div>
+      </div>
 
       <p class="theme">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
     </header>
 
+    <!-- Visual Media Slider -->
     <section class="slider">
       <div class="slider-track" id="slider-track"></div>
+      <div class="slider-overlay"></div>
       <div class="slider-tag">
+        <i data-lucide="sparkles" style="width: 12px; height: 12px; color: #ff7a50;"></i>
+        <span>Dokumentasi Kaderisasi</span>
       </div>
     </section>
 
+    <!-- Navigation & Accordion Card Deck -->
     <nav class="vertical-menu">
 
+      <!-- Primary Action -->
       <a href="registrasi.html" class="cta-card">
         <div class="cta-left">
           <div class="cta-icon">
@@ -796,10 +1041,11 @@
           </div>
         </div>
         <div class="cta-arrow">
-          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i>
         </div>
       </a>
 
+      <!-- Kirim Berkas -->
       <div class="menu-card">
         <a href="upload.html" class="menu-btn">
           <div class="menu-icon">
@@ -815,6 +1061,7 @@
         </a>
       </div>
 
+      <!-- Cek Data -->
       <div class="menu-card">
         <a href="cek-data.html" class="menu-btn">
           <div class="menu-icon">
@@ -830,8 +1077,9 @@
         </a>
       </div>
 
+      <!-- Template Berkas -->
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc">
+        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
           <div class="menu-icon">
             <i data-lucide="folder-down"></i>
           </div>
@@ -843,13 +1091,16 @@
             <i data-lucide="chevron-right"></i>
           </div>
         </button>
-        <div class="drawer">
-          <div class="drawer-body">
-            <div class="list-group" id="download-list"></div>
+        <div class="drawer-wrapper">
+          <div class="drawer-inner">
+            <div class="drawer-body">
+              <div class="list-group" id="download-list"></div>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- TOR -->
       <div class="menu-card">
         <a href="assets/documents/TOR-LAKMUD-IV-PAC-IPNU-IPPNU-DANDER.pdf" download class="menu-btn">
           <div class="menu-icon">
@@ -865,42 +1116,46 @@
         </a>
       </div>
 
+      <!-- Administrasi Rekening -->
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc">
+        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
           <div class="menu-icon">
             <i data-lucide="credit-card"></i>
           </div>
           <div class="menu-info">
-            <div class="menu-title">Administrasi</div>
+            <div class="menu-title">Administrasi &amp; Infaq</div>
             <div class="menu-desc">Infaq pendaftaran &amp; nomor rekening</div>
           </div>
           <div class="menu-arrow">
             <i data-lucide="chevron-right"></i>
           </div>
         </button>
-        <div class="drawer">
-          <div class="drawer-body">
-            <div class="fee-box">
-              <div class="fee-label">Infaq Kegiatan</div>
-              <div class="fee-amount">Rp 120.000</div>
-            </div>
-            <div class="rek-box">
-              <div>
-                <div style="font-size: 0.7rem; font-weight: 700; color: var(--navy);">BANK BRI</div>
-                <div class="rek-num" id="rek-val">6123-01-012345-53-1</div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">a.n PAC IPNU IPPNU DANDER</div>
+        <div class="drawer-wrapper">
+          <div class="drawer-inner">
+            <div class="drawer-body">
+              <div class="fee-box">
+                <div class="fee-label">Infaq Kegiatan</div>
+                <div class="fee-amount">Rp 120.000</div>
               </div>
-              <button type="button" class="rek-copy" id="btn-copy">
-                <i data-lucide="copy" style="width: 12px; height: 12px;"></i> Salin
-              </button>
+              <div class="rek-box">
+                <div>
+                  <div style="font-size: 0.68rem; font-weight: 800; color: #ff7a50;">BANK BRI</div>
+                  <div class="rek-num" id="rek-val">6123-01-012345-53-1</div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 1px;">a.n PAC IPNU IPPNU DANDER</div>
+                </div>
+                <button type="button" class="rek-copy" id="btn-copy">
+                  <i data-lucide="copy" style="width: 12px; height: 12px;"></i> Salin
+                </button>
+              </div>
+              <p class="note-text">* Simpan bukti transfer untuk diunggah pada menu Kirim Berkas.</p>
             </div>
-            <p class="note-text">* Simpan bukti transfer untuk diunggah pada menu Kirim Berkas.</p>
           </div>
         </div>
       </div>
 
+      <!-- Lokasi Kegiatan -->
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc">
+        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
           <div class="menu-icon">
             <i data-lucide="map-pin"></i>
           </div>
@@ -912,23 +1167,26 @@
             <i data-lucide="chevron-right"></i>
           </div>
         </button>
-        <div class="drawer">
-          <div class="drawer-body">
-            <p style="font-size: 0.72rem; color: var(--text-main); margin-bottom: 6px;">
-              <strong>Gedung MWC NU Dander</strong><br />Jl. Raya Dander No. 45, Dander, Bojonegoro
-            </p>
-            <div class="map-container">
-              <iframe title="Lokasi" src="https://www.openstreetmap.org/export/embed.html?bbox=111.83%2C-7.30%2C111.90%2C-7.22&amp;layer=mapnik" loading="lazy"></iframe>
+        <div class="drawer-wrapper">
+          <div class="drawer-inner">
+            <div class="drawer-body">
+              <p style="font-size: 0.74rem; color: var(--text-sub); margin-bottom: 6px;">
+                <strong style="color: #fff;">Gedung MWC NU Dander</strong><br />Jl. Raya Dander No. 45, Dander, Bojonegoro
+              </p>
+              <div class="map-container">
+                <iframe title="Lokasi" src="https://www.openstreetmap.org/export/embed.html?bbox=111.83%2C-7.30%2C111.90%2C-7.22&amp;layer=mapnik" loading="lazy"></iframe>
+              </div>
+              <a href="https://maps.google.com/?q=Dander+Bojonegoro" target="_blank" rel="noopener noreferrer" class="btn-action">
+                <i data-lucide="navigation" style="width: 14px; height: 14px;"></i> Buka di Google Maps
+              </a>
             </div>
-            <a href="https://maps.google.com/?q=Dander+Bojonegoro" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <i data-lucide="navigation" style="width: 14px; height: 14px;"></i> Buka di Google Maps
-            </a>
           </div>
         </div>
       </div>
 
+      <!-- Media Sosial -->
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc">
+        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
           <div class="menu-icon">
             <i data-lucide="share-2"></i>
           </div>
@@ -940,30 +1198,32 @@
             <i data-lucide="chevron-right"></i>
           </div>
         </button>
-        <div class="drawer">
-          <div class="drawer-body">
-            <div class="list-group">
-              <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="list-link">
-                <div class="list-link-left">
-                  <i data-lucide="instagram"></i>
-                  <span>Instagram Official</span>
-                </div>
-                <i data-lucide="external-link" style="width: 12px; height: 12px; color: var(--text-muted);"></i>
-              </a>
-              <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="list-link">
-                <div class="list-link-left">
-                  <i data-lucide="facebook"></i>
-                  <span>Facebook Official</span>
-                </div>
-                <i data-lucide="external-link" style="width: 12px; height: 12px; color: var(--text-muted);"></i>
-              </a>
-              <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="list-link">
-                <div class="list-link-left">
-                  <i data-lucide="globe"></i>
-                  <span>Website Resmi</span>
-                </div>
-                <i data-lucide="external-link" style="width: 12px; height: 12px; color: var(--text-muted);"></i>
-              </a>
+        <div class="drawer-wrapper">
+          <div class="drawer-inner">
+            <div class="drawer-body">
+              <div class="list-group">
+                <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="list-link">
+                  <div class="list-link-left">
+                    <i data-lucide="instagram"></i>
+                    <span>Instagram Official</span>
+                  </div>
+                  <i data-lucide="external-link" style="width: 13px; height: 13px; color: var(--text-dim);"></i>
+                </a>
+                <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="list-link">
+                  <div class="list-link-left">
+                    <i data-lucide="facebook"></i>
+                    <span>Facebook Official</span>
+                  </div>
+                  <i data-lucide="external-link" style="width: 13px; height: 13px; color: var(--text-dim);"></i>
+                </a>
+                <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="list-link">
+                  <div class="list-link-left">
+                    <i data-lucide="globe"></i>
+                    <span>Website Resmi</span>
+                  </div>
+                  <i data-lucide="external-link" style="width: 13px; height: 13px; color: var(--text-dim);"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -971,10 +1231,11 @@
 
     </nav>
 
+    <!-- Video Panduan Section -->
     <section class="video-card">
       <div class="video-header">
         <i data-lucide="play-circle"></i>
-        <span>Panduan Tutorial</span>
+        <span>Panduan Tutorial Peserta</span>
       </div>
       <div class="video-tabs">
         <button type="button" class="video-tab active" data-tab="pendaftaran">1. Daftar</button>
@@ -982,43 +1243,45 @@
         <button type="button" class="video-tab" data-tab="cekdata">3. Cek Data</button>
       </div>
       <div class="video-box">
-        <iframe id="video-frame" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="video-frame" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Tutorial Lakmud" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-caption" id="video-caption">Langkah 1: Pengisian Formulir Pendaftaran Online</div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer-org">PAC IPNU IPPNU DANDER</div>
       <div class="footer-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</div>
       <div class="footer-links">
         <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="instagram" style="width: 12px; height: 12px;"></i> Instagram
+          <i data-lucide="instagram" style="width: 13px; height: 13px;"></i> Instagram
         </a>
-        <span>•</span>
+        <span style="color: var(--border-subtle)">•</span>
         <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="globe" style="width: 12px; height: 12px;"></i> Website
+          <i data-lucide="globe" style="width: 13px; height: 13px;"></i> Portal Web
         </a>
       </div>
-      <div class="footer-copy">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander.</div>
+      <div class="footer-copy">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander. Hak Cipta Dilindungi.</div>
     </footer>
 
   </main>
 
+  <!-- Help Desk Support Dock -->
   <div class="support-anchor">
     <div class="popover" id="popover">
       <div class="popover-head">
         <span>Pusat Bantuan</span>
-        <button type="button" id="btn-close-popover"><i data-lucide="x" style="width: 14px; height: 14px;"></i></button>
+        <button type="button" id="btn-close-popover" aria-label="Tutup"><i data-lucide="x" style="width: 15px; height: 15px;"></i></button>
       </div>
       <div style="font-size: 0.68rem; color: var(--text-muted);">Pilih narahubung panitia:</div>
       <div class="admin-list">
         <a href="https://wa.me/6281234567890?text=Halo%20Rekan%20Panitia%20LAKMUD%20IV" target="_blank" rel="noopener noreferrer" class="admin-link">
           <span>Narahubung Rekan</span>
-          <i data-lucide="message-circle" style="width: 12px; height: 12px; color: var(--navy);"></i>
+          <i data-lucide="message-circle" style="width: 14px; height: 14px; color: #38bdf8;"></i>
         </a>
         <a href="https://wa.me/6289876543210?text=Halo%20Rekanita%20Panitia%20LAKMUD%20IV" target="_blank" rel="noopener noreferrer" class="admin-link">
           <span>Narahubung Rekanita</span>
-          <i data-lucide="message-circle" style="width: 12px; height: 12px; color: var(--orange);"></i>
+          <i data-lucide="message-circle" style="width: 14px; height: 14px; color: #ff7a50;"></i>
         </a>
       </div>
     </div>
@@ -1028,6 +1291,7 @@
     </button>
   </div>
 
+  <!-- Optimized Vanilla JS Logic -->
   <script>
     const CONFIG = {
       docs: [
@@ -1058,47 +1322,71 @@
       }
     };
 
+    // Passive Scroll Progress Bar (High Performance)
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('scrollProgress');
+      if (bar) bar.style.width = scrolled + '%';
+    }, { passive: true });
+
     function showToast(msg) {
       const t = document.getElementById("toast");
       document.getElementById("toast-text").textContent = msg;
       t.classList.add("show");
-      setTimeout(() => t.classList.remove("show"), 2000);
+      setTimeout(() => t.classList.remove("show"), 2200);
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Render Dokumen List
       const dList = document.getElementById("download-list");
-      dList.innerHTML = CONFIG.docs.map(d => `
-        <a href="${d.url}" download class="list-link">
-          <div class="list-link-left">
-            <i data-lucide="file-text"></i>
-            <span>${d.label}</span>
-          </div>
-          <i data-lucide="download" style="width: 12px; height: 12px;"></i>
-        </a>
-      `).join("");
+      if (dList) {
+        dList.innerHTML = CONFIG.docs.map(d => `
+          <a href="${d.url}" download class="list-link">
+            <div class="list-link-left">
+              <i data-lucide="file-text"></i>
+              <span>${d.label}</span>
+            </div>
+            <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+          </a>
+        `).join("");
+      }
 
-      document.getElementById("btn-copy").addEventListener("click", () => {
-        const txt = document.getElementById("rek-val").textContent.trim();
-        navigator.clipboard.writeText(txt).then(() => showToast("Nomor rekening disalin!"));
-      });
+      // Copy Rekening Number
+      const btnCopy = document.getElementById("btn-copy");
+      if (btnCopy) {
+        btnCopy.addEventListener("click", () => {
+          const txt = document.getElementById("rek-val").textContent.trim();
+          navigator.clipboard.writeText(txt).then(() => showToast("Nomor rekening berhasil disalin!"));
+        });
+      }
 
+      // Smooth Accordion Handler
       document.querySelectorAll(".trigger-acc").forEach(btn => {
         btn.addEventListener("click", () => {
           const parent = btn.closest(".menu-card");
           const isOpen = parent.classList.contains("open");
           document.querySelectorAll(".menu-card.open").forEach(c => {
-            if (c !== parent) c.classList.remove("open");
+            if (c !== parent) {
+              c.classList.remove("open");
+              const b = c.querySelector('.trigger-acc');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
           });
           parent.classList.toggle("open", !isOpen);
+          btn.setAttribute('aria-expanded', (!isOpen).toString());
         });
       });
 
+      // Lazy & Preloaded Slider Track
       const track = document.getElementById("slider-track");
       const slides = [];
       CONFIG.photos.forEach((src, idx) => {
         const img = document.createElement("img");
         img.className = `slide-img ${idx === 0 ? 'active' : ''}`;
-        img.alt = "Dokumentasi";
+        img.alt = "Dokumentasi Kaderisasi LAKMUD IV";
+        img.decoding = "async";
         img.src = src;
         img.onerror = () => { img.src = CONFIG.fallbacks[idx]; };
         track.appendChild(img);
@@ -1111,8 +1399,9 @@
         slides[current].classList.remove("active");
         current = (current + 1) % slides.length;
         slides[current].classList.add("active");
-      }, 3500);
+      }, 4000);
 
+      // Tutorial Tabs Switching
       const tabs = document.querySelectorAll(".video-tab");
       const vFrame = document.getElementById("video-frame");
       const vCap = document.getElementById("video-caption");
@@ -1128,10 +1417,18 @@
         });
       });
 
+      // Support Popover
       const popover = document.getElementById("popover");
-      document.getElementById("btn-support").addEventListener("click", () => popover.classList.toggle("active"));
-      document.getElementById("btn-close-popover").addEventListener("click", () => popover.classList.remove("active"));
+      const btnSupport = document.getElementById("btn-support");
+      const btnClosePopover = document.getElementById("btn-close-popover");
+      if (btnSupport && popover) {
+        btnSupport.addEventListener("click", () => popover.classList.toggle("active"));
+      }
+      if (btnClosePopover && popover) {
+        btnClosePopover.addEventListener("click", () => popover.classList.remove("active"));
+      }
 
+      // Initialize Icons
       lucide.createIcons();
     });
   </script>
