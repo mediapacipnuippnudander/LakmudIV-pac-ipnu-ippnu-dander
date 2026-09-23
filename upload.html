@@ -2,478 +2,799 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Pengiriman Berkas — LAKMUD IV PAC IPNU IPPNU Dander</title>
-  <meta name="theme-color" content="#0B192C" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Unggah Berkas Persyaratan — LAKMUD IV PAC IPNU IPPNU Dander</title>
+  <meta name="description" content="Formulir Pengunggahan Berkas Persyaratan Resmi LAKMUD IV PAC IPNU IPPNU Dander." />
+  <meta name="theme-color" content="#f8fafc" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --navy-dark: #0b192c;
-      --navy: #1e3e62;
-      --orange: #e35a27;
-      --orange-soft: rgba(227, 90, 39, 0.08);
+      --bg-canvas: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fcfdfe;
+      --accent-spirit: #d9381e;
+      --accent-spirit-dark: #b82810;
+      --accent-spirit-soft: rgba(217, 56, 30, 0.08);
+      --accent-navy: #1e3a5f;
+      --accent-navy-soft: rgba(30, 58, 95, 0.06);
+      --border-crisp: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --border-focus: #1e3a5f;
       --text-main: #0f172a;
+      --text-sub: #334155;
       --text-muted: #64748b;
-      --border: #e2e8f0;
-      --shadow: 0 4px 14px -2px rgba(11, 25, 44, 0.06);
-      --radius: 14px;
-      --radius-sm: 8px;
+      --text-dim: #94a3b8;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+      --radius-xl: 14px;
+      --radius-lg: 10px;
+      --radius-md: 8px;
+      --radius-sm: 6px;
       --radius-pill: 9999px;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text-main); min-height: 100vh; display: flex; justify-content: center; padding: 16px 12px 24px; }
-    .container { width: 100%; max-width: 480px; margin: 0 auto; }
-    .header-nav { position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; min-height: 40px; }
-    .btn-back { position: absolute; left: 0; display: inline-flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--border); color: var(--navy-dark); padding: 7px 12px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: var(--shadow); }
-    .header-profile { text-align: center; padding: 6px 0 16px; }
-    .emblem { width: 76px; height: 76px; margin: 0 auto 10px; background: #ffffff; border-radius: 50%; border: 2px solid var(--border); padding: 6px; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; }
-    .emblem img { width: 100%; height: 100%; object-fit: contain; }
-    .title-group { display: flex; align-items: baseline; justify-content: center; gap: 6px; }
-    .title-text { font-size: 2rem; font-weight: 800; color: var(--navy-dark); line-height: 1; }
-    .title-roman { font-family: 'Cinzel', serif; font-size: 1.9rem; font-weight: 700; color: var(--orange); line-height: 1; }
-    .org-subtitle { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); margin-top: 4px; }
-    .divider { width: 50px; height: 2px; background: var(--orange); margin: 10px auto 8px; border-radius: var(--radius-pill); opacity: 0.7; }
-    .theme { font-size: 0.76rem; color: var(--text-muted); font-style: italic; line-height: 1.35; padding: 0 10px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; box-shadow: var(--shadow); margin-top: 10px; }
-    .form-group { margin-bottom: 14px; }
-    .label-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-    label { font-size: 0.76rem; font-weight: 700; color: var(--navy-dark); }
-    .input-control { width: 100%; background: #fafbfc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; font-family: inherit; font-size: 0.8rem; color: var(--text-main); outline: none; transition: border-color 0.2s ease; }
-    .input-control:focus { border-color: var(--navy); background: #ffffff; }
-    .btn-action-full { width: 100%; background: linear-gradient(135deg, var(--orange) 0%, #c44314 100%); color: #ffffff; border: none; padding: 12px 16px; border-radius: var(--radius-sm); font-family: inherit; font-size: 0.85rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(227, 90, 39, 0.3); margin-top: 10px; }
-    .btn-action-full:active { transform: scale(0.98); }
-    .user-pill { background: #f1f5f9; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; margin-bottom: 16px; }
-    .user-pill-name { font-size: 0.85rem; font-weight: 800; color: var(--navy-dark); }
-    .user-pill-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
-    .upload-item { background: #fafbfc; border: 1px dashed var(--border); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 10px; transition: border-color 0.2s ease; }
-    .upload-item.filled { border-color: #0284c7; background: #f0f9ff; }
-    .upload-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-    .upload-title { font-size: 0.76rem; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 6px; }
-    .upload-badge { font-size: 0.65rem; font-weight: 700; color: #0284c7; display: none; }
-    .upload-item.filled .upload-badge { display: inline-flex; align-items: center; gap: 3px; }
-    .file-input { width: 100%; font-size: 0.74rem; color: var(--text-muted); }
-    .file-info { font-size: 0.66rem; color: var(--text-muted); margin-top: 4px; }
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(11, 25, 44, 0.7); backdrop-filter: blur(4px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 16px; }
-    .modal-backdrop.active { display: flex; }
-    .modal-box { width: 100%; max-width: 380px; background: var(--card); border-radius: var(--radius); padding: 22px 18px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
-    .progress-ring { width: 54px; height: 54px; margin: 0 auto 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; color: var(--navy-dark); background: #f1f5f9; border: 3px solid var(--border); }
-    .progress-ring.error { background: #fef2f2; border-color: #ef4444; color: #ef4444; }
-    .progress-bar-wrap { width: 100%; height: 7px; background: #f1f5f9; border-radius: var(--radius-pill); overflow: hidden; margin: 10px 0; }
-    .progress-bar-fill { height: 100%; width: 0%; background: var(--orange); transition: width 0.15s ease; }
-    .btn-secondary { background: var(--navy-dark); color: #ffffff; text-decoration: none; font-size: 0.76rem; font-weight: 700; padding: 9px 12px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; }
-    .btn-orange-outline { background: var(--orange-soft); color: var(--orange); border: 1px solid rgba(227, 90, 39, 0.3); text-decoration: none; font-size: 0.76rem; font-weight: 700; padding: 9px 12px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; }
-    .footer { text-align: center; padding: 24px 0 10px; margin-top: 14px; border-top: 1px solid var(--border); }
-    .footer-org { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
-    .footer-quote { font-size: 0.72rem; color: var(--text-muted); font-style: italic; margin: 3px 0 10px; }
-    .footer-links { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
-    .footer-links a { color: var(--text-main); text-decoration: none; font-size: 0.72rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
-    .footer-copy { font-size: 0.65rem; color: var(--text-muted); }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 14px 12px;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .scroll-progress-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: rgba(15, 23, 42, 0.06);
+      z-index: 9999;
+    }
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #d9381e, #ea580c, #1e3a5f);
+      transition: width 0.08s linear;
+    }
+    .container {
+      width: 100%;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      color: var(--accent-navy);
+      font-size: 0.72rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-back:hover {
+      border-color: var(--accent-navy);
+    }
+    .header {
+      padding: 4px 0 12px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .emblem-clean {
+      width: 48px;
+      height: 48px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .emblem-clean img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .title-box {
+      text-align: left;
+    }
+    .main-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      letter-spacing: -0.02em;
+    }
+    .main-title span.roman {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-spirit);
+      font-size: 1.4rem;
+    }
+    .sub-org {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-navy);
+      margin-top: 3px;
+    }
+    .page-lead {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-xl);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .page-lead-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-lead-title i {
+      color: var(--accent-spirit);
+      width: 16px;
+      height: 16px;
+    }
+    .page-lead-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .upload-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-xl);
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-heading {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-navy);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .input-group:last-child {
+      margin-bottom: 0;
+    }
+    .input-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+    .input-control {
+      width: 100%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 9px 12px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .input-control:focus {
+      border-color: var(--border-focus);
+      background: #ffffff;
+    }
+    .dropzone-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      transition: border-color 0.15s ease;
+    }
+    .dropzone-item:last-child {
+      margin-bottom: 0;
+    }
+    .dropzone-item.has-file {
+      border-color: var(--accent-navy);
+      background: var(--bg-card-hover);
+    }
+    .drop-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .drop-title-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .drop-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-navy-soft);
+      color: var(--accent-navy);
+      font-size: 0.68rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .drop-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .drop-fmt {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .file-input-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+    .btn-choose-file {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-hover);
+      color: var(--text-sub);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .dropzone-item.has-file .btn-choose-file {
+      border-style: solid;
+      border-color: var(--accent-navy);
+      color: var(--accent-navy);
+      background: var(--bg-surface);
+    }
+    .file-input-wrapper input[type=file] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .file-status-text {
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dropzone-item.has-file .file-status-text {
+      color: var(--accent-spirit);
+      font-weight: 600;
+    }
+    .btn-submit-upload {
+      background: linear-gradient(135deg, var(--accent-spirit) 0%, var(--accent-spirit-dark) 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-xl);
+      padding: 13px 16px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 3px 8px -1px rgba(217, 56, 30, 0.25);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-submit-upload:active {
+      transform: scale(0.985);
+      opacity: 0.95;
+    }
+    .footer {
+      width: 100%;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-crisp);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .footer-brand {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--accent-navy);
+    }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      color: var(--accent-spirit);
+    }
+    .footer-copyright {
+      font-size: 0.63rem;
+      color: var(--text-dim);
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .support-anchor {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 100;
+    }
+    .btn-support {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-active);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-support i {
+      color: var(--accent-spirit);
+      width: 14px;
+      height: 14px;
+    }
+    .popover {
+      position: absolute;
+      bottom: 44px;
+      right: 0;
+      width: 250px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-xl);
+      padding: 12px;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+    .popover.active {
+      display: block;
+    }
+    .popover-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .popover-head span {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .popover-head button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .admin-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .admin-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 10px;
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-crisp);
+      color: var(--text-main);
+    }
+    .toast-box {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: var(--text-main);
+      color: #ffffff;
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.74rem;
+      font-weight: 600;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow: var(--shadow-md);
+      transition: all 0.2s ease;
+    }
+    .toast-box.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
 <body>
-  <main class="container">
-    <div class="header-nav">
-      <button type="button" class="btn-back" id="btn-back">
-        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i>
-        <span>Kembali</span>
-      </button>
+  <div class="scroll-progress-line">
+    <div class="scroll-progress-fill" id="scrollProgress"></div>
+  </div>
+  <div id="toast" class="toast-box">
+    <i data-lucide="check" style="width: 14px; height: 14px; color: #ff8c42;"></i>
+    <span id="toast-text"></span>
+  </div>
+  <div class="container">
+    <div class="top-nav">
+      <a href="index.html" class="btn-back">
+        <i data-lucide="arrow-left" style="width: 13px; height: 13px;"></i>
+        <span>Kembali ke Beranda</span>
+      </a>
+      <span style="font-size: 0.68rem; font-weight: 700; color: var(--accent-spirit);">LAKMUD IV</span>
     </div>
-    <header class="header-profile">
-      <div class="emblem">
-        <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%231E3E62\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23E35A27\'/></svg>';" />
+    <header class="header">
+      <div class="hero-brand">
+        <div class="emblem-clean">
+          <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' rx=\'20\' fill=\'%231E3A5F\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23D9381E\'/></svg>';" />
+        </div>
+        <div class="title-box">
+          <div class="main-title">
+            Lakmud <span class="roman">IV</span>
+          </div>
+          <div class="sub-org">PAC IPNU IPPNU DANDER</div>
+        </div>
       </div>
-      <div class="title-group">
-        <span class="title-text">Lakmud</span>
-        <span class="title-roman">IV</span>
-      </div>
-      <h1 class="org-subtitle">PAC IPNU IPPNU DANDER</h1>
-      <div class="divider"></div>
-      <p class="theme">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
     </header>
-    <section class="card" id="section-auth">
-      <h2 style="font-size: 0.92rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 4px;">Pengecekan Identitas Peserta</h2>
-      <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 14px;">Masukkan Asal Delegasi dan Tanggal Lahir yang Anda daftarkan.</p>
-      <form id="form-auth">
-        <div class="form-group">
-          <div class="label-row"><label for="auth-delegasi">ASAL DELEGASI</label></div>
-          <input type="text" id="auth-delegasi" class="input-control" placeholder="Contoh: PR IPNU IPPNU Sumberagung" required />
-        </div>
-        <div class="form-group">
-          <div class="label-row"><label for="auth-tanggal">TANGGAL LAHIR</label></div>
-          <input type="date" id="auth-tanggal" class="input-control" required />
-        </div>
-        <button type="submit" class="btn-action-full" id="btn-auth">
-          <span>Masuk &amp; Kirim Berkas</span>
-          <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
-        </button>
-      </form>
-    </section>
-    <section class="card" id="section-upload" style="display: none;">
-      <div class="user-pill">
-        <div class="user-pill-name" id="display-user-name">Nama Peserta</div>
-        <div class="user-pill-sub" id="display-user-info">Kode Registrasi • Delegasi</div>
+    <div class="page-lead">
+      <div class="page-lead-title">
+        <i data-lucide="upload-cloud"></i>
+        <span>Unggah Berkas Persyaratan</span>
       </div>
-      <form id="form-upload">
-        <div class="upload-item" id="item-foto">
-          <div class="upload-item-header">
-            <span class="upload-title"><i data-lucide="image"></i> 1. Pas Foto 3x4 (Latar Polos)</span>
-            <span class="upload-badge"><i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Siap</span>
-          </div>
-          <input type="file" id="file-foto" class="file-input" accept="image/*" />
-          <div class="file-info">Folder: 1. Foto 3:4 (Maks. 5 MB).</div>
+      <p class="page-lead-desc">Silakan masukkan data konfirmasi dan unggah 5 berkas kelengkapan administrasi beserta bukti transaksi kontribusi.</p>
+    </div>
+    <form class="upload-form" id="uploadForm">
+      <div class="form-card">
+        <div class="card-heading">
+          <i data-lucide="user-check" style="width: 14px; height: 14px; color: var(--accent-spirit);"></i>
+          <span>Identitas Peserta</span>
         </div>
-        <div class="upload-item" id="item-rekom">
-          <div class="upload-item-header">
-            <span class="upload-title"><i data-lucide="file-text"></i> 2. Surat Rekomendasi PR/PK</span>
-            <span class="upload-badge"><i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Siap</span>
-          </div>
-          <input type="file" id="file-rekom" class="file-input" accept=".pdf,image/*" />
-          <div class="file-info">Folder: 2. Surat Rekomendasi.</div>
+        <div class="input-group">
+          <label class="input-label" for="namaPeserta">Nama Lengkap Peserta *</label>
+          <input type="text" id="namaPeserta" class="input-control" placeholder="Sesuai formulir pendaftaran" required />
         </div>
-        <div class="upload-item" id="item-biodata">
-          <div class="upload-item-header">
-            <span class="upload-title"><i data-lucide="file-text"></i> 3. Form Biodata &amp; Riwayat Kader</span>
-            <span class="upload-badge"><i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Siap</span>
-          </div>
-          <input type="file" id="file-biodata" class="file-input" accept=".pdf,image/*" />
-          <div class="file-info">Folder: 3. Form Biodata.</div>
+        <div class="input-group">
+          <label class="input-label" for="asalPimpinan">Asal Pimpinan PR / PK *</label>
+          <input type="text" id="asalPimpinan" class="input-control" placeholder="Contoh: PR IPNU IPPNU Dander" required />
         </div>
-        <div class="upload-item" id="item-kesediaan">
-          <div class="upload-item-header">
-            <span class="upload-title"><i data-lucide="file-text"></i> 4. Surat Pernyataan Kesediaan</span>
-            <span class="upload-badge"><i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Siap</span>
-          </div>
-          <input type="file" id="file-kesediaan" class="file-input" accept=".pdf,image/*" />
-          <div class="file-info">Folder: 4. Surat Pernyataan.</div>
+        <div class="input-group">
+          <label class="input-label" for="noWa">Nomor WhatsApp Aktif *</label>
+          <input type="tel" id="noWa" class="input-control" placeholder="08xxxxxxxxxx" required />
         </div>
-        <div class="upload-item" id="item-izin">
-          <div class="upload-item-header">
-            <span class="upload-title"><i data-lucide="file-text"></i> 5. Surat Izin Orang Tua / Wali</span>
-            <span class="upload-badge"><i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Siap</span>
-          </div>
-          <input type="file" id="file-izin" class="file-input" accept=".pdf,image/*" />
-          <div class="file-info">Folder: 5. Surat Izin Ortu.</div>
-        </div>
-        <div class="upload-item" id="item-esai">
-          <div class="upload-item-header">
-            <span class="upload-title"><i data-lucide="file-text"></i> 6. Naskah Esai Makalah Lakmud</span>
-            <span class="upload-badge"><i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Siap</span>
-          </div>
-          <input type="file" id="file-esai" class="file-input" accept=".pdf" />
-          <div class="file-info">Folder: 6. Esai Makalah (Format PDF).</div>
-        </div>
-        <button type="submit" class="btn-action-full" id="btn-submit-upload" style="display: none;">
-          <span>Kirim Berkas Sekarang</span>
-          <i data-lucide="upload-cloud" style="width: 16px; height: 16px;"></i>
-        </button>
-      </form>
-    </section>
-    <section class="card" id="section-success" style="display: none; text-align: center;">
-      <div style="width: 56px; height: 56px; background: var(--orange-soft); border-radius: 50%; color: var(--orange); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
-        <i data-lucide="check" style="width: 28px; height: 28px;"></i>
       </div>
-      <h2 style="font-size: 1.1rem; font-weight: 800; color: var(--navy-dark);">BERKAS BERHASIL DIKIRIM!</h2>
-      <p style="font-size: 0.74rem; color: var(--text-muted); margin: 4px 0 14px;">
-        Terima kasih Rekan/Rekanita <strong id="success-user-name" style="color:var(--orange);"></strong>, berkas persyaratan telah aman tersimpan di folder Google Drive panitia.
-      </p>
-      <a id="link-wa-confirm" href="#" target="_blank" rel="noopener noreferrer" class="btn-action-full">
-        <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
-        <span>Konfirmasi Pengiriman Berkas ke Admin</span>
-      </a>
-      <a href="cek-data.html" class="btn-secondary" style="margin-top: 8px;">
-        <i data-lucide="search-check" style="width: 14px; height: 14px;"></i>
-        <span>Pantau Status Verifikasi di Cek Data</span>
-      </a>
-    </section>
+      <div class="form-card">
+        <div class="card-heading">
+          <i data-lucide="files" style="width: 14px; height: 14px; color: var(--accent-spirit);"></i>
+          <span>5 Dokumen Wajib Persyaratan</span>
+        </div>
+        <div class="dropzone-item" id="box-doc1">
+          <div class="drop-top">
+            <div class="drop-title-box">
+              <span class="drop-num">1</span>
+              <span class="drop-name">Surat Rekomendasi PR/PK</span>
+            </div>
+            <span class="drop-fmt">PDF / DOCX (Maks. 2MB)</span>
+          </div>
+          <div class="file-input-wrapper">
+            <label class="btn-choose-file" for="doc1">
+              <i data-lucide="paperclip" style="width: 13px; height: 13px;"></i>
+              <span id="txt-doc1">Pilih Dokumen</span>
+            </label>
+            <input type="file" id="doc1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required />
+          </div>
+          <div class="file-status-text" id="st-doc1">Belum ada file dipilih</div>
+        </div>
+        <div class="dropzone-item" id="box-doc2">
+          <div class="drop-top">
+            <div class="drop-title-box">
+              <span class="drop-num">2</span>
+              <span class="drop-name">Biodata &amp; Riwayat Kader</span>
+            </div>
+            <span class="drop-fmt">PDF / DOCX (Maks. 2MB)</span>
+          </div>
+          <div class="file-input-wrapper">
+            <label class="btn-choose-file" for="doc2">
+              <i data-lucide="paperclip" style="width: 13px; height: 13px;"></i>
+              <span id="txt-doc2">Pilih Dokumen</span>
+            </label>
+            <input type="file" id="doc2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required />
+          </div>
+          <div class="file-status-text" id="st-doc2">Belum ada file dipilih</div>
+        </div>
+        <div class="dropzone-item" id="box-doc3">
+          <div class="drop-top">
+            <div class="drop-title-box">
+              <span class="drop-num">3</span>
+              <span class="drop-name">Surat Komitmen Kesediaan</span>
+            </div>
+            <span class="drop-fmt">PDF / DOCX (Maks. 2MB)</span>
+          </div>
+          <div class="file-input-wrapper">
+            <label class="btn-choose-file" for="doc3">
+              <i data-lucide="paperclip" style="width: 13px; height: 13px;"></i>
+              <span id="txt-doc3">Pilih Dokumen</span>
+            </label>
+            <input type="file" id="doc3" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required />
+          </div>
+          <div class="file-status-text" id="st-doc3">Belum ada file dipilih</div>
+        </div>
+        <div class="dropzone-item" id="box-doc4">
+          <div class="drop-top">
+            <div class="drop-title-box">
+              <span class="drop-num">4</span>
+              <span class="drop-name">Surat Izin Orang Tua/Wali</span>
+            </div>
+            <span class="drop-fmt">PDF / DOCX (Maks. 2MB)</span>
+          </div>
+          <div class="file-input-wrapper">
+            <label class="btn-choose-file" for="doc4">
+              <i data-lucide="paperclip" style="width: 13px; height: 13px;"></i>
+              <span id="txt-doc4">Pilih Dokumen</span>
+            </label>
+            <input type="file" id="doc4" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required />
+          </div>
+          <div class="file-status-text" id="st-doc4">Belum ada file dipilih</div>
+        </div>
+        <div class="dropzone-item" id="box-doc5">
+          <div class="drop-top">
+            <div class="drop-title-box">
+              <span class="drop-num">5</span>
+              <span class="drop-name">Naskah Esai Ilmiah Kaderisasi</span>
+            </div>
+            <span class="drop-fmt">PDF / DOCX (Maks. 5MB)</span>
+          </div>
+          <div class="file-input-wrapper">
+            <label class="btn-choose-file" for="doc5">
+              <i data-lucide="paperclip" style="width: 13px; height: 13px;"></i>
+              <span id="txt-doc5">Pilih Dokumen</span>
+            </label>
+            <input type="file" id="doc5" accept=".pdf,.doc,.docx" required />
+          </div>
+          <div class="file-status-text" id="st-doc5">Belum ada file dipilih</div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="card-heading">
+          <i data-lucide="receipt" style="width: 14px; height: 14px; color: var(--accent-spirit);"></i>
+          <span>Bukti Transaksi Kontribusi</span>
+        </div>
+        <div class="dropzone-item" id="box-docPay">
+          <div class="drop-top">
+            <div class="drop-title-box">
+              <span class="drop-num"><i data-lucide="check" style="width: 12px; height: 12px;"></i></span>
+              <span class="drop-name">Bukti Transfer Bank / DANA</span>
+            </div>
+            <span class="drop-fmt">JPG / PNG / PDF (Maks. 2MB)</span>
+          </div>
+          <div class="file-input-wrapper">
+            <label class="btn-choose-file" for="docPay">
+              <i data-lucide="image" style="width: 13px; height: 13px;"></i>
+              <span id="txt-docPay">Pilih Bukti Pembayaran</span>
+            </label>
+            <input type="file" id="docPay" accept=".jpg,.jpeg,.png,.pdf" required />
+          </div>
+          <div class="file-status-text" id="st-docPay">Belum ada bukti transaksi dipilih</div>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit-upload" id="btnSubmit">
+        <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+        <span>Kirim &amp; Simpan Berkas Persyaratan</span>
+      </button>
+    </form>
     <footer class="footer">
-      <div class="footer-org">PAC IPNU IPPNU DANDER</div>
-      <div class="footer-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</div>
-      <div class="footer-links">
-        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram" style="width: 12px; height: 12px;"></i> Instagram</a>
-        <span>•</span>
-        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer"><i data-lucide="globe" style="width: 12px; height: 12px;"></i> Website</a>
+      <div class="footer-content">
+        <div class="footer-brand">PAC IPNU IPPNU DANDER</div>
+        <div class="footer-links">
+          <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="instagram" style="width: 12px; height: 12px;"></i> Instagram
+          </a>
+          <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="globe" style="width: 12px; height: 12px;"></i> Website
+          </a>
+        </div>
       </div>
-      <div class="footer-copy">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander.</div>
+      <div class="footer-copyright">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander. All Rights Reserved.</div>
     </footer>
-  </main>
-  <div class="modal-backdrop" id="modal">
-    <div class="modal-box">
-      <div class="progress-ring" id="modal-ring">
-        <span id="modal-pct">0%</span>
+  </div>
+  <div class="support-anchor">
+    <div class="popover" id="popover">
+      <div class="popover-head">
+        <span>Narahubung Panitia</span>
+        <button type="button" id="btn-close-popover"><i data-lucide="x" style="width: 14px; height: 14px;"></i></button>
       </div>
-      <div style="font-size: 0.95rem; font-weight: 800; color: var(--navy-dark);" id="modal-title">Memeriksa Data...</div>
-      <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;" id="modal-desc">Mencocokkan Asal Delegasi dan Tanggal Lahir</div>
-      <div class="progress-bar-wrap" id="modal-bar-wrap">
-        <div class="progress-bar-fill" id="modal-bar-fill"></div>
-      </div>
-      <div id="modal-actions" style="display: none; margin-top: 10px;">
-        <a href="registrasi.html" class="btn-orange-outline" id="btn-goto-reg">
-          <i data-lucide="user-plus" style="width: 14px; height: 14px;"></i>
-          <span>Daftar Sekarang (Isi Biodata)</span>
+      <div class="admin-list">
+        <a href="https://wa.me/6281234567890?text=Halo%20Rekan%20Panitia%20LAKMUD%20IV" target="_blank" rel="noopener noreferrer" class="admin-link">
+          <span>Narahubung Rekan</span>
+          <i data-lucide="message-circle" style="width: 13px; height: 13px; color: var(--accent-navy);"></i>
         </a>
-        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20LAKMUD%20IV%2C%20data%20saya%20tidak%20ditemukan%20saat%20upload%20berkas" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-          <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
-          <span>Hubungi WA Admin Panitia</span>
+        <a href="https://wa.me/6289876543210?text=Halo%20Rekanita%20Panitia%20LAKMUD%20IV" target="_blank" rel="noopener noreferrer" class="admin-link">
+          <span>Narahubung Rekanita</span>
+          <i data-lucide="message-circle" style="width: 13px; height: 13px; color: var(--accent-spirit);"></i>
         </a>
-        <button type="button" id="btn-close-modal" style="background:none; border:none; color:var(--text-muted); font-size:0.72rem; margin-top:8px; cursor:pointer;">
-          Tutup &amp; Coba Lagi
-        </button>
       </div>
     </div>
+    <button type="button" class="btn-support" id="btn-support">
+      <i data-lucide="message-circle"></i>
+      <span>Bantuan</span>
+    </button>
   </div>
   <script>
-    const CONFIG = {
-      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxJcUFCfA1Vkd8ZZIUp3A15bV-qz4qRZbefoRnE3lBqREAIr_EAG07Jdd44aBRWzYL1kA/exec",
-      WA_ADMIN: "6281234567890"
-    };
-    let currentUser = null;
-    let requiredFilesList = [];
-    document.getElementById("btn-back").addEventListener("click", () => {
-      if (document.getElementById("section-upload").style.display === "block") {
-        document.getElementById("section-upload").style.display = "none";
-        document.getElementById("section-auth").style.display = "block";
-      } else if (window.history.length > 1 && document.referrer.includes(window.location.hostname)) {
-        window.history.back();
-      } else {
-        window.location.href = "index.html";
-      }
-    });
-    const modal = document.getElementById("modal");
-    const ring = document.getElementById("modal-ring");
-    const pctTxt = document.getElementById("modal-pct");
-    const titleTxt = document.getElementById("modal-title");
-    const descTxt = document.getElementById("modal-desc");
-    const barFill = document.getElementById("modal-bar-fill");
-    const actionsBox = document.getElementById("modal-actions");
-    function setModal(pct, title, desc) {
-      pctTxt.textContent = pct + "%";
-      barFill.style.width = pct + "%";
-      if (title) titleTxt.textContent = title;
-      if (desc) descTxt.textContent = desc;
-    }
-    function animateProgress(start, end, duration, title, desc, callback) {
-      const startTime = performance.now();
-      function step(now) {
-        const p = Math.min((now - startTime) / duration, 1);
-        const val = Math.floor(start + (end - start) * p);
-        setModal(val, title, desc);
-        if (p < 1) requestAnimationFrame(step);
-        else if (callback) callback();
-      }
-      requestAnimationFrame(step);
-    }
-    document.getElementById("form-auth").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const delegasi = document.getElementById("auth-delegasi").value.trim();
-      const tanggalLahir = document.getElementById("auth-tanggal").value;
-      modal.classList.add("active");
-      ring.className = "progress-ring";
-      actionsBox.style.display = "none";
-      document.getElementById("modal-bar-wrap").style.display = "block";
-      animateProgress(0, 85, 800, "Mengecek Data...", "Mencari identitas Anda pada database pendaftaran...", async () => {
-        try {
-          const res = await fetch(CONFIG.SCRIPT_URL, {
-            method: "POST",
-            body: JSON.stringify({ action: "check_auth", delegasi: delegasi, tanggalLahir: tanggalLahir })
-          });
-          const data = await res.json();
-          if (data.status === "found") {
-            if (data.isComplete) {
-              setModal(100, "Berkas Lengkap!", "Semua berkas Anda sudah tersimpan.");
-              setTimeout(() => {
-                modal.classList.remove("active");
-                alert("Rekan/Rekanita " + data.user.nama + " sudah lengkap mengirimkan 6 berkas. Membuka menu Cek Data...");
-                window.location.href = "cek-data.html";
-              }, 1200);
-              return;
-            }
-            setModal(100, "Data Ditemukan!", "Menyiapkan formulir berkas...");
-            currentUser = data.user;
-            requiredFilesList = data.missingFiles || [];
-            setTimeout(() => {
-              modal.classList.remove("active");
-              showUploadSection(currentUser, requiredFilesList);
-            }, 500);
-          } else {
-            ring.className = "progress-ring error";
-            ring.innerHTML = `<i data-lucide="x" style="width:24px;height:24px;"></i>`;
-            lucide.createIcons();
-            setModal(0, "Data Tidak Ditemukan", "Asal Delegasi dan Tanggal Lahir tidak cocok.");
-            document.getElementById("modal-bar-wrap").style.display = "none";
-            actionsBox.style.display = "block";
-          }
-        } catch (err) {
-          ring.className = "progress-ring error";
-          ring.innerHTML = `<i data-lucide="alert-circle" style="width:24px;height:24px;"></i>`;
-          lucide.createIcons();
-          setModal(0, "Gangguan Jaringan", "Gagal menghubungi server database.");
-          document.getElementById("modal-bar-wrap").style.display = "none";
-          actionsBox.style.display = "block";
-        }
-      });
-    });
-    document.getElementById("btn-close-modal").addEventListener("click", () => modal.classList.remove("active"));
-    function showUploadSection(user, missingList) {
-      document.getElementById("section-auth").style.display = "none";
-      const upSec = document.getElementById("section-upload");
-      upSec.style.display = "block";
-      document.getElementById("display-user-name").textContent = user.nama;
-      document.getElementById("display-user-info").textContent = `${user.code} • ${user.delegasi}`;
-      const allKeys = ["foto", "rekom", "biodata", "kesediaan", "izin", "esai"];
-      allKeys.forEach(k => {
-        const itemEl = document.getElementById(`item-${k}`);
-        const inputEl = document.getElementById(`file-${k}`);
-        if (missingList.includes(k)) {
-          itemEl.style.display = "block";
-          inputEl.required = true;
-        } else {
-          itemEl.style.display = "none";
-          inputEl.required = false;
-        }
-      });
-      checkAllFilesReady();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    const fileInputs = {
-      foto: document.getElementById("file-foto"),
-      rekom: document.getElementById("file-rekom"),
-      biodata: document.getElementById("file-biodata"),
-      kesediaan: document.getElementById("file-kesediaan"),
-      izin: document.getElementById("file-izin"),
-      esai: document.getElementById("file-esai")
-    };
-    Object.keys(fileInputs).forEach(key => {
-      const input = fileInputs[key];
-      const itemBox = document.getElementById(`item-${key}`);
-      input.addEventListener("change", () => {
-        if (input.files.length > 0) {
-          itemBox.classList.add("filled");
-        } else {
-          itemBox.classList.remove("filled");
-        }
-        checkAllFilesReady();
-      });
-    });
-    function checkAllFilesReady() {
-      const neededInputs = requiredFilesList.map(k => fileInputs[k]).filter(Boolean);
-      const allReady = neededInputs.length > 0 && neededInputs.every(inp => inp.files.length > 0);
-      document.getElementById("btn-submit-upload").style.display = allReady ? "flex" : "none";
-    }
-    function compressImageFile(file, maxWidth = 1200, quality = 0.75) {
-      return new Promise((resolve) => {
-        if (!file.type.startsWith("image/")) {
-          const reader = new FileReader();
-          reader.onload = () => resolve({
-            name: file.name,
-            type: file.type || "application/pdf",
-            base64: reader.result.split(",")[1]
-          });
-          reader.readAsDataURL(file);
-          return;
-        }
-        const img = new Image();
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          img.src = e.target.result;
-          img.onload = () => {
-            const canvas = document.createElement("canvas");
-            let w = img.width;
-            let h = img.height;
-            if (w > maxWidth) {
-              h = Math.round((h * maxWidth) / w);
-              w = maxWidth;
-            }
-            canvas.width = w;
-            canvas.height = h;
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, w, h);
-            const dataURL = canvas.toDataURL("image/jpeg", quality);
-            resolve({
-              name: file.name.replace(/\.[^.]+$/, ".jpg"),
-              type: "image/jpeg",
-              base64: dataURL.split(",")[1]
-            });
-          };
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-    document.getElementById("form-upload").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      modal.classList.add("active");
-      ring.className = "progress-ring";
-      actionsBox.style.display = "none";
-      document.getElementById("modal-bar-wrap").style.display = "block";
-      setModal(10, "Mengompresi Berkas...", "Menyiapkan dokumen agar ringan dan cepat...");
-      try {
-        const processedFiles = {};
-        let stepPct = 10;
-        const keysToUpload = requiredFilesList.length > 0 ? requiredFilesList : Object.keys(fileInputs);
-        for (const key of keysToUpload) {
-          if (fileInputs[key].files.length > 0) {
-            const file = fileInputs[key].files[0];
-            processedFiles[key] = await compressImageFile(file);
-            stepPct += 10;
-            setModal(stepPct, "Memproses Berkas...", `Memproses berkas ${key}...`);
-          }
-        }
-        setModal(65, "Mengunggah ke Drive...", "Menyimpan berkas ke 6 folder Drive resmi...");
-        const payload = {
-          action: "upload_files",
-          code: currentUser.code,
-          nama: currentUser.nama,
-          delegasi: currentUser.delegasi,
-          files: processedFiles
-        };
-        const res = await fetch(CONFIG.SCRIPT_URL, {
-          method: "POST",
-          body: JSON.stringify(payload)
-        });
-        const result = await res.json();
-        if (result.status === "success") {
-          setModal(100, "Pengiriman Berhasil!", "Seluruh berkas aman tersimpan.");
-          setTimeout(() => {
-            modal.classList.remove("active");
-            showSuccessUpload();
-          }, 600);
-        } else {
-          throw new Error(result.message || "Gagal menyimpan berkas");
-        }
-      } catch (err) {
-        ring.className = "progress-ring error";
-        ring.innerHTML = `<i data-lucide="alert-circle" style="width:24px;height:24px;"></i>`;
-        lucide.createIcons();
-        setModal(0, "Gagal Mengunggah", "Terjadi kendala saat mengirim berkas. Silakan coba kembali.");
-        document.getElementById("modal-bar-wrap").style.display = "none";
-        actionsBox.style.display = "block";
-      }
-    });
-    function showSuccessUpload() {
-      document.getElementById("section-upload").style.display = "none";
-      const succSec = document.getElementById("section-success");
-      succSec.style.display = "block";
-      document.getElementById("success-user-name").textContent = currentUser.nama;
-      const textWA = encodeURIComponent(
-        `Assalamu'alaikum Panitia LAKMUD IV PAC IPNU IPPNU Dander,\n\nSaya telah berhasil mengunggah berkas persyaratan:\n` +
-        `• *Nama:* ${currentUser.nama}\n` +
-        `• *Kode Registrasi:* ${currentUser.code}\n` +
-        `• *Asal Delegasi:* ${currentUser.delegasi}\n\n` +
-        `Mohon untuk diverifikasi berkas pendaftaran saya. Terima kasih!`
-      );
-      document.getElementById("link-wa-confirm").href = `https://wa.me/${CONFIG.WA_ADMIN}?text=${textWA}`;
-      if (typeof confetti === "function") {
-        confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
-      }
-      lucide.createIcons();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    window.addEventListener('scroll', () => {
+      const top = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const percent = (top / height) * 100;
+      const bar = document.getElementById('scrollProgress');
+      if (bar) bar.style.width = percent + '%';
+    }, { passive: true });
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      document.getElementById("toast-text").textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2200);
     }
     document.addEventListener("DOMContentLoaded", () => {
+      const fileIds = ['doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'docPay'];
+      fileIds.forEach(id => {
+        const input = document.getElementById(id);
+        const box = document.getElementById('box-' + id);
+        const txt = document.getElementById('txt-' + id);
+        const st = document.getElementById('st-' + id);
+        if (input) {
+          input.addEventListener('change', () => {
+            if (input.files && input.files[0]) {
+              const f = input.files[0];
+              const sz = (f.size / (1024 * 1024)).toFixed(2) + ' MB';
+              box.classList.add('has-file');
+              txt.textContent = 'Ganti File';
+              st.innerHTML = '<i data-lucide="check-circle" style="width:12px;height:12px;color:#d9381e;"></i> ' + f.name + ' (' + sz + ')';
+              lucide.createIcons();
+            } else {
+              box.classList.remove('has-file');
+              txt.textContent = 'Pilih Dokumen';
+              st.textContent = 'Belum ada file dipilih';
+            }
+          });
+        }
+      });
+      const form = document.getElementById("uploadForm");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const btn = document.getElementById("btnSubmit");
+          btn.innerHTML = '<i data-lucide="loader-2" style="width:15px;height:15px;animation:spin 1s linear infinite;"></i><span>Sedang Memproses Pengiriman...</span>';
+          btn.style.opacity = '0.8';
+          btn.style.pointerEvents = 'none';
+          setTimeout(() => {
+            showToast("Berkas persyaratan berhasil dikirim!");
+            btn.innerHTML = '<i data-lucide="check" style="width:15px;height:15px;"></i><span>Berkas Berhasil Terkirim</span>';
+            setTimeout(() => {
+              window.location.href = "cek-data.html";
+            }, 1200);
+          }, 1500);
+        });
+      }
+      const popover = document.getElementById("popover");
+      const btnSupport = document.getElementById("btn-support");
+      const btnClosePopover = document.getElementById("btn-close-popover");
+      if (btnSupport && popover) {
+        btnSupport.addEventListener("click", () => popover.classList.toggle("active"));
+      }
+      if (btnClosePopover && popover) {
+        btnClosePopover.addEventListener("click", () => popover.classList.remove("active"));
+      }
       lucide.createIcons();
     });
   </script>
