@@ -5,316 +5,166 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>LAKMUD IV — PAC IPNU IPPNU Dander</title>
   <meta name="description" content="Portal Resmi Kaderisasi LAKMUD IV PAC IPNU IPPNU Dander." />
-  <meta name="theme-color" content="#050B14" />
-
-  <!-- Fonts Preconnect & Load -->
+  <meta name="theme-color" content="#f8fafc" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
-
-  <!-- Feather / Lucide Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
-    /* ==========================================================================
-       DESIGN SYSTEM & CSS VARIABLES
-       ========================================================================== */
     :root {
-      /* Spiritual & Struggle Palette */
-      --bg-deep: #050b14;
-      --bg-surface: #0a1424;
-      --bg-card: rgba(13, 25, 44, 0.72);
-      --bg-card-hover: rgba(18, 35, 62, 0.85);
-      --bg-card-solid: #0c182a;
-      
-      /* Vibrant Spirit & Khidmat Accents */
-      --blaze-orange: #ff5722;
-      --crimson-red: #e63946;
-      --gradient-spirit: linear-gradient(135deg, #ff6b3d 0%, #ff3b2f 50%, #d82c20 100%);
-      --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-      --glow-orange: rgba(255, 87, 34, 0.35);
-      --glow-cyan: rgba(56, 189, 248, 0.25);
-      
-      /* Text Colors */
-      --text-pure: #ffffff;
-      --text-sub: #cbd5e1;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-
-      /* Glass & Borders */
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(255, 94, 54, 0.3);
-      --glass-blur: blur(20px);
-      
-      /* Shadows & Radii */
-      --shadow-premium: 0 16px 36px -8px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.06);
-      --shadow-glow: 0 0 25px rgba(255, 87, 34, 0.22);
-      --radius-xl: 20px;
-      --radius-lg: 14px;
-      --radius-md: 10px;
+      --bg-canvas: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fcfdfe;
+      --accent-spirit: #d9381e;
+      --accent-spirit-dark: #b82810;
+      --accent-spirit-soft: rgba(217, 56, 30, 0.08);
+      --accent-navy: #1e3a5f;
+      --accent-navy-soft: rgba(30, 58, 95, 0.06);
+      --accent-dana: #118eea;
+      --accent-dana-dark: #0c75c4;
+      --border-crisp: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --border-active: #94a3b8;
+      --text-main: #0f172a;
+      --text-sub: #334155;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+      --radius-xl: 14px;
+      --radius-lg: 10px;
+      --radius-md: 8px;
+      --radius-sm: 6px;
       --radius-pill: 9999px;
     }
-
-    /* ==========================================================================
-       GLOBAL RESET & PERFORMANCE ENHANCEMENTS
-       ========================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
     }
-
-    /* Menghilangkan scrollbar default di SEMUA browser (PC / Desktop / Mobile) */
     html {
       scroll-behavior: smooth;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE/Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
     html::-webkit-scrollbar,
     body::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Edge */
+      display: none;
       width: 0;
       height: 0;
     }
-
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-deep);
-      color: var(--text-pure);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
-      justify-content: center;
-      padding: 24px 16px 80px;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 14px 12px;
       position: relative;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
     }
-
-    /* Ambient Spiritual Light Orbs (GPU Accelerated & 0 Lag) */
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-    }
-    .orb-1 {
-      width: 320px;
-      height: 320px;
-      background: var(--blaze-orange);
-      top: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .orb-2 {
-      width: 280px;
-      height: 280px;
-      background: #0284c7;
-      bottom: 10%;
-      right: -50px;
-    }
-
-    /* ==========================================================================
-       MODERN ULTRA SCROLL PROGRESS BAR (Ganti scrollbar PC)
-       ========================================================================== */
-    .scroll-progress-container {
+    .scroll-progress-line {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 3.5px;
-      background: rgba(255, 255, 255, 0.03);
+      height: 2.5px;
+      background: rgba(15, 23, 42, 0.06);
       z-index: 9999;
     }
-    .scroll-progress-bar {
+    .scroll-progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #ff3b2f, #ff6b3d, #38bdf8, #ff6b3d);
-      background-size: 200% 100%;
-      box-shadow: 0 0 12px rgba(255, 94, 54, 0.8), 0 0 4px rgba(56, 189, 248, 0.6);
-      animation: gradientFlow 3s linear infinite;
-      transition: width 0.08s ease-out;
+      background: linear-gradient(90deg, #d9381e, #ea580c, #1e3a5f);
+      transition: width 0.08s linear;
     }
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-
-    /* ==========================================================================
-       MAIN CONTAINER
-       ========================================================================== */
     .container {
       width: 100%;
-      max-width: 470px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
-
-    /* ==========================================================================
-       HEADER & HERO BRANDING
-       ========================================================================== */
     .header {
+      padding: 4px 0 14px;
       text-align: center;
-      padding: 10px 0 24px;
       position: relative;
     }
-
-    .badge-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255, 87, 34, 0.1);
-      border: 1px solid rgba(255, 94, 54, 0.3);
-      padding: 5px 14px;
-      border-radius: var(--radius-pill);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #ff7a50;
-      margin-bottom: 18px;
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      box-shadow: 0 4px 12px rgba(255, 87, 34, 0.12);
-    }
-
-    .dot-pulse {
-      width: 6.5px;
-      height: 6.5px;
-      border-radius: 50%;
-      background: #ff5722;
-      box-shadow: 0 0 8px #ff5722;
-      animation: pulseAnim 1.8s infinite ease-in-out;
-    }
-    @keyframes pulseAnim {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.4; }
-    }
-
-    .emblem-wrapper {
-      position: relative;
-      width: 86px;
-      height: 86px;
-      margin: 0 auto 16px;
-    }
-    .emblem-glow {
-      position: absolute;
-      inset: -2px;
-      background: var(--gradient-spirit);
-      border-radius: 50%;
-      filter: blur(10px);
-      opacity: 0.5;
-    }
-    .emblem {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(145deg, #0f223d, #081220);
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 10px;
+    .hero-brand {
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-premium);
+      gap: 12px;
+      margin-bottom: 6px;
     }
-    .emblem img {
+    .emblem-clean {
+      width: 52px;
+      height: 52px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .emblem-clean img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
     }
-
-    .title-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+    .title-box {
+      text-align: left;
     }
-    .title-text {
-      font-size: 2.3rem;
+    .main-title {
+      font-size: 1.65rem;
       font-weight: 800;
-      color: var(--text-pure);
-      letter-spacing: -0.03em;
       line-height: 1;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      letter-spacing: -0.02em;
     }
-    .title-roman {
+    .main-title span.roman {
       font-family: 'Cinzel', serif;
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: var(--gradient-spirit);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
-      filter: drop-shadow(0 2px 10px rgba(255, 87, 34, 0.3));
+      color: var(--accent-spirit);
+      font-size: 1.55rem;
     }
-
-    .org-subtitle {
-      font-size: 0.78rem;
+    .sub-org {
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #93c5fd;
-      margin-top: 8px;
-      opacity: 0.9;
+      color: var(--accent-navy);
+      margin-top: 3px;
     }
-
-    .divider-spirit {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      margin: 14px auto 12px;
-    }
-    .divider-line {
-      width: 32px;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, rgba(255, 87, 34, 0.6));
-    }
-    .divider-line.right {
-      background: linear-gradient(90deg, rgba(255, 87, 34, 0.6), transparent);
-    }
-    .divider-dot {
-      width: 4px;
-      height: 4px;
-      background: var(--blaze-orange);
-      border-radius: 50%;
-      box-shadow: 0 0 6px var(--blaze-orange);
-    }
-
-    .theme {
-      font-size: 0.8rem;
+    .theme-motto {
+      font-size: 0.74rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.4;
       font-style: italic;
-      padding: 0 16px;
-      font-weight: 400;
+      padding: 0 8px;
+      margin-top: 4px;
     }
-
-    /* ==========================================================================
-       SLIDER SHOWCASE (High Detail & Crisp Display)
-       ========================================================================== */
     .slider {
       position: relative;
       width: 100%;
-      height: 195px;
+      height: 180px;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      margin-bottom: 18px;
-      background: #030811;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-premium);
+      margin-bottom: 10px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-crisp);
+      box-shadow: var(--shadow-sm);
     }
     .slider-track {
       width: 100%;
@@ -328,450 +178,571 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transform: scale(1.04);
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: opacity, transform;
+      transition: opacity 0.6s ease-in-out;
     }
     .slide-img.active {
       opacity: 1;
-      transform: scale(1);
     }
-    .slider-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(5, 11, 20, 0.1) 0%, rgba(5, 11, 20, 0.75) 100%);
-      pointer-events: none;
+    .social-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
     }
-    .slider-tag {
-      position: absolute;
-      bottom: 12px;
-      left: 14px;
-      display: inline-flex;
+    .social-pill {
+      display: flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(10, 20, 36, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text-pure);
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      color: var(--accent-navy);
+      font-size: 0.74rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
     }
-
-    /* ==========================================================================
-       MENU & ULTRA LUXURY CARDS
-       ========================================================================== */
+    .social-pill i {
+      width: 15px;
+      height: 15px;
+      color: var(--accent-spirit);
+    }
+    .social-pill:hover {
+      border-color: var(--accent-navy);
+      background: var(--bg-card-hover);
+    }
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 14px 0 8px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-crisp);
+    }
+    .section-divider span {
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-navy);
+      white-space: nowrap;
+    }
     .vertical-menu {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 8px;
     }
-
-    /* CTA Primary Button (Shimmer & Energy Pulse) */
     .cta-card {
-      position: relative;
-      background: var(--gradient-spirit);
+      background: linear-gradient(135deg, var(--accent-spirit) 0%, var(--accent-spirit-dark) 100%);
       color: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 15px 18px;
+      border-radius: var(--radius-xl);
+      padding: 13px 16px;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: var(--shadow-glow), var(--shadow-premium);
-      overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .cta-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-      transform: skewX(-20deg);
-      animation: shimmer 4s infinite;
-    }
-    @keyframes shimmer {
-      0% { left: -100%; }
-      25% { left: 200%; }
-      100% { left: 200%; }
-    }
-    .cta-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(255, 87, 34, 0.45);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 3px 8px -1px rgba(217, 56, 30, 0.25);
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
     .cta-card:active {
-      transform: scale(0.98);
+      transform: scale(0.985);
+      opacity: 0.95;
     }
     .cta-left {
       display: flex;
       align-items: center;
-      gap: 14px;
-      z-index: 1;
+      gap: 12px;
     }
     .cta-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(6px);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
       flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     .cta-text h3 {
-      font-size: 0.96rem;
+      font-size: 0.94rem;
       font-weight: 800;
-      color: #ffffff;
       line-height: 1.2;
-      letter-spacing: -0.01em;
     }
     .cta-text p {
       font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.92);
+      margin-top: 1px;
     }
     .cta-arrow {
-      width: 34px;
-      height: 34px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
       flex-shrink: 0;
-      z-index: 1;
     }
-
-    /* Modern Glass Card */
     .menu-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      box-shadow: var(--shadow-premium);
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-xl);
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease, background-color 0.2s ease;
     }
     .menu-card:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(255, 255, 255, 0.16);
-      transform: translateY(-1.5px);
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-hover);
     }
-
     .menu-btn {
       width: 100%;
       background: transparent;
       border: none;
-      padding: 13px 15px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 12px;
       cursor: pointer;
       text-align: left;
       font-family: inherit;
       color: inherit;
       text-decoration: none;
     }
-
     .menu-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-crisp);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #38bdf8;
+      color: var(--accent-navy);
       flex-shrink: 0;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-    .menu-card:hover .menu-icon {
-      transform: scale(1.05);
-      color: #ff7a50;
-      border-color: rgba(255, 87, 34, 0.25);
     }
     .menu-icon i {
-      width: 19px;
-      height: 19px;
+      width: 18px;
+      height: 18px;
     }
-
     .menu-info {
       flex: 1;
       min-width: 0;
     }
     .menu-title {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 700;
-      color: var(--text-pure);
+      color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .menu-desc {
-      font-size: 0.71rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 1px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .menu-arrow {
       color: var(--text-dim);
       display: flex;
       align-items: center;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+      transition: transform 0.25s ease, color 0.2s ease;
       flex-shrink: 0;
     }
     .menu-arrow i {
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
     }
     .menu-card.open .menu-arrow {
       transform: rotate(90deg);
-      color: var(--blaze-orange);
+      color: var(--accent-spirit);
     }
-
-    /* 60 FPS ACCORDION DRAWER (Using CSS Grid Trick) */
     .drawer-wrapper {
       display: grid;
       grid-template-rows: 0fr;
-      transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      background: rgba(5, 12, 22, 0.6);
+      transition: grid-template-rows 0.25s ease-out;
+      background: #fafbfd;
       border-top: 1px solid transparent;
     }
     .menu-card.open .drawer-wrapper {
       grid-template-rows: 1fr;
-      border-top-color: var(--border-subtle);
+      border-top-color: var(--border-crisp);
     }
     .drawer-inner {
       overflow: hidden;
     }
     .drawer-body {
-      padding: 14px 15px;
+      padding: 12px 14px 14px;
     }
-
-    .list-group {
+    .doc-group {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 8px;
     }
-    .list-link {
+    .doc-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 13px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
       text-decoration: none;
-      color: var(--text-sub);
-      font-size: 0.76rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
+      color: var(--text-main);
+      transition: all 0.15s ease;
     }
-    .list-link:hover {
-      background: rgba(255, 87, 34, 0.1);
-      border-color: rgba(255, 87, 34, 0.25);
-      color: var(--text-pure);
-      transform: translateX(3px);
+    .doc-card:hover {
+      border-color: var(--accent-navy);
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
     }
-    .list-link-left {
+    .doc-card-left {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
       min-width: 0;
     }
-    .list-link-left span {
+    .doc-badge-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      background: var(--accent-spirit-soft);
+      color: var(--accent-spirit);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .doc-texts {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .doc-title {
+      font-size: 0.81rem;
+      font-weight: 700;
+      color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.3;
     }
-    .list-link-left i {
-      width: 15px;
-      height: 15px;
-      color: var(--blaze-orange);
+    .doc-format {
+      font-size: 0.67rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .doc-btn-download {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-crisp);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-navy);
       flex-shrink: 0;
     }
-
-    /* Fee & Rekening Boxes */
-    .fee-box {
-      background: linear-gradient(145deg, rgba(255, 87, 34, 0.12), rgba(11, 23, 40, 0.5));
-      border: 1px solid rgba(255, 87, 34, 0.25);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      text-align: center;
-      margin-bottom: 9px;
+    .doc-card:hover .doc-btn-download {
+      background: var(--accent-navy);
+      color: #ffffff;
+      border-color: var(--accent-navy);
     }
-    .fee-label {
+    .admin-card-box {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .tier-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .tier-label {
       font-size: 0.67rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #ff7a50;
+      letter-spacing: 0.04em;
+      color: var(--accent-navy);
     }
-    .fee-amount {
-      font-size: 1.5rem;
+    .tier-sub {
+      font-size: 0.64rem;
+      color: var(--text-muted);
+    }
+    .tier-amount {
+      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--text-pure);
+      color: var(--accent-spirit);
       margin-top: 2px;
-      letter-spacing: -0.02em;
     }
-
-    .rek-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: var(--radius-md);
-      padding: 11px 13px;
+    .rek-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
     }
-    .rek-num {
-      font-family: 'SF Mono', Consolas, Monaco, monospace;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #38bdf8;
-      letter-spacing: 0.04em;
-    }
-    .rek-copy {
-      background: rgba(255, 87, 34, 0.15);
-      color: #ff7a50;
-      border: 1px solid rgba(255, 87, 34, 0.3);
-      padding: 5px 11px;
-      border-radius: var(--radius-pill);
+    .bank-brand {
       font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--accent-navy);
+    }
+    .rek-digits {
+      font-family: monospace;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 1px;
+    }
+    .rek-holder {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+    .btn-copy-action {
+      background: var(--accent-spirit-soft);
+      color: var(--accent-spirit);
+      border: 1px solid rgba(217, 56, 30, 0.2);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
     }
-    .rek-copy:hover {
-      background: var(--blaze-orange);
+    .btn-copy-action:hover {
+      background: var(--accent-spirit);
       color: #ffffff;
     }
-
-    .note-text {
+    .dana-action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .btn-dana {
+      background: linear-gradient(135deg, var(--accent-dana) 0%, var(--accent-dana-dark) 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 9px 8px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(17, 142, 234, 0.2);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-dana:active {
+      transform: scale(0.97);
+    }
+    .btn-dana i {
+      width: 16px;
+      height: 16px;
+    }
+    .btn-dana span.dana-price {
+      font-size: 0.64rem;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+    .admin-note {
       font-size: 0.68rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.35;
+      padding: 2px 2px;
     }
-
-    /* Map Box */
-    .map-container {
+    .location-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .location-card-info {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .location-card-info i {
+      color: var(--accent-spirit);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .loc-name {
+      font-size: 0.81rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .loc-address {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .map-frame {
       width: 100%;
-      height: 145px;
-      border-radius: var(--radius-md);
+      height: 135px;
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      margin: 9px 0;
-      background: #000;
+      border: 1px solid var(--border-crisp);
+      background: #e2e8f0;
     }
-    .map-container iframe {
+    .map-frame iframe {
       width: 100%;
       height: 100%;
       border: none;
-      filter: contrast(1.05) saturate(1.1);
     }
-    .btn-action {
-      background: linear-gradient(135deg, #0284c7, #0369a1);
+    .btn-nav-map {
+      background: var(--accent-navy);
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 10px 14px;
-      border-radius: var(--radius-md);
+      padding: 9px 14px;
+      border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 7px;
       width: 100%;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-      transition: opacity 0.2s ease;
+      transition: opacity 0.15s ease;
     }
-    .btn-action:hover {
-      opacity: 0.92;
+    .btn-nav-map:hover {
+      opacity: 0.93;
     }
-
-    /* ==========================================================================
-       VIDEO TUTORIAL SECTION
-       ========================================================================== */
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-crisp);
+      border-radius: var(--radius-lg);
+      padding: 9px 11px;
+    }
+    .timeline-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent-spirit-soft);
+      color: var(--accent-spirit);
+      font-size: 0.7rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .timeline-texts {
+      display: flex;
+      flex-direction: column;
+    }
+    .timeline-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .timeline-date {
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
     .video-card {
-      margin-top: 14px;
+      margin-top: 12px;
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-crisp);
       border-radius: var(--radius-xl);
-      padding: 16px;
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      box-shadow: var(--shadow-premium);
+      padding: 12px;
+      box-shadow: var(--shadow-sm);
     }
     .video-header {
       display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 0.86rem;
+      gap: 6px;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--text-pure);
-      margin-bottom: 12px;
+      color: var(--text-main);
+      margin-bottom: 9px;
     }
     .video-header i {
-      color: var(--blaze-orange);
-      width: 18px;
-      height: 18px;
+      color: var(--accent-spirit);
+      width: 17px;
+      height: 17px;
     }
     .video-tabs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 5px;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 4px;
-      border-radius: var(--radius-md);
-      margin-bottom: 12px;
-      border: 1px solid var(--border-subtle);
+      gap: 4px;
+      background: var(--bg-subtle);
+      padding: 3px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 9px;
+      border: 1px solid var(--border-crisp);
     }
     .video-tab {
       background: transparent;
       border: none;
-      padding: 7px 4px;
-      font-size: 0.7rem;
+      padding: 6px 2px;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--text-muted);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       cursor: pointer;
       text-align: center;
-      transition: all 0.2s ease;
     }
     .video-tab.active {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      background: var(--bg-card);
+      color: var(--text-main);
       font-weight: 700;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     .video-box {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      background: #000000;
-      border: 1px solid var(--border-subtle);
+      background: #000;
+      border: 1px solid var(--border-crisp);
     }
     .video-box iframe {
       position: absolute;
@@ -781,115 +752,98 @@
       border: none;
     }
     .video-caption {
-      font-size: 0.71rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
     }
-
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
     .footer {
-      text-align: center;
-      padding: 28px 0 10px;
-      margin-top: 18px;
-      border-top: 1px solid var(--border-subtle);
+      width: 100%;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-crisp);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
-    .footer-org {
-      font-size: 0.8rem;
+    .footer-content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .footer-brand {
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #93c5fd;
-    }
-    .footer-quote {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-style: italic;
-      margin: 4px 0 14px;
+      letter-spacing: 0.04em;
+      color: var(--accent-navy);
     }
     .footer-links {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 10px;
+      gap: 12px;
     }
     .footer-links a {
-      color: var(--text-sub);
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      transition: color 0.2s ease;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      transition: color 0.15s ease;
     }
     .footer-links a:hover {
-      color: #ff7a50;
+      color: var(--accent-spirit);
     }
-    .footer-copy {
-      font-size: 0.65rem;
+    .footer-copyright {
+      font-size: 0.63rem;
       color: var(--text-dim);
+      text-align: center;
+      letter-spacing: 0.01em;
     }
-
-    /* ==========================================================================
-       SUPPORT DOCK (FLOATING ACTION)
-       ========================================================================== */
     .support-anchor {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 14px;
+      right: 14px;
       z-index: 100;
     }
     .btn-support {
       display: flex;
       align-items: center;
-      gap: 7px;
-      background: linear-gradient(135deg, #0e1e36, #091322);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 10px 18px;
+      gap: 6px;
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-active);
+      padding: 8px 14px;
       border-radius: var(--radius-pill);
       font-family: inherit;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.15);
-      transition: all 0.25s ease;
-    }
-    .btn-support:hover {
-      transform: scale(1.04);
-      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: var(--shadow-md);
     }
     .btn-support i {
-      color: #38bdf8;
-      width: 16px;
-      height: 16px;
+      color: var(--accent-spirit);
+      width: 14px;
+      height: 14px;
     }
-
     .popover {
       position: absolute;
-      bottom: 54px;
+      bottom: 44px;
       right: 0;
-      width: 270px;
-      background: #0a1526;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-lg);
-      padding: 14px;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+      width: 250px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-xl);
+      padding: 12px;
       display: none;
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      box-shadow: var(--shadow-md);
     }
     .popover.active {
       display: block;
-      animation: popoverFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes popoverFade {
-      from { opacity: 0; transform: translateY(8px) scale(0.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .popover-head {
       display: flex;
@@ -898,9 +852,9 @@
       margin-bottom: 6px;
     }
     .popover-head span {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--text-main);
     }
     .popover-head button {
       background: none;
@@ -911,53 +865,42 @@
     .admin-list {
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      margin-top: 10px;
+      gap: 6px;
+      margin-top: 8px;
     }
     .admin-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 9px 12px;
-      border-radius: var(--radius-md);
+      padding: 7px 10px;
+      border-radius: var(--radius-lg);
       text-decoration: none;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      color: #ffffff;
-      transition: all 0.2s ease;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-crisp);
+      color: var(--text-main);
     }
-    .admin-link:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(2px);
-    }
-
-    /* ==========================================================================
-       TOAST NOTIFICATION
-       ========================================================================== */
     .toast-box {
       position: fixed;
-      top: 24px;
+      top: 18px;
       left: 50%;
-      transform: translateX(-50%) translateY(-20px);
-      background: rgba(10, 21, 38, 0.92);
-      border: 1px solid rgba(255, 87, 34, 0.3);
+      transform: translateX(-50%) translateY(-10px);
+      background: var(--text-main);
+      border: 1px solid transparent;
       color: #ffffff;
-      padding: 9px 18px;
+      padding: 7px 16px;
       border-radius: var(--radius-pill);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 600;
       z-index: 10000;
       display: flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(255, 87, 34, 0.2);
+      gap: 7px;
       pointer-events: none;
       opacity: 0;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-md);
+      transition: all 0.2s ease;
     }
     .toast-box.show {
       opacity: 1;
@@ -966,70 +909,70 @@
   </style>
 </head>
 <body>
-
-  <!-- Scroll Progress Indicator (Pengganti Scrollbar PC) -->
-  <div class="scroll-progress-container">
-    <div class="scroll-progress-bar" id="scrollProgress"></div>
+  <div class="scroll-progress-line">
+    <div class="scroll-progress-fill" id="scrollProgress"></div>
   </div>
-
-  <!-- Ambient Light Orbs -->
-  <div class="ambient-bg">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-  </div>
-
-  <!-- Toast Notification -->
   <div id="toast" class="toast-box">
-    <i data-lucide="check-circle-2" style="width: 15px; height: 15px; color: #ff7a50;"></i>
+    <i data-lucide="check" style="width: 14px; height: 14px; color: #ff8c42;"></i>
     <span id="toast-text"></span>
   </div>
-
-  <!-- Main Portal Layout -->
-  <main class="container">
-
-    <!-- Header Section -->
+  <div class="container">
     <header class="header">
-      <div class="badge-status">
-        <span class="dot-pulse"></span>
-        <span>PENDAFTARAN RESMI DIBUKA</span>
-      </div>
-
-      <div class="emblem-wrapper">
-        <div class="emblem-glow"></div>
-        <div class="emblem">
-          <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%230B1728\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23FF5722\'/></svg>';" />
+      <div class="hero-brand">
+        <div class="emblem-clean">
+          <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' rx=\'20\' fill=\'%231E3A5F\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23D9381E\'/></svg>';" />
+        </div>
+        <div class="title-box">
+          <div class="main-title">
+            Lakmud <span class="roman">IV</span>
+          </div>
+          <div class="sub-org">PAC IPNU IPPNU DANDER</div>
         </div>
       </div>
-
-      <div class="title-group">
-        <span class="title-text">Lakmud</span>
-        <span class="title-roman">IV</span>
-      </div>
-      <h1 class="org-subtitle">PAC IPNU IPPNU DANDER</h1>
-
-      <div class="divider-spirit">
-        <div class="divider-line"></div>
-        <div class="divider-dot"></div>
-        <div class="divider-line right"></div>
-      </div>
-
-      <p class="theme">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
+      <p class="theme-motto">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif Menuju Kemandirian Organisasi"</p>
     </header>
-
-    <!-- Visual Media Slider -->
     <section class="slider">
       <div class="slider-track" id="slider-track"></div>
-      <div class="slider-overlay"></div>
-      <div class="slider-tag">
-        <i data-lucide="sparkles" style="width: 12px; height: 12px; color: #ff7a50;"></i>
-        <span>Dokumentasi Kaderisasi</span>
-      </div>
     </section>
-
-    <!-- Navigation & Accordion Card Deck -->
+    <div class="social-strip">
+      <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="social-pill">
+        <i data-lucide="instagram"></i>
+        <span>Instagram</span>
+      </a>
+      <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="social-pill">
+        <i data-lucide="facebook"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="social-pill">
+        <i data-lucide="globe"></i>
+        <span>Website</span>
+      </a>
+    </div>
+    <div class="section-divider">
+      <span>Syarat Wajib Peserta</span>
+    </div>
     <nav class="vertical-menu">
-
-      <!-- Primary Action -->
+      <div class="menu-card">
+        <button type="button" class="menu-btn trigger-acc">
+          <div class="menu-icon">
+            <i data-lucide="folder-down"></i>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title">Berkas Wajib Peserta</div>
+            <div class="menu-desc">Format kelengkapan administrasi dan surat pernyataan</div>
+          </div>
+          <div class="menu-arrow">
+            <i data-lucide="chevron-right"></i>
+          </div>
+        </button>
+        <div class="drawer-wrapper">
+          <div class="drawer-inner">
+            <div class="drawer-body">
+              <div class="doc-group" id="download-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <a href="registrasi.html" class="cta-card">
         <div class="cta-left">
           <div class="cta-icon">
@@ -1037,94 +980,54 @@
           </div>
           <div class="cta-text">
             <h3>Pendaftaran Peserta</h3>
-            <p>Isi formulir biodata lengkap calon peserta</p>
+            <p>Pengisian formulir biodata dan registrasi calon peserta</p>
           </div>
         </div>
         <div class="cta-arrow">
-          <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i>
+          <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
         </div>
       </a>
-
-      <!-- Kirim Berkas -->
       <div class="menu-card">
         <a href="upload.html" class="menu-btn">
           <div class="menu-icon">
             <i data-lucide="upload-cloud"></i>
           </div>
           <div class="menu-info">
-            <div class="menu-title">Kirim Berkas</div>
-            <div class="menu-desc">Unggah 5 persyaratan dokumen wajib</div>
+            <div class="menu-title">Upload Berkas Persyaratan</div>
+            <div class="menu-desc">Pengiriman dokumen persyaratan yang telah diisi lengkap</div>
           </div>
           <div class="menu-arrow">
             <i data-lucide="arrow-up-right"></i>
           </div>
         </a>
       </div>
-
-      <!-- Cek Data -->
-      <div class="menu-card">
-        <a href="cek-data.html" class="menu-btn">
-          <div class="menu-icon">
-            <i data-lucide="search-check"></i>
-          </div>
-          <div class="menu-info">
-            <div class="menu-title">Cek Data Peserta</div>
-            <div class="menu-desc">Pantau status validasi dan verifikasi</div>
-          </div>
-          <div class="menu-arrow">
-            <i data-lucide="arrow-up-right"></i>
-          </div>
-        </a>
-      </div>
-
-      <!-- Template Berkas -->
-      <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
-          <div class="menu-icon">
-            <i data-lucide="folder-down"></i>
-          </div>
-          <div class="menu-info">
-            <div class="menu-title">Template Berkas</div>
-            <div class="menu-desc">Unduh format surat &amp; esai resmi</div>
-          </div>
-          <div class="menu-arrow">
-            <i data-lucide="chevron-right"></i>
-          </div>
-        </button>
-        <div class="drawer-wrapper">
-          <div class="drawer-inner">
-            <div class="drawer-body">
-              <div class="list-group" id="download-list"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TOR -->
+    </nav>
+    <div class="section-divider">
+      <span>Teknis &amp; Pembayaran</span>
+    </div>
+    <nav class="vertical-menu">
       <div class="menu-card">
         <a href="assets/documents/TOR-LAKMUD-IV-PAC-IPNU-IPPNU-DANDER.pdf" download class="menu-btn">
           <div class="menu-icon">
             <i data-lucide="file-text"></i>
           </div>
           <div class="menu-info">
-            <div class="menu-title">TOR LAKMUD IV</div>
-            <div class="menu-desc">Petunjuk Pelaksanaan &amp; Teknis Kegiatan</div>
+            <div class="menu-title">TOR &amp; Petunjuk Teknis</div>
+            <div class="menu-desc">Kerangka acuan kerja, tata tertib, dan silabus materi</div>
           </div>
           <div class="menu-arrow">
             <i data-lucide="download"></i>
           </div>
         </a>
       </div>
-
-      <!-- Administrasi Rekening -->
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
+        <button type="button" class="menu-btn trigger-acc">
           <div class="menu-icon">
             <i data-lucide="credit-card"></i>
           </div>
           <div class="menu-info">
-            <div class="menu-title">Administrasi &amp; Infaq</div>
-            <div class="menu-desc">Infaq pendaftaran &amp; nomor rekening</div>
+            <div class="menu-title">Administrasi &amp; Pembayaran</div>
+            <div class="menu-desc">Biaya kontribusi, rekening resmi, &amp; pembayaran DANA</div>
           </div>
           <div class="menu-arrow">
             <i data-lucide="chevron-right"></i>
@@ -1133,35 +1036,74 @@
         <div class="drawer-wrapper">
           <div class="drawer-inner">
             <div class="drawer-body">
-              <div class="fee-box">
-                <div class="fee-label">Infaq Kegiatan</div>
-                <div class="fee-amount">Rp 120.000</div>
-              </div>
-              <div class="rek-box">
-                <div>
-                  <div style="font-size: 0.68rem; font-weight: 800; color: #ff7a50;">BANK BRI</div>
-                  <div class="rek-num" id="rek-val">6123-01-012345-53-1</div>
-                  <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 1px;">a.n PAC IPNU IPPNU DANDER</div>
+              <div class="admin-card-box">
+                <div class="tier-grid">
+                  <div class="tier-card">
+                    <span class="tier-label">Internal</span>
+                    <span class="tier-sub">Kader PAC Dander</span>
+                    <span class="tier-amount">Rp 85.000</span>
+                  </div>
+                  <div class="tier-card">
+                    <span class="tier-label">Eksternal</span>
+                    <span class="tier-sub">Delegasi Luar PAC</span>
+                    <span class="tier-amount">Rp 120.000</span>
+                  </div>
                 </div>
-                <button type="button" class="rek-copy" id="btn-copy">
-                  <i data-lucide="copy" style="width: 12px; height: 12px;"></i> Salin
-                </button>
+                <div class="rek-card">
+                  <div>
+                    <div class="bank-brand">BANK BRI</div>
+                    <div class="rek-digits" id="rek-val">6123-01-012345-53-1</div>
+                    <div class="rek-holder">a.n PAC IPNU IPPNU DANDER</div>
+                  </div>
+                  <button type="button" class="btn-copy-action" id="btn-copy">
+                    <i data-lucide="copy" style="width: 12px; height: 12px;"></i> Salin
+                  </button>
+                </div>
+                <div class="dana-action-grid">
+                  <a href="https://link.dana.id/minta/081234567890?amount=85000" target="_blank" rel="noopener noreferrer" class="btn-dana">
+                    <i data-lucide="wallet"></i>
+                    <span>DANA Internal</span>
+                    <span class="dana-price">Rp 85.000</span>
+                  </a>
+                  <a href="https://link.dana.id/minta/081234567890?amount=120000" target="_blank" rel="noopener noreferrer" class="btn-dana">
+                    <i data-lucide="wallet"></i>
+                    <span>DANA Eksternal</span>
+                    <span class="dana-price">Rp 120.000</span>
+                  </a>
+                </div>
+                <p class="admin-note">* Harap simpan bukti transaksi transfer atau bukti DANA untuk diunggah pada menu Upload Berkas.</p>
               </div>
-              <p class="note-text">* Simpan bukti transfer untuk diunggah pada menu Kirim Berkas.</p>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Lokasi Kegiatan -->
+    </nav>
+    <div class="section-divider">
+      <span>Informasi &amp; Lokasi Kegiatan</span>
+    </div>
+    <nav class="vertical-menu">
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
+        <a href="cek-data.html" class="menu-btn">
+          <div class="menu-icon">
+            <i data-lucide="search-check"></i>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title">Status &amp; Validasi Peserta</div>
+            <div class="menu-desc">Pemeriksaan status verifikasi berkas dan kelulusan</div>
+          </div>
+          <div class="menu-arrow">
+            <i data-lucide="arrow-up-right"></i>
+          </div>
+        </a>
+      </div>
+      <div class="menu-card">
+        <button type="button" class="menu-btn trigger-acc">
           <div class="menu-icon">
             <i data-lucide="map-pin"></i>
           </div>
           <div class="menu-info">
-            <div class="menu-title">Lokasi Kegiatan</div>
-            <div class="menu-desc">Gedung MWC NU Kecamatan Dander</div>
+            <div class="menu-title">Pusat Kegiatan &amp; Lokasi</div>
+            <div class="menu-desc">Gedung MWC NU Kecamatan Dander, Bojonegoro</div>
           </div>
           <div class="menu-arrow">
             <i data-lucide="chevron-right"></i>
@@ -1170,29 +1112,33 @@
         <div class="drawer-wrapper">
           <div class="drawer-inner">
             <div class="drawer-body">
-              <p style="font-size: 0.74rem; color: var(--text-sub); margin-bottom: 6px;">
-                <strong style="color: #fff;">Gedung MWC NU Dander</strong><br />Jl. Raya Dander No. 45, Dander, Bojonegoro
-              </p>
-              <div class="map-container">
-                <iframe title="Lokasi" src="https://www.openstreetmap.org/export/embed.html?bbox=111.83%2C-7.30%2C111.90%2C-7.22&amp;layer=mapnik" loading="lazy"></iframe>
+              <div class="location-box">
+                <div class="location-card-info">
+                  <i data-lucide="navigation-2" style="width: 16px; height: 16px;"></i>
+                  <div>
+                    <div class="loc-name">Gedung MWC NU Dander</div>
+                    <div class="loc-address">Jl. Raya Dander No. 45, Kecamatan Dander, Kabupaten Bojonegoro, Jawa Timur</div>
+                  </div>
+                </div>
+                <div class="map-frame">
+                  <iframe title="Peta Lokasi" src="https://www.openstreetmap.org/export/embed.html?bbox=111.83%2C-7.30%2C111.90%2C-7.22&amp;layer=mapnik" loading="lazy"></iframe>
+                </div>
+                <a href="https://maps.google.com/?q=Dander+Bojonegoro" target="_blank" rel="noopener noreferrer" class="btn-nav-map">
+                  <i data-lucide="map" style="width: 14px; height: 14px;"></i> Buka di Google Maps
+                </a>
               </div>
-              <a href="https://maps.google.com/?q=Dander+Bojonegoro" target="_blank" rel="noopener noreferrer" class="btn-action">
-                <i data-lucide="navigation" style="width: 14px; height: 14px;"></i> Buka di Google Maps
-              </a>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Media Sosial -->
       <div class="menu-card">
-        <button type="button" class="menu-btn trigger-acc" aria-expanded="false">
+        <button type="button" class="menu-btn trigger-acc">
           <div class="menu-icon">
-            <i data-lucide="share-2"></i>
+            <i data-lucide="calendar-clock"></i>
           </div>
           <div class="menu-info">
-            <div class="menu-title">Media Sosial Resmi</div>
-            <div class="menu-desc">Kunjungi kanal publikasi organisasi</div>
+            <div class="menu-title">Timeline &amp; Alur Kegiatan</div>
+            <div class="menu-desc">Jadwal pendaftaran, screening, hingga pelaksanaan</div>
           </div>
           <div class="menu-arrow">
             <i data-lucide="chevron-right"></i>
@@ -1201,87 +1147,85 @@
         <div class="drawer-wrapper">
           <div class="drawer-inner">
             <div class="drawer-body">
-              <div class="list-group">
-                <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="list-link">
-                  <div class="list-link-left">
-                    <i data-lucide="instagram"></i>
-                    <span>Instagram Official</span>
+              <div class="timeline-list">
+                <div class="timeline-item">
+                  <div class="timeline-badge">1</div>
+                  <div class="timeline-texts">
+                    <span class="timeline-title">Pendaftaran &amp; Unggah Berkas</span>
+                    <span class="timeline-date">Tahap registrasi online calon peserta</span>
                   </div>
-                  <i data-lucide="external-link" style="width: 13px; height: 13px; color: var(--text-dim);"></i>
-                </a>
-                <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="list-link">
-                  <div class="list-link-left">
-                    <i data-lucide="facebook"></i>
-                    <span>Facebook Official</span>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-badge">2</div>
+                  <div class="timeline-texts">
+                    <span class="timeline-title">Screening &amp; Validasi Berkas</span>
+                    <span class="timeline-date">Uji kelayakan dan verifikasi instrumen</span>
                   </div>
-                  <i data-lucide="external-link" style="width: 13px; height: 13px; color: var(--text-dim);"></i>
-                </a>
-                <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="list-link">
-                  <div class="list-link-left">
-                    <i data-lucide="globe"></i>
-                    <span>Website Resmi</span>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-badge">3</div>
+                  <div class="timeline-texts">
+                    <span class="timeline-title">Pengumuman Peserta Lolos</span>
+                    <span class="timeline-date">Penerbitan surat keputusan peserta resmi</span>
                   </div>
-                  <i data-lucide="external-link" style="width: 13px; height: 13px; color: var(--text-dim);"></i>
-                </a>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-badge">4</div>
+                  <div class="timeline-texts">
+                    <span class="timeline-title">Forum Kaderisasi LAKMUD IV</span>
+                    <span class="timeline-date">Pelaksanaan forum kaderisasi hingga pembaiatan</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </nav>
-
-    <!-- Video Panduan Section -->
     <section class="video-card">
       <div class="video-header">
         <i data-lucide="play-circle"></i>
         <span>Panduan Tutorial Peserta</span>
       </div>
       <div class="video-tabs">
-        <button type="button" class="video-tab active" data-tab="pendaftaran">1. Daftar</button>
+        <button type="button" class="video-tab active" data-tab="pendaftaran">1. Registrasi</button>
         <button type="button" class="video-tab" data-tab="berkas">2. Berkas</button>
-        <button type="button" class="video-tab" data-tab="cekdata">3. Cek Data</button>
+        <button type="button" class="video-tab" data-tab="cekdata">3. Verifikasi</button>
       </div>
       <div class="video-box">
-        <iframe id="video-frame" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Tutorial Lakmud" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe id="video-frame" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-caption" id="video-caption">Langkah 1: Pengisian Formulir Pendaftaran Online</div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
-      <div class="footer-org">PAC IPNU IPPNU DANDER</div>
-      <div class="footer-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</div>
-      <div class="footer-links">
-        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="instagram" style="width: 13px; height: 13px;"></i> Instagram
-        </a>
-        <span style="color: var(--border-subtle)">•</span>
-        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="globe" style="width: 13px; height: 13px;"></i> Portal Web
-        </a>
+      <div class="footer-content">
+        <div class="footer-brand">PAC IPNU IPPNU DANDER</div>
+        <div class="footer-links">
+          <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="instagram" style="width: 12px; height: 12px;"></i> Instagram
+          </a>
+          <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="globe" style="width: 12px; height: 12px;"></i> Website
+          </a>
+        </div>
       </div>
-      <div class="footer-copy">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander. Hak Cipta Dilindungi.</div>
+      <div class="footer-copyright">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander. All Rights Reserved.</div>
     </footer>
-
-  </main>
-
-  <!-- Help Desk Support Dock -->
+  </div>
   <div class="support-anchor">
     <div class="popover" id="popover">
       <div class="popover-head">
-        <span>Pusat Bantuan</span>
-        <button type="button" id="btn-close-popover" aria-label="Tutup"><i data-lucide="x" style="width: 15px; height: 15px;"></i></button>
+        <span>Narahubung Panitia</span>
+        <button type="button" id="btn-close-popover"><i data-lucide="x" style="width: 14px; height: 14px;"></i></button>
       </div>
-      <div style="font-size: 0.68rem; color: var(--text-muted);">Pilih narahubung panitia:</div>
       <div class="admin-list">
         <a href="https://wa.me/6281234567890?text=Halo%20Rekan%20Panitia%20LAKMUD%20IV" target="_blank" rel="noopener noreferrer" class="admin-link">
           <span>Narahubung Rekan</span>
-          <i data-lucide="message-circle" style="width: 14px; height: 14px; color: #38bdf8;"></i>
+          <i data-lucide="message-circle" style="width: 13px; height: 13px; color: var(--accent-navy);"></i>
         </a>
         <a href="https://wa.me/6289876543210?text=Halo%20Rekanita%20Panitia%20LAKMUD%20IV" target="_blank" rel="noopener noreferrer" class="admin-link">
           <span>Narahubung Rekanita</span>
-          <i data-lucide="message-circle" style="width: 14px; height: 14px; color: #ff7a50;"></i>
+          <i data-lucide="message-circle" style="width: 13px; height: 13px; color: var(--accent-spirit);"></i>
         </a>
       </div>
     </div>
@@ -1290,16 +1234,14 @@
       <span>Bantuan</span>
     </button>
   </div>
-
-  <!-- Optimized Vanilla JS Logic -->
   <script>
     const CONFIG = {
       docs: [
-        { label: "1. Surat Rekomendasi PR/PK", url: "assets/documents/1-Format-Surat-Rekomendasi.docx" },
-        { label: "2. Form Biodata & Riwayat", url: "assets/documents/2-Form-Biodata-Kader.docx" },
-        { label: "3. Surat Pernyataan Kesediaan", url: "assets/documents/3-Surat-Pernyataan-Kesediaan.docx" },
-        { label: "4. Surat Izin Orang Tua/Wali", url: "assets/documents/4-Surat-Izin-Orang-Tua.docx" },
-        { label: "5. Ketentuan Esai Makalah", url: "assets/documents/5-Format-Esai-Makalah-Lakmud.pdf" }
+        { label: "Surat Rekomendasi PR/PK", format: "DOCX Document", url: "assets/documents/1-Format-Surat-Rekomendasi.docx" },
+        { label: "Biodata & Riwayat Kader", format: "DOCX Document", url: "assets/documents/2-Form-Biodata-Kader.docx" },
+        { label: "Surat Komitmen Kesediaan", format: "DOCX Document", url: "assets/documents/3-Surat-Pernyataan-Kesediaan.docx" },
+        { label: "Surat Izin Orang Tua/Wali", format: "DOCX Document", url: "assets/documents/4-Surat-Izin-Orang-Tua.docx" },
+        { label: "Format & Ketentuan Esai", format: "PDF Document", url: "assets/documents/5-Format-Esai-Makalah-Lakmud.pdf" }
       ],
       photos: [
         "assets/images/foto-1.jpg",
@@ -1317,91 +1259,77 @@
       ],
       vids: {
         pendaftaran: { url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ", cap: "Langkah 1: Pengisian Formulir Pendaftaran Online" },
-        berkas: { url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ", cap: "Langkah 2: Format & Pengiriman 5 Berkas Persyaratan" },
+        berkas: { url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ", cap: "Langkah 2: Format & Pengiriman Berkas Persyaratan" },
         cekdata: { url: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ", cap: "Langkah 3: Melacak Status Validasi & Verifikasi" }
       }
     };
-
-    // Passive Scroll Progress Bar (High Performance)
     window.addEventListener('scroll', () => {
-      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const top = document.documentElement.scrollTop || document.body.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
+      const percent = (top / height) * 100;
       const bar = document.getElementById('scrollProgress');
-      if (bar) bar.style.width = scrolled + '%';
+      if (bar) bar.style.width = percent + '%';
     }, { passive: true });
-
     function showToast(msg) {
       const t = document.getElementById("toast");
       document.getElementById("toast-text").textContent = msg;
       t.classList.add("show");
-      setTimeout(() => t.classList.remove("show"), 2200);
+      setTimeout(() => t.classList.remove("show"), 2000);
     }
-
     document.addEventListener("DOMContentLoaded", () => {
-      // Render Dokumen List
       const dList = document.getElementById("download-list");
       if (dList) {
         dList.innerHTML = CONFIG.docs.map(d => `
-          <a href="${d.url}" download class="list-link">
-            <div class="list-link-left">
-              <i data-lucide="file-text"></i>
-              <span>${d.label}</span>
+          <a href="${d.url}" download class="doc-card">
+            <div class="doc-card-left">
+              <div class="doc-badge-icon"><i data-lucide="file-text" style="width: 16px; height: 16px;"></i></div>
+              <div class="doc-texts">
+                <span class="doc-title">${d.label}</span>
+                <span class="doc-format">${d.format}</span>
+              </div>
             </div>
-            <i data-lucide="download" style="width: 13px; height: 13px;"></i>
+            <div class="doc-btn-download">
+              <i data-lucide="download" style="width: 12px; height: 12px;"></i> Unduh
+            </div>
           </a>
         `).join("");
       }
-
-      // Copy Rekening Number
       const btnCopy = document.getElementById("btn-copy");
       if (btnCopy) {
         btnCopy.addEventListener("click", () => {
           const txt = document.getElementById("rek-val").textContent.trim();
-          navigator.clipboard.writeText(txt).then(() => showToast("Nomor rekening berhasil disalin!"));
+          navigator.clipboard.writeText(txt).then(() => showToast("Nomor rekening disalin!"));
         });
       }
-
-      // Smooth Accordion Handler
       document.querySelectorAll(".trigger-acc").forEach(btn => {
         btn.addEventListener("click", () => {
           const parent = btn.closest(".menu-card");
           const isOpen = parent.classList.contains("open");
           document.querySelectorAll(".menu-card.open").forEach(c => {
-            if (c !== parent) {
-              c.classList.remove("open");
-              const b = c.querySelector('.trigger-acc');
-              if (b) b.setAttribute('aria-expanded', 'false');
-            }
+            if (c !== parent) c.classList.remove("open");
           });
           parent.classList.toggle("open", !isOpen);
-          btn.setAttribute('aria-expanded', (!isOpen).toString());
         });
       });
-
-      // Lazy & Preloaded Slider Track
       const track = document.getElementById("slider-track");
       const slides = [];
       CONFIG.photos.forEach((src, idx) => {
         const img = document.createElement("img");
         img.className = `slide-img ${idx === 0 ? 'active' : ''}`;
-        img.alt = "Dokumentasi Kaderisasi LAKMUD IV";
+        img.alt = "Dokumentasi Lakmud";
         img.decoding = "async";
         img.src = src;
         img.onerror = () => { img.src = CONFIG.fallbacks[idx]; };
         track.appendChild(img);
         slides.push(img);
       });
-
       let current = 0;
       setInterval(() => {
         if (slides.length <= 1) return;
         slides[current].classList.remove("active");
         current = (current + 1) % slides.length;
         slides[current].classList.add("active");
-      }, 4000);
-
-      // Tutorial Tabs Switching
+      }, 3600);
       const tabs = document.querySelectorAll(".video-tab");
       const vFrame = document.getElementById("video-frame");
       const vCap = document.getElementById("video-caption");
@@ -1416,8 +1344,6 @@
           }
         });
       });
-
-      // Support Popover
       const popover = document.getElementById("popover");
       const btnSupport = document.getElementById("btn-support");
       const btnClosePopover = document.getElementById("btn-close-popover");
@@ -1427,8 +1353,6 @@
       if (btnClosePopover && popover) {
         btnClosePopover.addEventListener("click", () => popover.classList.remove("active"));
       }
-
-      // Initialize Icons
       lucide.createIcons();
     });
   </script>
