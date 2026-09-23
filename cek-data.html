@@ -2,251 +2,895 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Cek Datamu - LAKMUD IV PAC DANDER</title>
-  <meta name="description" content="Pantau status verifikasi pendaftaran LAKMUD IV PAC IPNU IPPNU Dander." />
-  
-  <!-- Font Modern: Plus Jakarta Sans -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Cek Data Peserta — LAKMUD IV PAC IPNU IPPNU Dander</title>
+  <meta name="theme-color" content="#0B192C" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  
-  <!-- Lucide Icons via CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* ================= ROOT DESIGN TOKENS ================= */
     :root {
-      --primary: #10b981;
-      --primary-dark: #059669;
-      --primary-glow: rgba(16, 185, 129, 0.28);
-      --primary-soft: rgba(16, 185, 129, 0.1);
-      --accent-gold: #f59e0b;
-      --bg-main: #090d16;
-      --bg-card: rgba(18, 26, 44, 0.85);
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --navy-dark: #0b192c;
+      --navy: #1e3e62;
+      --orange: #e35a27;
+      --orange-soft: rgba(227, 90, 39, 0.08);
+      --text-main: #0f172a;
       --text-muted: #64748b;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-highlight: rgba(16, 185, 129, 0.35);
-      --radius-xl: 20px;
-      --radius-lg: 14px;
-      --radius-md: 10px;
-      --radius-full: 9999px;
-      --font-main: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --border: #e2e8f0;
+      --shadow: 0 4px 14px -2px rgba(11, 25, 44, 0.06);
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
-      font-family: var(--font-main);
-      background-color: var(--bg-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
       color: var(--text-main);
-      line-height: 1.5;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 24px 14px 40px;
-      overflow-x: hidden;
-      position: relative;
+      padding: 16px 12px 24px;
     }
 
-    .ambient-glow {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(120px);
-      z-index: 0;
-      opacity: 0.35;
-    }
-    .glow-1 {
-      width: 380px; height: 380px; top: -100px; left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, #059669, #0284c7);
+    .container {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
     }
 
-    .app-container { width: 100%; max-width: 540px; position: relative; z-index: 1; }
-
-    /* ================= HEADER & NAV BACK ================= */
     .header-nav {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
+      justify-content: center;
+      margin-bottom: 8px;
+      min-height: 40px;
     }
 
-    .btn-back-home {
+    .btn-back {
+      position: absolute;
+      left: 0;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      gap: 6px;
+      background: var(--card);
       border: 1px solid var(--border);
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.8rem;
+      color: var(--navy-dark);
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
       cursor: pointer;
       text-decoration: none;
-      transition: var(--transition-smooth);
+      box-shadow: var(--shadow);
     }
 
-    .btn-back-home:hover {
-      background: var(--primary-soft);
-      border-color: var(--border-highlight);
-      color: var(--primary);
-      transform: translateX(-2px);
-    }
-
-    .page-tag {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-    }
-
-    .page-title-box {
+    .header-profile {
       text-align: center;
-      margin-bottom: 24px;
+      padding: 6px 0 16px;
     }
 
-    .page-title {
-      font-size: 1.75rem;
+    .emblem {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 10px;
+      background: #ffffff;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      padding: 6px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .emblem img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .title-text {
+      font-size: 2rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffffff 45%, #a7f3d0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
+      color: var(--navy-dark);
+      line-height: 1;
     }
 
-    .page-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-sub);
+    .title-roman {
+      font-family: 'Cinzel', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .org-subtitle {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--navy);
       margin-top: 4px;
     }
 
-    /* ================= CONTENT CONTAINER ================= */
-    .content-card {
-      background: var(--bg-card);
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: var(--orange);
+      margin: 10px auto 8px;
+      border-radius: var(--radius-pill);
+      opacity: 0.7;
+    }
+
+    .theme {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.35;
+      padding: 0 10px;
+    }
+
+    .card {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 24px 18px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5);
-      min-height: 280px;
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+      margin-top: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
+
+    .input-control {
+      width: 100%;
+      background: #fafbfc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .input-control:focus {
+      border-color: var(--navy);
+      background: #ffffff;
+    }
+
+    .btn-action-full {
+      width: 100%;
+      background: linear-gradient(135deg, var(--orange) 0%, #c44314 100%);
+      color: #ffffff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(227, 90, 39, 0.3);
+      margin-top: 10px;
+    }
+
+    .btn-action-full:active {
+      transform: scale(0.98);
+    }
+
+    /* CV KADER MODERN STYLES */
+    .cv-card {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 10px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cv-header-banner {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 22px 16px 16px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .cv-avatar-box {
+      width: 90px;
+      height: 120px;
+      margin: 0 auto 10px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 3px solid #ffffff;
+      background: #f1f5f9;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .cv-avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cv-code-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: #ffffff;
+      font-family: monospace;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .cv-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .cv-delegasi {
+      font-size: 0.76rem;
+      color: #93c5fd;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .cv-body {
+      padding: 16px;
+    }
+
+    .status-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 14px;
+    }
+
+    .status-box.incomplete {
+      background: #fff7ed;
+      border-color: #fed7aa;
+    }
+
+    .status-text h4 {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #166534;
+    }
+
+    .status-box.incomplete .status-text h4 {
+      color: #c2410c;
+    }
+
+    .status-text p {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .section-cv-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      margin: 14px 0 8px;
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .cv-item {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
     }
 
-    /* ================= FOOTER ================= */
+    .cv-item-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .cv-item-val {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-top: 1px;
+    }
+
+    .grid-full {
+      grid-column: span 2;
+    }
+
+    .doc-check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .doc-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .doc-badge.done {
+      background: #f0f9ff;
+      border-color: #bae6fd;
+      color: #0284c7;
+    }
+
+    .cv-motivation-box {
+      background: #fafbfc;
+      border-left: 3px solid var(--orange);
+      padding: 10px 12px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.74rem;
+      color: var(--text-main);
+      line-height: 1.4;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    .btn-secondary {
+      background: var(--navy-dark);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .btn-orange-outline {
+      background: var(--orange-soft);
+      color: var(--orange);
+      border: 1px solid rgba(227, 90, 39, 0.3);
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 25, 44, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 380px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .progress-ring {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      background: #f1f5f9;
+      border: 3px solid var(--border);
+    }
+
+    .progress-ring.error {
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 7px;
+      background: #f1f5f9;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--orange);
+      transition: width 0.15s ease;
+    }
+
     .footer {
       text-align: center;
-      padding: 30px 10px 10px;
+      padding: 24px 0 10px;
+      margin-top: 14px;
       border-top: 1px solid var(--border);
-      margin-top: 40px;
     }
 
-    .footer-brand { font-size: 1rem; font-weight: 800; color: #fff; }
-    .footer-org { font-size: 0.78rem; font-weight: 700; color: var(--primary); margin-top: 1px; }
-    .footer-quote { font-size: 0.74rem; color: var(--text-muted); font-style: italic; margin: 6px 0 14px; }
-    .footer-socials { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 14px; }
-    .social-link {
-      color: var(--text-sub);
-      text-decoration: none;
+    .footer-org {
       font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .footer-quote {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 3px 0 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.72rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      transition: var(--transition-smooth);
+      gap: 4px;
     }
-    .social-link i { width: 14px; height: 14px; }
-    .social-link:hover { color: var(--primary); }
-    .dot-sep { color: var(--text-muted); font-size: 0.6rem; }
-    .footer-copy { font-size: 0.68rem; color: var(--text-muted); }
+
+    .footer-copy {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
 
-  <div class="ambient-glow glow-1"></div>
+  <main class="container">
 
-  <main class="app-container">
-    
-    <!-- HEADER NAV BACK -->
     <div class="header-nav">
-      <button type="button" class="btn-back-home" onclick="goBackHome()">
-        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+      <button type="button" class="btn-back" id="btn-back">
+        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i>
         <span>Kembali</span>
       </button>
-      <span class="page-tag">Monitoring</span>
     </div>
 
-    <div class="page-title-box">
-      <h1 class="page-title">Cek Datamu</h1>
-      <p class="page-subtitle">LAKMUD IV PAC IPNU IPPNU DANDER</p>
-    </div>
+    <header class="header-profile">
+      <div class="emblem">
+        <img src="assets/images/logo-lakmud.png" alt="Logo LAKMUD IV" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%231E3E62\'/><path d=\'M35 24C35 24 45 44 45 64C45 74 35 79 35 79C35 79 65 74 65 50C65 35 50 24 35 24Z\' fill=\'%23E35A27\'/></svg>';" />
+      </div>
+      <div class="title-group">
+        <span class="title-text">Lakmud</span>
+        <span class="title-roman">IV</span>
+      </div>
+      <h1 class="org-subtitle">PAC IPNU IPPNU DANDER</h1>
+      <div class="divider"></div>
+      <p class="theme">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</p>
+    </header>
 
-    <!-- AREA KONTEN PENCARIAN & STATUS -->
-    <section class="content-card">
-      <!-- KONTEN PENCARIAN & STATUS DATA PESERTA AKAN DITEMPATKAN DI SINI -->
-      <p style="color: var(--text-muted); font-size: 0.85rem;">[ Area Pencarian &amp; Status Data Peserta ]</p>
+    <!-- FORM PENCARIAN 3 KOLOM -->
+    <section class="card" id="search-section">
+      <h2 style="font-size: 0.92rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 4px;">Pencarian Status Data Peserta</h2>
+      <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 14px;">Masukkan 3 informasi identitas pendaftaran Anda.</p>
+
+      <form id="form-search">
+        <div class="form-group">
+          <div class="label-row"><label for="src-nama">NAMA LENGKAP</label></div>
+          <input type="text" id="src-nama" class="input-control" placeholder="Nama lengkap sesuai pendaftaran" required />
+        </div>
+
+        <div class="form-group">
+          <div class="label-row"><label for="src-delegasi">ASAL DELEGASI</label></div>
+          <input type="text" id="src-delegasi" class="input-control" placeholder="Contoh: PR IPNU IPPNU Sumberagung" required />
+        </div>
+
+        <div class="form-group">
+          <div class="label-row"><label for="src-tanggal">TANGGAL LAHIR</label></div>
+          <input type="date" id="src-tanggal" class="input-control" required />
+        </div>
+
+        <button type="submit" class="btn-action-full" id="btn-search">
+          <span>Lacak &amp; Cek Dataku</span>
+          <i data-lucide="search" style="width: 15px; height: 15px;"></i>
+        </button>
+      </form>
     </section>
 
-    <!-- FOOTER -->
+    <!-- TAMPILAN RESUME / CV KADER DIGITAL -->
+    <article class="cv-card" id="cv-result">
+      
+      <!-- HEADER BANNER CV -->
+      <div class="cv-header-banner">
+        <div class="cv-avatar-box">
+          <img id="cv-foto" src="assets/images/logo-lakmud.png" alt="Pas Foto 3x4" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 133\' fill=\'%23e2e8f0\'><rect width=\'100\' height=\'133\' fill=\'%23cbd5e1\'/><circle cx=\'50\' cy=\'45\' r=\'24\' fill=\'%2394a3b8\'/><path d=\'M15 125 C15 85 85 85 85 125 Z\' fill=\'%2394a3b8\'/></svg>';" />
+        </div>
+        <div class="cv-code-badge" id="cv-code">LMD-IV-0000000</div>
+        <h3 class="cv-name" id="cv-nama">Nama Peserta</h3>
+        <div class="cv-delegasi" id="cv-delegasi">Asal Delegasi</div>
+      </div>
+
+      <div class="cv-body">
+
+        <!-- STATUS KELENGKAPAN BERKAS -->
+        <div class="status-box" id="status-box">
+          <div class="status-text">
+            <h4 id="status-heading">BERKAS TERVERIFIKASI LENGKAP</h4>
+            <p id="status-sub">6 dari 6 berkas persyaratan telah terkirim.</p>
+          </div>
+          <i id="status-icon" data-lucide="check-circle-2" style="width: 22px; height: 22px; color: #166534;"></i>
+        </div>
+
+        <!-- 6 STATUS DOKUMEN -->
+        <div class="section-cv-title">Status Kelengkapan 6 Berkas</div>
+        <div class="doc-check-grid">
+          <div class="doc-badge" id="doc-foto"><i data-lucide="image" style="width:12px;height:12px;"></i> Foto 3x4</div>
+          <div class="doc-badge" id="doc-rekom"><i data-lucide="file-text" style="width:12px;height:12px;"></i> Rekomendasi</div>
+          <div class="doc-badge" id="doc-biodata"><i data-lucide="file-text" style="width:12px;height:12px;"></i> Form Biodata</div>
+          <div class="doc-badge" id="doc-kesediaan"><i data-lucide="file-text" style="width:12px;height:12px;"></i> Kesediaan</div>
+          <div class="doc-badge" id="doc-izin"><i data-lucide="file-text" style="width:12px;height:12px;"></i> Izin Ortu</div>
+          <div class="doc-badge" id="doc-esai"><i data-lucide="file-text" style="width:12px;height:12px;"></i> Esai Makalah</div>
+        </div>
+
+        <div id="btn-fix-upload-wrap" style="display: none; margin-top: 8px;">
+          <a href="upload.html" class="btn-orange-outline">
+            <i data-lucide="upload-cloud" style="width: 14px; height: 14px;"></i>
+            <span>Lengkapi / Unggah Berkas yang Kurang</span>
+          </a>
+        </div>
+
+        <!-- BIODATA LENGKAP -->
+        <div class="section-cv-title">Biodata Peserta</div>
+        <div class="cv-grid">
+          <div class="cv-item grid-full">
+            <span class="cv-item-label">Tempat &amp; Tanggal Lahir</span>
+            <span class="cv-item-val" id="cv-ttl">-</span>
+          </div>
+          <div class="cv-item grid-full">
+            <span class="cv-item-label">Alamat Domisili</span>
+            <span class="cv-item-val" id="cv-alamat">-</span>
+          </div>
+          <div class="cv-item">
+            <span class="cv-item-label">WhatsApp</span>
+            <span class="cv-item-val" id="cv-wa">-</span>
+          </div>
+          <div class="cv-item">
+            <span class="cv-item-label">Ukuran Kaos</span>
+            <span class="cv-item-val" id="cv-kaos">-</span>
+          </div>
+          <div class="cv-item grid-full">
+            <span class="cv-item-label">Email Aktif</span>
+            <span class="cv-item-val" id="cv-email">-</span>
+          </div>
+        </div>
+
+        <!-- MOTIVASI -->
+        <div class="section-cv-title">Motivasi &amp; Komitmen</div>
+        <div class="cv-motivation-box" id="cv-motivasi">
+          "-"
+        </div>
+
+        <!-- TOMBOL AKSI -->
+        <div style="margin-top: 14px;">
+          <button type="button" class="btn-action-full" onclick="window.print()">
+            <i data-lucide="printer" style="width: 15px; height: 15px;"></i>
+            <span>Cetak Bukti Resume CV</span>
+          </button>
+          <a id="btn-wa-confirm-cv" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+            <span>Konfirmasi ke Panitia</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
     <footer class="footer">
-      <div class="footer-brand">LAKMUD IV</div>
       <div class="footer-org">PAC IPNU IPPNU DANDER</div>
-      <p class="footer-quote">"Ruang Berproses, Bertumbuh, dan Berkhidmat"</p>
-      
-      <div class="footer-socials">
-        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer" class="social-link">
-          <i data-lucide="instagram"></i> Instagram
-        </a>
-        <span class="dot-sep">•</span>
-        <a href="https://facebook.com/pacipnuippnudander" target="_blank" rel="noopener noreferrer" class="social-link">
-          <i data-lucide="facebook"></i> Facebook
-        </a>
-        <span class="dot-sep">•</span>
-        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer" class="social-link">
-          <i data-lucide="globe"></i> Website
-        </a>
+      <div class="footer-quote">"Mencetak Kader yang Reflektif, Strategis, dan Transformatif"</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/pac_ipnu_ippnu_dander" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram" style="width: 12px; height: 12px;"></i> Instagram</a>
+        <span>•</span>
+        <a href="https://pacdander.or.id" target="_blank" rel="noopener noreferrer"><i data-lucide="globe" style="width: 12px; height: 12px;"></i> Website</a>
       </div>
-      
-      <div class="footer-copy">
-        &copy; Panitia Pelaksana LAKMUD IV PAC IPNU IPPNU Dander. All rights reserved.
-      </div>
+      <div class="footer-copy">&copy; Panitia LAKMUD IV PAC IPNU IPPNU Dander.</div>
     </footer>
 
   </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      lucide.createIcons();
-      setupHardwareBackButton();
-    });
+  <!-- MODAL POP-UP (LOADING / NOT FOUND) -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal-box">
+      <div class="progress-ring" id="modal-ring">
+        <span id="modal-pct">0%</span>
+      </div>
+      <div style="font-size: 0.95rem; font-weight: 800; color: var(--navy-dark);" id="modal-title">Melacak Data...</div>
+      <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;" id="modal-desc">Memverifikasi 3 data identitas pada database server</div>
 
-    function goBackHome() {
-      if (document.referrer && document.referrer.includes(window.location.host)) {
+      <div class="progress-bar-wrap" id="modal-bar-wrap">
+        <div class="progress-bar-fill" id="modal-bar-fill"></div>
+      </div>
+
+      <div id="modal-actions" style="display: none; margin-top: 10px;">
+        <a href="registrasi.html" class="btn-orange-outline">
+          <i data-lucide="user-plus" style="width: 14px; height: 14px;"></i>
+          <span>Daftar Sekarang (Isi Biodata)</span>
+        </a>
+        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20LAKMUD%20IV%2C%20data%20saya%20tidak%20ditemukan%20saat%20cek%20data" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+          <span>Hubungi WA Admin Panitia</span>
+        </a>
+        <button type="button" id="btn-close-modal" style="background:none; border:none; color:var(--text-muted); font-size:0.72rem; margin-top:8px; cursor:pointer;">
+          Tutup &amp; Periksa Ulang
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwXPyJwms2qA6VnvXIdkT171V7g2iALA0hvV-wq-CT06NxwzqKz3_C5Gysx0mC3YH3aiA/exec",
+      WA_ADMIN: "6281234567890"
+    };
+
+    document.getElementById("btn-back").addEventListener("click", () => {
+      if (document.getElementById("cv-result").style.display === "block") {
+        document.getElementById("cv-result").style.display = "none";
+        document.getElementById("search-section").style.display = "block";
+      } else if (window.history.length > 1 && document.referrer.includes(window.location.hostname)) {
         window.history.back();
       } else {
         window.location.href = "index.html";
       }
+    });
+
+    const modal = document.getElementById("modal");
+    const ring = document.getElementById("modal-ring");
+    const pctTxt = document.getElementById("modal-pct");
+    const titleTxt = document.getElementById("modal-title");
+    const descTxt = document.getElementById("modal-desc");
+    const barFill = document.getElementById("modal-bar-fill");
+    const actionsBox = document.getElementById("modal-actions");
+
+    function setModal(pct, title, desc) {
+      pctTxt.textContent = pct + "%";
+      barFill.style.width = pct + "%";
+      if (title) titleTxt.textContent = title;
+      if (desc) descTxt.textContent = desc;
     }
 
-    function setupHardwareBackButton() {
-      if (window.history && window.history.pushState) {
-        window.history.pushState({ page: 'cek-data' }, null, '');
-        window.addEventListener('popstate', function(e) {
-          window.location.href = "index.html";
-        });
+    function animateProgress(start, end, duration, title, desc, callback) {
+      const startTime = performance.now();
+      function step(now) {
+        const p = Math.min((now - startTime) / duration, 1);
+        const val = Math.floor(start + (end - start) * p);
+        setModal(val, title, desc);
+        if (p < 1) requestAnimationFrame(step);
+        else if (callback) callback();
       }
+      requestAnimationFrame(step);
     }
+
+    document.getElementById("form-search").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nama = document.getElementById("src-nama").value.trim();
+      const delegasi = document.getElementById("src-delegasi").value.trim();
+      const tanggalLahir = document.getElementById("src-tanggal").value;
+
+      modal.classList.add("active");
+      ring.className = "progress-ring";
+      actionsBox.style.display = "none";
+      document.getElementById("modal-bar-wrap").style.display = "block";
+
+      animateProgress(0, 85, 800, "Mengecek Database...", "Mencari data dengan algoritma cerdas...", async () => {
+        try {
+          const res = await fetch(CONFIG.SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify({
+              action: "search_data",
+              nama: nama,
+              delegasi: delegasi,
+              tanggalLahir: tanggalLahir
+            })
+          });
+          const result = await res.json();
+
+          if (result.status === "found") {
+            setModal(100, "Data Ditemukan!", "Membuka resume profil pendaftar...");
+            setTimeout(() => {
+              modal.classList.remove("active");
+              renderCV(result.data);
+            }, 500);
+          } else {
+            ring.className = "progress-ring error";
+            ring.innerHTML = `<i data-lucide="user-x" style="width:24px;height:24px;"></i>`;
+            lucide.createIcons();
+            setModal(0, "Data Tidak Ditemukan", "Identitas tidak cocok. Jika belum mendaftar, silakan isi form pendaftaran.");
+            document.getElementById("modal-bar-wrap").style.display = "none";
+            actionsBox.style.display = "block";
+          }
+        } catch (err) {
+          ring.className = "progress-ring error";
+          ring.innerHTML = `<i data-lucide="alert-circle" style="width:24px;height:24px;"></i>`;
+          lucide.createIcons();
+          setModal(0, "Gangguan Koneksi", "Gagal menghubungi database server. Silakan coba kembali.");
+          document.getElementById("modal-bar-wrap").style.display = "none";
+          actionsBox.style.display = "block";
+        }
+      });
+    });
+
+    document.getElementById("btn-close-modal").addEventListener("click", () => modal.classList.remove("active"));
+
+    function renderCV(d) {
+      document.getElementById("search-section").style.display = "none";
+      const cv = document.getElementById("cv-result");
+      cv.style.display = "block";
+
+      document.getElementById("cv-code").textContent = d.code;
+      document.getElementById("cv-nama").textContent = d.nama;
+      document.getElementById("cv-delegasi").textContent = d.delegasi;
+      document.getElementById("cv-ttl").textContent = d.ttl;
+      document.getElementById("cv-alamat").textContent = d.alamat;
+      document.getElementById("cv-wa").textContent = d.whatsapp;
+      document.getElementById("cv-kaos").textContent = d.ukuranKaos;
+      document.getElementById("cv-email").textContent = d.email;
+      document.getElementById("cv-motivasi").textContent = `"${d.motivasi}"`;
+
+      if (d.fotoUrl) {
+        document.getElementById("cv-foto").src = d.fotoUrl;
+      }
+
+      // Status Box
+      const sBox = document.getElementById("status-box");
+      const sHead = document.getElementById("status-heading");
+      const sSub = document.getElementById("status-sub");
+      const sIcon = document.getElementById("status-icon");
+      const fixWrap = document.getElementById("btn-fix-upload-wrap");
+
+      if (d.isComplete) {
+        sBox.className = "status-box";
+        sHead.textContent = "BERKAS LENGKAP & TERVERIFIKASI";
+        sSub.textContent = "Seluruh 6 berkas persyaratan telah aman tersimpan.";
+        sIcon.setAttribute("data-lucide", "check-circle-2");
+        sIcon.style.color = "#166534";
+        fixWrap.style.display = "none";
+      } else {
+        sBox.className = "status-box incomplete";
+        sHead.textContent = `BERKAS BELUM LENGKAP (${d.totalUploaded}/6)`;
+        sSub.textContent = "Ada berkas yang belum diunggah atau perlu diperbaiki.";
+        sIcon.setAttribute("data-lucide", "alert-circle");
+        sIcon.style.color = "#c2410c";
+        fixWrap.style.display = "block";
+      }
+
+      // 6 Badges
+      const keys = ["foto", "rekom", "biodata", "kesediaan", "izin", "esai"];
+      keys.forEach(k => {
+        const el = document.getElementById(`doc-${k}`);
+        if (d.filesStatus[k]) {
+          el.className = "doc-badge done";
+        } else {
+          el.className = "doc-badge";
+        }
+      });
+
+      // WA Confirm Link
+      const textWA = encodeURIComponent(
+        `Assalamu'alaikum Panitia LAKMUD IV PAC IPNU IPPNU Dander,\n\nSaya telah mengecek data pendaftaran saya:\n` +
+        `• *Nama:* ${d.nama}\n` +
+        `• *Kode Registrasi:* ${d.code}\n` +
+        `• *Status Berkas:* ${d.totalUploaded}/6 Berkas\n\n` +
+        `Mohon informasi lebih lanjut terkait tahapan selanjutnya. Terima kasih!`
+      );
+      document.getElementById("btn-wa-confirm-cv").href = `https://wa.me/${CONFIG.WA_ADMIN}?text=${textWA}`;
+
+      lucide.createIcons();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+    });
   </script>
 </body>
 </html>
